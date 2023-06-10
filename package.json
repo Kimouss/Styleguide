@@ -1,7 +1,7 @@
 {
   "name": "@kimouss_/styleguide",
   "description": "This is a styleguide",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "webpack.config.js",
   "repository": {
     "type": "git",
