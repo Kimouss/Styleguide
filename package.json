@@ -32,7 +32,6 @@
     "webpack-notifier": "^1.15.0"
   },
   "license": "UNLICENSED",
-  "private": true,
   "scripts": {
     "dev-server": "encore dev-server",
     "dev": "encore dev",
@@ -43,5 +42,5 @@
     "highlight.js": "^11.8.0",
     "node-sass": "^9.0.0",
     "sass-loader": "^13.3.1"
-  },
+  }
 }
