@@ -1,0 +1,100 @@
+@include component(team-card) {
+    /* Colour variables */
+    $title-color: $grey-fiord;
+    $background-color: #fcfcfc;
+    $shadow-color: $grey-alabaster;
+    $name-color: $grey-alabaster;
+    $description-background-color: $grey-wild-sand;
+
+    /* Width & size variables */
+    $default-radius: $base_radius;
+    $default-padding: spacing(micro);
+    $default-half-padding: $default-padding / 2;
+    $social-link-margin: 2.2rem;
+    $cover-height: 17.5rem;
+
+    /* Other various variables */
+    $default-transition: $base-transition;
+    $default-box-shadow: $base-box-shadow;
+
+    position: relative;
+    border-radius: $default-radius;
+    background: $background-color;
+    text-decoration: none;
+    transition: $default-transition;
+    box-shadow: 0 0 0 0 $grey-mystic;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: $background-color;
+    transform: translateZ(0);
+
+    &:hover {
+        box-shadow: $default-box-shadow;
+        text-decoration: none;
+    }
+
+    @include child(cover) {
+        position: relative;
+        height: $cover-height;
+        border-top-left-radius: $default-radius;
+        border-top-right-radius: $default-radius;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 20%;
+        background-blend-mode: overlay;
+        flex: auto 0 0;
+    }
+
+    @include child(description) {
+        padding-top: $default-padding;
+        padding-right: $default-padding;
+        padding-left: $default-padding;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        margin-left: -1rem;
+        flex: auto 1 0;
+    }
+
+    @include child(text) {
+        flex: 0px 1 1;
+        margin-left: 1rem;
+        @include modifier(name) {
+            color: $name-color;
+        }
+
+        @include from-phablet {
+            flex: 50% 1 1;
+        }
+
+        @include modifier(tag) {
+            @include to-phone {
+                flex: 100% 0 0;
+            }
+
+            @include from-phablet {
+                flex: 13% 1 1;
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+    }
+
+    @include child(social-bar) {
+        margin-left: -$social-link-margin;
+        display: flex;
+        flex: auto 0 0;
+        padding: 0 $default-padding $default-padding $default-padding;
+    }
+
+    @include child(social-link) {
+        margin-left: $social-link-margin;
+        vertical-align: bottom;
+        padding-top: 0.3rem;
+
+        @include modifier(mail-bottom) {
+            padding-top: 0.50rem;
+        }
+    }
+}

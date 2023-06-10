@@ -1,0 +1,125 @@
+@include component(drag-n-drop-area) {
+    /* Colour variables */
+    $default-border-color: $grey-mystic;
+    $default-background-color: $white-snow;
+    $default-emphasis-color: $blue-malibu;
+
+    $trapped-color: $white-snow;
+    $hover-color: $grey-fiord;
+
+    /* Width & size variables */
+    $default-spacing: spacing(nano);
+
+    /* Other various variables */
+    $default-radius: 1.8rem;
+    $default-transition: $base-transition;
+
+    position: relative;
+    padding-bottom: spacing(micro);
+
+    @include child(input) {
+        height: 0;
+        width: 0;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    @include child(content) {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        min-height: 26rem;
+        border-radius: $default-radius;
+        border: 2px dashed $default-border-color;
+        background: $default-background-color;
+        padding: spacing(micro) spacing(micro) spacing(kilo);
+        width: 100%;
+        cursor: pointer;
+        align-items: center;
+        margin: 0;
+        transition: $default-transition;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            border-color: $hover-color;
+
+            /* To select ONLY the neighbor upload button */
+            & + .km-drag-n-drop-area_button-bar .km-drag-n-drop-area_button.\--upload {
+                background: $hover-color;
+                color: $trapped-color;
+                border-color: $hover-color;
+            }
+        }
+
+        @include modifier(drag-hover) {
+            border-color: $hover-color;
+
+            .km-drag-n-drop-area_button {
+                background: $hover-color;
+                color: $trapped-color;
+                border-color: $hover-color;
+            }
+        }
+    }
+
+    @include child(sub-title) {
+        padding-bottom: $default-spacing;
+        max-width: 100%;
+    }
+
+    @include child(image) {
+        text-align: center;
+        max-width: 100%;
+    }
+
+    @include child(title) {
+        padding-top: $default-spacing;
+        max-width: 100%;
+    }
+
+    @include child(text) {
+        margin-top: $default-spacing;
+        max-width: 100%;
+    }
+
+    @include child(button-bar) {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+    @include child(button) {
+        background: $default-background-color;
+        border: 1px solid $default-border-color;
+        color: $default-emphasis-color;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        line-height: 0;
+        padding: spacing(nano);
+        display: inline-flex;
+        margin-left: $default-spacing;
+        cursor: pointer;
+        transition: $default-transition;
+
+        &::-moz-focus-inner {
+            /* We remove Firefox's inner padding on buttons */
+            padding: 0;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            background: $hover-color;
+            color: $trapped-color;
+            border-color: $hover-color;
+        }
+    }
+}

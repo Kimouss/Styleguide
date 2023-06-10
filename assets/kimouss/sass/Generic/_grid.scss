@@ -1,0 +1,144 @@
+@include component(grid) {
+    /* Colour variables */
+    $default-border-color: $grey-mystic;
+
+    /* Width & size variables */
+    $default-gutter: spacing(normal);
+    $small-gutter: spacing(micro);
+    $default-bottom-spacing: spacing(normal);
+
+    display: flex;
+    font-size: 1.4rem;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    flex-basis: 100%;
+    justify-content: center;
+    margin-left: -$default-gutter;
+    margin-top: -$default-gutter;
+
+    @include to-phablet {
+        margin-left: -$small-gutter;
+        margin-top: -$small-gutter;
+    }
+
+    @include modifier(left-compressed) {
+        margin-left: -$small-gutter;
+    }
+
+    @include modifier(compressed) {
+        margin-top: -$small-gutter;
+    }
+
+    @include child(col) {
+        /* We use flex + max-width because IE11 has a bug that handles very badly box-sizing and flex combined
+           so the width of element is constrained to its predefined width */
+        flex: 100% 0 0;
+        max-width: 100%;
+        padding-left: $default-gutter;
+        margin-top: $default-gutter;
+
+        @include to-phablet {
+            padding-left: $small-gutter;
+            margin-top: $small-gutter;
+        }
+
+        @include modifier(no-left-padding) {
+            padding-left: 0;
+        }
+
+        @include modifier(bordered-right, from-phablet from-tablet from-desktop) {
+            position: relative;
+
+            &:before {
+                content: '';
+                position: absolute;
+                width: 1px;
+                height: 100%;
+                background-color: $default-border-color;
+                top: 0;
+                right: -#{$default-gutter/2};
+            }
+        }
+
+        @include modifier(bordered-bottom, to-phone on-phablet from-tablet) {
+            padding-bottom: spacing(micro);
+            padding-right: 0;
+            box-shadow: shadow-border('bottom', $default-border-color, 2px);
+        }
+
+        @include modifier(compressed) {
+            margin-top: $small-gutter;
+        }
+
+        @include modifier(left-compressed) {
+            padding-left: $small-gutter;
+        }
+
+        @include modifier(hidden, to-phablet from-tablet on-desktop) {
+            display: none;
+        }
+
+        @include modifier(centered) {
+            align-self: center;
+        }
+
+        @include modifier(pull-right) {
+            margin-left: auto;
+        }
+
+        @include modifier(pull-left) {
+            margin-right: auto;
+        }
+
+        @include modifier(company-card) {
+            /* Since there's 3rem padding and we want it max-width 28rem, 31 - 3 = 28rem */
+            flex: 31rem 0 0;
+            max-width: 31rem;
+            flex-shrink: 1;
+
+            @include to-phablet {
+                /* 3rem padding goes down to 1.8rem on to-phablet, so 29.8 - 1.8 = 28rem */
+                flex: 29.8rem 0 0;
+                max-width: 29.8rem;
+            }
+
+            @include modifier(small) {
+                /* Since there's 3rem padding and we want it max-width 22rem, 25 - 3 = 22rem */
+                flex: 25rem 0 0;
+                max-width: 25rem;
+
+                @include to-phablet {
+                    /* 3rem padding goes down to 1.8rem on to-phablet, so 23.8 - 1.8 = 22rem */
+                    flex: 23.8rem 0 0;
+                    max-width: 23.8rem;
+                }
+
+            }
+        }
+
+        @include modifier(three-quarters, from-tablet on-desktop from-cinema) {
+            flex: 75% 0 0;
+            max-width: 75%;
+        }
+
+        @include modifier(two-thirds, from-phablet to-tablet on-tablet from-tablet on-desktop from-desktop) {
+            flex: 66.6666% 0 0;
+            max-width: 66.6666%;
+        }
+
+        @include modifier(half, on-phablet from-phablet to-tablet on-tablet from-tablet on-tablet on-desktop from-desktop) {
+            flex: 50% 0 0;
+            max-width: 50%;
+        }
+
+        @include modifier(one-third, from-phablet to-tablet on-tablet from-tablet on-desktop) {
+            flex: 33.3333% 0 0;
+            max-width: 33.3333%;
+        }
+
+        @include modifier(one-quarter, from-tablet on-desktop from-cinema) {
+            flex: 25% 0 0;
+            max-width: 25%;
+        }
+    }
+}

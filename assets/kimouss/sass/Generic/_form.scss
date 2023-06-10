@@ -1,0 +1,900 @@
+@include component(form) {
+    /* Colour variables */
+    $default-border-color: $grey-slate;
+
+    $strong-font-color: $grey-fiord;
+    $default-text-color: $grey-slate;
+    $weak-color: $grey-submarine;
+    $logo-font-color: $grey-fiord;
+
+    $emphasis-color: $blue-electric;
+    $success-color: $green-shamrock;
+    $selected-color: $grey-jungle-mist;
+    $highlight-color: $white-snow;
+    $default-background-color: $white-snow;
+    $light-background: $grey-alabaster;
+
+    $autocomplete-active-background-color: $blue-pattens;
+    $autocomplete-hover-background-color: $blue-pattens;
+    $autocomplete-no-result-background-color: $grey-alabaster;
+
+    $warning-color: $grey-wild-sand;
+
+    $error-color: $red-bittersweet;
+    $error-hover-color: $red-vivid-tangerine;
+    $error-active-color: $red-cabaret;
+
+    $checkbox-radio-color: $grey-mystic;
+    $checkbox-indeterminate-color: $grey-mystic;
+    $placeholder-color: $grey-mystic;
+    $checkbox-radio-hover-color: $blue-malibu;
+    $default-icon-color: $blue-malibu;
+
+    $text-hover-color: $blue-malibu;
+
+    /* Width & size variables */
+    $default-top-normal: spacing(normal);
+    $default-top-micro: spacing(micro);
+    $default-mega-top-micro: spacing(mega);
+    $action-bottom-micro: spacing(micro);
+
+    $icon-fudge-width: spacing(milli);
+
+    $default-vertical-button-padding: $base-default-vertical-button-padding;
+    $large-vertical-button-padding: $base-large-vertical-button-padding;
+
+    /* Other various variables */
+    $default-transition: $base-transition;
+    $default-radius: $base-radius;
+    $default-border-color: $base-border-color;
+    $font-family: $base-default-font-family;
+
+
+    $light-font-weight: $base-light-font-weight;
+    $emphasis-font-weight: $base-medium-font-weight;
+
+    @include modifier(icons) {
+        font-size: 1.4em;
+        margin-left: $icon-fudge-width;
+    }
+
+    @include child(row) {
+        font-size: 1.4rem;
+        position: relative;
+        margin-top: $default-top-micro;
+
+        @include modifier(no-margin, from-tablet) {
+            margin-top: 0;
+        }
+
+        @include modifier(inline) {
+            display: flex;
+            align-items: flex-start;
+
+            @include to-tablet {
+                display: block;
+            }
+        }
+
+        @include modifier(align-center) {
+            text-align: center;
+        }
+
+        @include modifier(align-right) {
+            text-align: right;
+        }
+    }
+
+    @include child(input-inline-container) {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+    }
+
+    @include child(input-group) {
+        display: flex;
+        position: relative;
+        flex-wrap: nowrap;
+
+        @include modifier(call-to-action-input) {
+            @include to-phablet {
+                flex-wrap: wrap;
+            }
+        }
+    }
+
+    @include child(label) {
+        display: inline-block;
+        position: relative;
+        color: $strong-font-color;
+        font-weight: $emphasis-font-weight;
+        font-size: 1.4rem;
+        margin-top: 0.5rem;
+        margin-bottom: spacing(nano);
+        padding-right: spacing(micro);
+        line-height: 1.5em;
+        cursor: pointer;
+
+        @include modifier(disabled) {
+            color: $weak-color;
+        }
+
+        @include modifier(inline) {
+            padding-right: spacing(micro);
+            margin-bottom: 0;
+            flex-shrink: 0;
+
+            /* This modifier is deprecated */ 
+            @include modifier(fixed-width) {
+                width: 15rem;
+            }
+
+            @include to-tablet {
+                margin-bottom: spacing(nano)
+            }
+        }
+
+        @include modifier(large) {
+            font-size: 1.8rem;
+            line-height: 1.5em;
+            margin-bottom: spacing(nano);
+        }
+    }
+
+    @include child(addition) {
+        font-size: 1.4rem;
+        font-weight: $emphasis-font-weight;
+        color: $default-text-color;
+        padding: #{$default-vertical-button-padding} spacing(micro);
+        background: $light-background;
+        border-radius: $default-radius;
+        line-height: 1.5em;
+        display: inline-block;
+        flex-shrink: 0;
+
+        @include modifier(prefix) {
+            box-shadow: shadow-border(top, $default-border-color),
+                        shadow-border(bottom, $default-border-color),
+                        shadow-border(left, $default-border-color);
+            border-right: 0;
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+
+            @include modifier(large) {
+                font-size: 1.8rem;
+                padding: #{$large-vertical-button-padding} 1em;
+            }
+        }
+
+        @include modifier(suffix) {
+            box-shadow: shadow-border(top, $default-border-color),
+                        shadow-border(bottom, $default-border-color),
+                        shadow-border(right, $default-border-color);
+            border-left: 0;
+            border-bottom-left-radius: 0;
+            border-top-left-radius: 0;
+
+            @include modifier(large) {
+                font-size: 1.8rem;
+                padding: #{$large-vertical-button-padding} 1em;
+            }
+        }
+    }
+
+    @include child(select) {
+        background: $highlight-color;
+        font-size: 1.4rem;
+        font-family: $font-family;
+        border-radius: $default-radius;
+        border: 1px solid $default-border-color;
+        padding: #{$default-vertical-button-padding} 0.7em;
+        color: $default-text-color;
+        cursor: pointer;
+        height: 3.5rem;
+
+        @include modifier(placeholder) {
+            color: $grey-mystic;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: shadow-border('all', $emphasis-color);
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            background: $light-background;
+        }
+
+        @include modifier(full) {
+            width: 100%;
+        }
+
+        @include to-phablet {
+            width: 100%
+        }
+
+        @include modifier(buttons-group-responsive) {
+            @include from-tablet {
+                display: none;
+            }
+        }
+
+        @include modifier(error) {
+            border-color: $error-color;
+        }
+    }
+
+    @include child(toggle-button) {
+        position: absolute;
+        transform: translateY(-50%);
+        top: spacing(micro);
+        right: spacing(nano);
+        font-size: 1.6rem;
+        padding: 0;
+        border: 0;
+        background: 0;
+        cursor: pointer;
+        transition: $default-transition;
+        color: $default-text-color;
+
+        &:disabled {
+            color: $weak-color;
+            cursor: not-allowed;
+        }
+
+        &:hover:enabled {
+            color: $emphasis-color;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    @include child(text) {
+        font-size: 1.4rem;
+        position: relative;
+        box-shadow: shadow-border('all', $default-border-color);
+        padding: #{$default-vertical-button-padding} 0.7em;
+        background: $default-background-color;
+        font-family: $font-family;
+        border-radius: $default-radius;
+        transition: 0.1s all ease-in-out;
+        flex-grow: 1;
+        line-height: 1.5em;
+        border: 0;
+        margin: 0;
+        width: 100%;
+        -webkit-appearance: none;
+
+        &::placeholder {
+            color: $placeholder-color;
+            font-weight: $light-font-weight;
+        }
+
+        @include modifier(placeholder) {
+            color: $placeholder-color;
+        }
+
+        &:enabled:hover,
+        &[contenteditable]:hover {
+            box-shadow: shadow-border('all', $text-hover-color);
+        }
+
+        &:enabled:focus {
+            outline: none;
+            box-shadow: shadow-border('all', $emphasis-color);
+        }
+
+        &:disabled {
+            background: $light-background;
+            cursor: not-allowed;
+            color: $default-text-color;
+        }
+
+        @include modifier(autocomplete) {
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        @include modifier(small-width) {
+            @include from-phablet {
+                flex-grow: 0;
+            }
+        }
+
+        @include modifier(call-to-action-input) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            width: 100%;
+
+            @include to-phablet {
+                margin-bottom: 0.7em;
+                border-radius: $default-radius;
+            }
+        }
+
+        @include modifier(prefix) {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            min-width: 0;
+            width: 100%;
+        }
+
+        @include modifier(suffix) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            min-width: 0;
+            width: 100%;
+        }
+
+        @include modifier(large) {
+            font-size: 1.8rem;
+            padding: #{$large-vertical-button-padding} 1em;
+        }
+
+        @include modifier(textarea) {
+            resize: vertical;
+            overflow: auto;
+        }
+
+
+        @include modifier(error) {
+            box-shadow: shadow-border('all', $error-color);
+
+            &:enabled:hover {
+                box-shadow: shadow-border('all', $error-hover-color);
+            }
+
+            &:enabled:focus {
+                box-shadow: shadow-border('all', $error-active-color);
+            }
+        }
+    }
+
+    @include child(autocomplete) {
+        box-shadow: shadow-border('left', $default-border-color),
+                    shadow-border('right', $default-border-color),
+                    shadow-border('bottom', $default-border-color);
+
+        border-bottom-right-radius: $default-radius;
+        border-bottom-left-radius: $default-radius;
+        width: 100%;
+        max-height: 14.1rem;
+        overflow-y: auto;
+        opacity: 1;
+        transition: all .3s ease-in-out;
+
+        @include modifier(hidden) {
+            max-height: 0;
+            opacity: 0;
+        }
+
+        @include child(option-group-label) {
+            font-size: 1.4rem;
+            line-height: 1.5;
+            padding: #{$default-vertical-button-padding};
+            color: $weak-color;
+        }
+
+        @include child(option) {
+            width: 100%;
+            border: none;
+            font-size: 1.4rem;
+            line-height: 1.5;
+            background: transparent;
+            text-align: left;
+            color: $default-text-color;
+            padding: #{$default-vertical-button-padding} 0.7em;
+            cursor: pointer;
+
+            &:focus {
+                outline: none;
+            }
+
+            &:hover {
+                background: $autocomplete-hover-background-color;
+            }
+
+            @include modifier(grouped) {
+                padding-left: 2rem;
+            }
+
+            @include modifier(active) {
+                background: $autocomplete-active-background-color;
+            }
+
+            @include modifier(no-result) {
+                box-shadow: shadow-border('left', $default-border-color),
+                            shadow-border('right', $default-border-color),
+                            shadow-border('bottom', $default-border-color);
+
+                background: $autocomplete-no-result-background-color;
+                cursor: auto;
+            }
+        }
+    }
+
+    @include child(button) {
+        display: inline-block;
+        font-size: 1.4rem;
+        vertical-align: middle;
+        max-width: 100%;
+
+        @include modifier(full-width) {
+            width: 100%;
+        }
+
+        @include child(icon) {
+            color: $default-icon-color;
+            margin-right: $icon-fudge-width;
+            transition: $default-transition;
+            vertical-align: sub;
+        }
+
+        @include child(element) {
+            color: $default-text-color;
+            cursor: pointer;
+            background: $highlight-color;
+            box-shadow: shadow-border('all', $default-border-color);
+            padding: #{$default-vertical-button-padding} spacing(micro);
+            transition: $default-transition;
+            text-align: center;
+            border-radius: $default-radius;
+            border: 0;
+            display: block;
+
+            &:hover {
+                box-shadow: inset 0 0 0 1px $text-hover-color;
+
+                .km-form_button_icon {
+                    color: $text-hover-color;
+                }
+            }
+
+            @include modifier(no-hover) {
+                background: white;
+                box-shadow: shadow-border('all', $default-border-color);
+                color: $default-text-color;
+                cursor: default;
+
+                .km-form_button_icon {
+                    color: $default-icon-color;
+                }
+            }
+
+            @include modifier(no-border) {
+                box-shadow: none;
+
+                &:hover {
+                    box-shadow: inset 0 0 0 1px $text-hover-color;
+
+                    .km-form_button_icon {
+                        color: $text-hover-color;
+                    }
+                }
+            }
+
+            @include modifier(text-light) {
+                font-weight: 300;
+            }
+
+            @include to-phablet {
+                width: 100%;
+            }
+
+            @include modifier(logo) {
+                padding: spacing(nano) spacing(micro);
+            }
+
+            @include modifier(fortuneo) {
+                background: $BANK_FORTUNEO_MAIN_COLOR;
+                box-shadow: shadow-border('all', $BANK_FORTUNEO_MAIN_COLOR);
+                color: $logo-font-color;
+
+                &:hover {
+                    background: lighten($BANK_FORTUNEO_MAIN_COLOR, 15%);
+                    box-shadow: shadow-border('all', lighten($BANK_FORTUNEO_MAIN_COLOR, 15%));
+                }
+            }
+
+            @include modifier(large) {
+                padding: #{$large-vertical-button-padding} spacing(micro);
+                font-size: 1.6rem;
+            }
+
+            @include modifier(small-text) {
+                padding: #{$large-vertical-button-padding} spacing(micro);
+                font-size: 1.4rem;
+            }
+
+            @include modifier(align-left) {
+                text-align: left;
+            }
+        }
+
+        @include child(input) {
+            display: none;
+
+            &:checked + .km-form_button_element {
+                background-color: $default-background-color;
+                box-shadow: shadow-border('all', $emphasis-color);
+                color: $emphasis-color;
+
+                .km-form_button_icon {
+                    color: $emphasis-color;
+                }
+            }
+        }
+
+        @include child(logo) {
+            font-size: 2.3rem;
+        }
+    }
+
+    @include child(buttons-group) {
+        display: flex;
+        flex-grow: 1;
+        line-height: 1.5;
+        border-radius: $default-radius;
+        overflow: hidden;
+
+        @include to-phablet {
+            display: none;
+        }
+
+        @include child(button) {
+            font-size: 1.4rem;
+            color: $default-text-color;
+            cursor: pointer;
+            background: $highlight-color;
+            box-shadow: shadow-border('all', $default-border-color);
+            padding: #{$default-vertical-button-padding} spacing(micro);
+            transition: $default-transition;
+            flex-grow: 1;
+            flex: 1px 1 1;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: -0.1rem;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            &:hover:not(.\--disabled) {
+                background: $selected-color;
+                box-shadow: shadow-border('all', $selected-color);
+                color: $highlight-color;
+            }
+
+            @include modifier(disabled) {
+                background: $light-background;
+                cursor: not-allowed;
+                color: $weak-color;
+            }
+
+            @include modifier(rounded) {
+                flex: 0;
+                &:nth-child(1){
+                    border-radius: 10px 0 0 10px;
+                }
+                &:nth-last-child(1){
+                    border-radius: 0 10px 10px 0;
+                }
+            }
+
+            @include modifier(error) {
+                box-shadow: shadow-border('all', $error-color);
+            }
+        }
+
+        @include child(input) {
+            display: none;
+
+            &:checked + .km-form_buttons-group_button:not(.\--disabled) {
+                background: $emphasis-color;
+                box-shadow: shadow-border('all', $emphasis-color);
+                color: $highlight-color;
+
+                @include modifier(error) {
+                    box-shadow: shadow-border('all', $error-color);
+                    background: $error-color;
+                    color: $highlight-color;
+                }
+            }
+        }
+    }
+
+    @include child(checkbox) {
+        display: none;
+
+        &:disabled {
+
+            & + .km-form_checkbox-label {
+                color: $weak-color;
+
+                &, &:after {
+                    cursor: not-allowed;
+                }
+
+                &:hover:after {
+                    box-shadow: shadow-border('all', $checkbox-radio-color, 2px);
+                }
+            }
+        }
+
+        &:checked {
+
+            & + .km-form_checkbox-label {
+
+                &:after {
+                    background: $emphasis-color;
+                    box-shadow: shadow-border('all', $emphasis-color, 2px);
+                }
+
+                &:before {
+                    content: 'check';
+                    z-index: 1;
+                    color: $highlight-color;
+                    left: 0.2rem;
+                }
+            }
+        }
+
+        @include modifier(indeterminate) {
+
+            & + .km-form_checkbox-label {
+
+                &:after {
+                    background: $checkbox-indeterminate-color;
+                    box-shadow: shadow-border('all', $checkbox-indeterminate-color, 2px);
+                }
+
+                &:before {
+                    content: 'remove';
+                    z-index: 1;
+                    color: $highlight-color;
+                    left: 0.2rem;
+                }
+            }
+        }
+    }
+
+    @include child(checkbox-label) {
+        position: relative;
+        padding-left: spacing(normal);
+        font-size: 1.4rem;
+        display: block;
+        margin-bottom: spacing(nano);
+        color: $strong-font-color;
+        cursor: pointer;
+        line-height: 1.2em;
+
+        @include modifier(no-margin) {
+            margin-bottom: 0;
+        }
+
+        @include modifier(bold) {
+            font-weight: bold;
+        }
+
+        @include modifier(emphasis) {
+            color: $blue-electric;
+        }
+
+        &:after, &:before {
+            font-family: 'Material Icons';
+            cursor: pointer;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: inline-block;
+            transition: $default-transition;
+
+            /* Support for all WebKit browsers. */
+            -webkit-font-smoothing: antialiased;
+            /* Support for Safari and Chrome. */
+            text-rendering: optimizeLegibility;
+            /* Support for Firefox. */
+            -moz-osx-font-smoothing: grayscale;
+            /* Support for IE. */
+            font-feature-settings: 'liga';
+        }
+
+        &:after {
+            content: '';
+            width: 1.8rem;
+            height: 1.8rem;
+            box-shadow: shadow-border('all', $checkbox-radio-color, 2px);
+            font-size: 2.2rem;
+            border-radius: $default-radius;
+            color: $weak-color;
+        }
+
+        &:hover:after {
+            box-shadow: shadow-border('all', $checkbox-radio-hover-color, 2px);
+        }
+    }
+
+    @include child(radio) {
+        display: none;
+
+        &:checked {
+
+            & + .km-form_radio-label {
+
+                &:before {
+                    background: $emphasis-color;
+                }
+
+                &:after {
+                    box-shadow: shadow-border('all', $emphasis-color, 2px);
+                }
+            }
+        }
+    }
+
+    @include child(radio-label) {
+        position: relative;
+        padding-left: spacing(normal);
+        font-size: 1.4rem;
+        display: block;
+        margin-bottom: spacing(nano);
+        color: $strong-font-color;
+        cursor: pointer;
+        line-height: 1.2em;
+
+        &:after, &:before {
+            font-family: 'Material Icons';
+            cursor: pointer;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: inline-block;
+            transition: $default-transition;
+
+            /* Support for all WebKit browsers. */
+            -webkit-font-smoothing: antialiased;
+            /* Support for Safari and Chrome. */
+            text-rendering: optimizeLegibility;
+            /* Support for Firefox. */
+            -moz-osx-font-smoothing: grayscale;
+            /* Support for IE. */
+            font-feature-settings: 'liga';
+        }
+
+        &:before {
+            content: '';
+            border-radius: 50%;
+            left: 0.5rem;
+            width: 0.8rem;
+            height: 0.8rem;
+            background: transparent;
+            transition: $default-transition;
+        }
+
+        &:after {
+            content: '';
+            width: 1.8rem;
+            height: 1.8rem;
+            box-shadow: shadow-border('all', $checkbox-radio-color, 2px);
+            font-size: 2.2rem;
+            border-radius: 50%;
+            color: $weak-color;
+        }
+
+        &:hover:after {
+            box-shadow: shadow-border('all', $checkbox-radio-hover-color, 2px);
+        }
+    }
+
+    @include child(message) {
+        padding: spacing(nano);
+        font-size: 1.4rem;
+        color: $highlight-color;
+        border-radius: $default-radius;
+        margin-top: spacing(nano);
+        position: relative;
+        width: 100%;
+        padding-right: 2.2em;
+
+        &:after {
+            position: absolute;
+            left: spacing(pico);
+            bottom: 100%;
+        }
+
+        @include modifier(large) {
+            padding: spacing(micro);
+        }
+
+        @include modifier(error) {
+            background: $error-color;
+
+            &:after {
+                 @include triangle(top, $error-color, 0.3em);
+            }
+        }
+
+        @include modifier(success) {
+            background: $success-color;
+
+            &:after {
+                @include triangle(top, $success-color, 0.3em);
+            }
+        }
+
+        @include modifier(warning) {
+            background: $warning-color;
+            color: $default-text-color;
+
+            &:after {
+                @include triangle(top, $warning-color, 0.3em);
+            }
+        }
+
+        @include modifier(absolute) {
+            position: absolute;
+            margin: 0;
+            top: 100%;
+            left: 0;
+            margin-top: spacing(nano);
+            z-index: 10;
+        }
+
+        @include child(close) {
+            position: absolute;
+            font-size: 1.4rem;
+            right: 0.8em;
+            color: $highlight-color;
+            padding: 0;
+            background: 0;
+            border: 0;
+            cursor: pointer;
+            top: 50%;
+            transform: translateY(-50%);
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
+    @include child(icon) {
+        position: absolute;
+        font-size: 1.4rem;
+        left: -$icon-fudge-width;
+        top: 1rem;
+        transform: translateY(-50%);
+
+        @include from-tablet {
+            top: 1rem; /* We adjust the top to the centering of the label */
+        }
+
+        @include modifier(success) {
+            color: $success-color;
+        }
+
+        @include modifier(error) {
+            color: $error-color;
+        }
+    }
+
+    @include child(asterisk) {
+        color: $weak-color;
+        margin-left: 0.3rem;
+    }
+
+    // External dependency on  https://github.com/mareczek/international-phone-number
+    // Its directive create DOM we can't control
+    // It wrap the input inside a div with this class and the default style is `display: inline-block`
+    // We need to add `width: 100%` on this wrapper so the input behavior match other inputs
+    .intl-tel-input {
+        width: 100%;
+    }
+}

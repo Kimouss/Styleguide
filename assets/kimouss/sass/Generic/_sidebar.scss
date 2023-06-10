@@ -1,0 +1,167 @@
+@include component(sidebar) {
+    /* Color variables */
+    $default-background-color: theme('sidebar-background-color', $blue-downriver);
+    $active-background-color: theme('sidebar-active-background-color', $blue-midnight);
+    $default-text-color: theme('sidebar-default-text-color', $white-snow);
+    $link-hover-background-color: theme('sidebar-link-hover-background-color', $blue-congress);
+    $link-selected-background-color: theme('sidebar-link-selected-background-color', $blue-black-pearl);
+    $default-border-color: theme('sidebar-default-border-color', $blue-congress);
+    $default-spacing: 5rem;
+    $default-entry-height: 4.7rem;
+    $default-header-height: 7rem;
+    $alert-color: $red-cabaret;
+    $emphasis-light-color: $blue-sail;
+
+    display: flex;
+    flex-direction: column;
+    -webkit-box-orient: vertical;
+    background: $default-background-color;
+    min-height: calc(100vh - 4.2rem);
+
+    @include child(item) {
+        display: flex;
+        align-items: center;
+        padding: .9rem spacing(micro);
+        cursor: pointer;
+
+        &:hover {
+            background-color: $link-hover-background-color;
+            .km-sidebar_overlay {
+                top: 0;
+                opacity: 0.9;
+                transition: top .3s ease,
+                opacity .3s ease;
+            }
+        }
+    }
+
+    @include child(avatars-list) {
+        border-bottom: 1px solid $default-border-color;
+
+        @include modifier(toggled) {
+            background-color: $active-background-color;
+        }
+    }
+
+    @include child(entry) {
+
+        @include modifier(active) {
+            background-color: $active-background-color;
+        }
+
+        @include modifier(pull-bottom) {
+            margin-top: auto;
+            border-bottom: 1px solid $default-border-color;
+        }
+    }
+
+    @include child(sub-entries) {
+        height: 0;
+        overflow: hidden;
+        transition: height 0.4s ease-out;
+    }
+
+    @include child(sub-entry) {
+        display: flex;
+        padding: .9rem 1.8rem .9rem 6.6rem;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $link-hover-background-color;
+        }
+
+        @include modifier(current) {
+            background-color: $link-selected-background-color;
+        }
+    }
+
+    @include child(avatar) {
+        width: 3rem;
+        height: 3rem;
+        position: relative;
+        background: no-repeat;
+        background-size: cover;
+        border-radius: 50%;
+        margin: 0 2.7rem 0 0.9rem;
+
+        @include modifier(company) {
+            border-radius: .5rem;
+        }
+
+        @include modifier(selected) {
+            width: 5rem;
+            height: 5rem;
+            margin: 0 spacing(micro) 0 0;
+        }
+    }
+
+    @include child(intituled) {
+        flex: 1;
+        max-width: 13rem;
+    }
+
+    @include child(arrow) {
+        color: $default-text-color;
+        margin-left: spacing(pico);
+
+        @include modifier(unrolled) {
+            transform : rotate(90deg);
+        }
+    }
+
+    @include child(overlay) {
+        color: #ffffff;
+        background-color: $link-hover-background-color;
+        display: flex;
+        position: absolute;
+        top: 3rem;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @include child(icon) {
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        width: 3rem;
+        height: 3rem;
+        margin: 0 1rem 0 0.9rem;
+        color: $default-text-color;
+    }
+
+    @include child(pill) {
+        border-radius: 2.5rem;
+        background-color: $alert-color;
+        color: $default-text-color;
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+        font-weight: bold;
+        padding: .3rem spacing(pico);
+        display: inline-block;
+        margin-left: .5rem;
+
+        @include modifier(emphasis-light) {
+            background-color: $emphasis-light-color;
+            font-size: 1rem;
+            padding: 0 spacing(pico);
+        }
+
+        @include modifier(uppercase) {
+            text-transform: uppercase;
+        }
+    }
+
+    @include child(bullet) {
+        border-radius: 2.5rem;
+        background-color: $alert-color;
+        position: absolute;
+        left: 1.7rem;
+        top: 0.5rem;
+        padding: .45rem;
+    }
+}

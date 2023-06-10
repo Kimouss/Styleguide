@@ -1,0 +1,60 @@
+@include component(badge) {
+    $default-color-text: $white-snow;
+    $default-background-color: $grey-fiord;
+    $pending-background-color: $neon-carrot;
+    $emphasis-light-background-color: $blue-sail;
+    $emphasis-background-color: $blue-electric;
+    $emphasis-darker-background-color: $blue-downriver;
+    $pushed-background-color: $red-bittersweet;
+
+    $default-icon-right-padding: 1.2rem;
+    $medium-weight: $base-medium-font-weight;
+
+    /* Width & size variables */
+    $pico-horizontal-pill-padding: spacing(pico);
+    $default-horizontal-pill-padding: spacing(nano);
+
+    display: inline-flex;
+    vertical-align: text-top;
+    border-radius: 2.5rem;
+    color: $default-color-text;
+    background-color: $default-background-color;
+    padding: 0 $default-horizontal-pill-padding;
+    font-weight: $medium-weight;
+    font-size: 1.2rem;
+    line-height: 2rem;
+
+    @include child(icon) {
+        padding-right: $default-icon-right-padding;
+    }
+
+    @include modifier(pushed) {
+        background-color: $pushed-background-color;
+    }
+
+    @include modifier(pico) {
+        font-size: 1rem;
+        padding: 0 $pico-horizontal-pill-padding;
+        line-height: 1.65rem;
+    }
+
+    @include modifier(pending) {
+        background-color: $pending-background-color;
+    }
+
+    @include modifier(emphasis-light) {
+        background-color: $emphasis-light-background-color;
+    }
+
+    @include modifier(emphasis) {
+        background-color: $emphasis-background-color;
+    }
+
+    @include modifier(emphasis-darker) {
+        background-color: $emphasis-darker-background-color;
+    }
+
+    @include modifier(uppercase) {
+        text-transform: uppercase;
+    }
+}

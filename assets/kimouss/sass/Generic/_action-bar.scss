@@ -1,0 +1,81 @@
+@include component(action-bar) {
+
+    $nano-spacing: spacing(nano);
+    align-items: center;
+
+    @include modifier(inline) {
+
+        @include to-phablet {
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+    
+    @include modifier(nano-bottom-padding) {
+        padding-bottom: $nano-spacing;
+    }
+
+    @include modifier(align-center) {
+        justify-content: center;
+    }
+
+    @include from-tablet {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    @include child(pre-action) {
+        flex: auto 1 1;
+        align-items: center;
+
+        @include modifier(inline) {
+
+            @include to-phablet {
+                margin-left: spacing(micro);
+                margin-bottom: 0;
+            }
+        }
+
+        @include from-tablet {
+            margin-left: spacing(micro);
+        }
+
+        @include to-phablet {
+            margin-bottom: spacing(micro);
+        }
+    }
+
+    @include child(action) {
+
+        flex: auto 0 0;
+        text-align: right;
+
+
+        @include modifier(centered) {
+            text-align: center;
+        }
+
+        @include from-tablet {
+            margin-left: spacing(micro);
+        }
+
+        @include to-phablet {
+            margin-bottom: spacing(micro);
+        }
+
+        @include modifier(first) {
+            margin-left: 0;
+        }
+
+        @include modifier(inline) {
+            @include to-phablet {
+                margin-left: spacing(micro);
+                margin-bottom: 0;
+            }
+        }
+
+        @include modifier(last) {
+            margin-bottom: 0;
+        }
+    }
+}

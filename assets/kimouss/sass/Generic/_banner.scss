@@ -1,0 +1,155 @@
+@include component(banner) {
+    /* Colour variables */
+    $default-background: $blue-electric;
+    $alternative-background-color: $blue-midnight;
+    $dark-overlay-background: $blue-downriver;
+
+    /* Width & size variables */
+    $default-company-padding: spacing(normal);
+    $default-vertical-padding: spacing(zetta);
+
+    $large-vertical-padding: 9.6rem;
+    $large-to-phablet-vertical-padding: spacing(zetta);
+
+    /* Other various variables */
+    $default-transition: $base-slow-transition;
+
+    position: relative;
+    padding-top: $default-vertical-padding;
+    padding-bottom: $default-vertical-padding;
+    background: $alternative-background-color;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+
+    @include to-phablet {
+        display: inherit;
+    }
+
+    @include modifier(no-padded) {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    @include modifier(radius) {
+        border-radius: 3px;
+    }
+
+    @include modifier(large) {
+        padding-top: $large-vertical-padding;
+        padding-bottom: $large-vertical-padding;
+
+        @include to-phablet {
+            padding-top: $large-to-phablet-vertical-padding;
+            padding-bottom: $large-to-phablet-vertical-padding;
+        }
+    }
+
+    @include child(aside) {
+        padding: spacing(normal);
+        background: $dark-overlay-background;
+        text-align: center;
+        border-top-right-radius: inherit;
+        border-bottom-right-radius: inherit;
+        width: 30%;
+        position: relative;
+
+        @include to-phablet {
+            border-bottom-left-radius: inherit;
+            width: initial;
+            max-width: none;
+        }
+    }
+
+    @include child(aside-illustration) {
+        display: block;
+        margin: auto;
+        max-width: 100%;
+        max-height: 10rem;
+    }
+
+    @include child(overlay) {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: rgba($default-background, 0.8);
+
+        @include modifier(slight) {
+            background: rgba($alternative-background-color, 0.4);
+        }
+
+        @include modifier(dark) {
+            background: rgba($dark-overlay-background, 0.8);
+        }
+
+        @include modifier(radius) {
+            border-radius: 3px;
+        }
+    }
+
+    @include child(inner) {
+        flex: 0% 1 1;
+        position: relative;
+        align-self: center;
+        padding: spacing(normal);
+    }
+
+    @include child(logo) {
+        display: none;
+
+        @include from-phablet {
+            display: block;
+            padding-right: spacing(normal);
+        }
+    }
+
+    @include child(action) {
+        margin-top: spacing(milli);
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+
+        @include modifier(max-width, from-tablet) {
+            max-width: 50rem;
+        }
+    }
+
+    @include child(logo-illustrated) {
+        display: flex;
+        align-self: flex-end;
+        padding: spacing(normal);
+        position: relative;
+        flex: 0% 1 1;
+    }
+
+    @include child(company-info) {
+        align-self: flex-end;
+    }
+
+    @include child(company) {
+        position: absolute;
+        bottom: $default-company-padding;
+        right: $default-company-padding;
+        transition: $default-transition;
+
+        &:hover {
+            
+            bottom: calc(#{$default-company-padding} + 0.3rem);
+
+            .km-data-block {
+                box-shadow: shadow-border('all', $blue-sail);
+            }
+        }
+
+        @include to-phablet {
+            display: none;
+        }
+
+        @include child(text) {
+            float: left;
+            padding-right: spacing(micro);
+        }
+    }
+}

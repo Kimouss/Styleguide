@@ -1,0 +1,333 @@
+@include component(call-to-action) {
+    /* Colour variables */
+    $accent-color: $white-snow;
+
+    $primary-color: $base-primary-color;
+    $primary-hover-color:  $blue-malibu;
+    $primary-active-color: $blue-matisse;
+    $primary-held-color: $blue-pattens;
+    $social-hover-color: $blue-pattens;
+    $social-held-color: $blue-sail;
+    $downriver-color: $blue-downriver;
+
+    $validation-color: $green-shamrock;
+    $validation-hover-color: $green-riptide;
+    $validation-active-color: $green-jungle;
+
+    $pushed-color: $red-bittersweet;
+    $pushed-hover-color: $red-vivid-tangerine;
+    $pushed-active-color: $red-cabaret;
+
+    $disabled-color : $grey-mystic;
+
+    $tertiary-color: $grey-jungle-mist;
+    $tertiary-active-color: $grey-slate;
+
+    /* Width & size variables */
+    $default-vertical-pill-padding: 0.3rem; /* We can't make a variable out of this (it's too small) so we 
+                                            EXCEPTIONALLY set it directly */
+    $default-horizontal-pill-padding: spacing(nano);
+
+    $default-vertical-button-padding: spacing(pico);
+    $default-horizontal-button-padding: spacing(micro);
+
+    $large-vertical-button-padding: spacing(nano);
+    $large-horizontal-button-padding: spacing(kilo);
+
+    $default-icon-right-padding: spacing(nano);
+
+    /* Other various variables */
+    $default-font-weight: $base-light-font-weight;
+    $default-transition: $base-transition;
+    $default-radius: $base-radius;
+
+    position: relative;
+    font-size: 1.4rem;
+    line-height: 1.5em;
+    border-radius: $default-radius;
+    display: inline-block;
+    background: $primary-color;
+    color: $accent-color;
+    padding: #{$default-vertical-button-padding} #{$default-horizontal-button-padding};
+    transition: $default-transition;
+    font-weight: $default-font-weight;
+    border: 0;
+    margin: 0;
+    cursor: pointer;
+    text-align: center;
+    -webkit-appearance: none;
+
+    &:focus {
+        outline: none;
+        text-decoration: none;
+    }
+
+    &:hover {
+        background: $primary-hover-color;
+        text-decoration: none;
+    }
+
+    &:active {
+        background: $primary-active-color;
+    }
+
+    &:disabled {
+        background: $tertiary-color;
+        cursor: not-allowed;
+    }
+
+    @include modifier(large) {
+        padding: #{$large-vertical-button-padding} #{$large-horizontal-button-padding};
+        font-size: 1.8rem;
+    }
+
+    @include modifier(full, on-phone to-phablet) {
+        display: block;
+        width: 100%;
+    }
+
+    @include modifier(trapped) {
+        background: $accent-color;
+        color: $primary-active-color;
+
+        &:hover {
+            color: $primary-hover-color;
+        }
+
+        &:active {
+            color: $primary-color;
+            background: $primary-held-color;
+        }
+    }
+
+    @include modifier(validation) {
+        color: $accent-color;
+        background: $validation-color;
+
+        &:hover {
+            background: $validation-hover-color;
+        }
+
+        &:active {
+            background: $validation-active-color;
+        }
+    }
+
+    @include modifier(linkedin) {
+        color: $accent-color;
+        background: $SOCIAL_LINKEDIN_COLOR;
+
+        &:hover {
+            background-color: $SOCIAL_LINKEDIN_LIGHT_COLOR;
+        }
+
+        &:active {
+            background-color: $SOCIAL_LINKEDIN_DARK_COLOR;
+        }
+
+        @include modifier(trapped) {
+            color: $SOCIAL_LINKEDIN_COLOR;
+            background: $accent-color;
+
+            &:hover {
+                background-color: $social-hover-color;
+            }
+
+            &:active {
+                background-color: $social-held-color;
+            }
+        }
+    }
+
+    @include modifier(pushed) {
+        color: $accent-color;
+        background: $pushed-color;
+
+        &:hover {
+            background: $pushed-hover-color;
+        }
+
+        &:active {
+            background: $pushed-active-color;
+        }
+    }
+
+    @include modifier(secondary) {
+        color: $primary-color;
+        box-shadow: shadow-border('all', $primary-color);
+        background: none;
+
+        &:hover {
+            background: $primary-color;
+            color: $accent-color;
+        }
+
+        &:active {
+            background: $primary-active-color;
+            color: $accent-color;
+            box-shadow: shadow-border('all', $primary-active-color);
+        }
+
+        @include modifier(trapped) {
+            color: $accent-color;
+            box-shadow: shadow-border('all', $accent-color);
+            background: transparent;
+
+            &:hover {
+                color: $primary-hover-color;
+                background: $accent-color;
+            }
+
+            &:active {
+                color: $primary-color;
+                background: $primary-held-color;
+            }
+        }
+
+        @include modifier(pushed) {
+            color: $pushed-color;
+            box-shadow: shadow-border('all', $pushed-color);
+
+            &:hover {
+                background: $pushed-color;
+                color: $accent-color;
+            }
+
+            &:active {
+                background: $pushed-active-color;
+                color: $accent-color;
+                box-shadow: shadow-border('all', $pushed-active-color);
+            }
+        }
+    }
+
+    @include modifier(tertiary) {
+        color: $tertiary-active-color;
+        box-shadow: shadow-border('all', $tertiary-color);
+        background: none;
+
+        &:hover {
+            background: $tertiary-color;
+            color: $accent-color;
+        }
+
+        &:active {
+            background: $tertiary-active-color;
+            color: $accent-color;
+            box-shadow: shadow-border('all', $tertiary-active-color);
+        }
+
+        @include modifier(trapped) {
+            color: $accent-color;
+            box-shadow: shadow-border('all', $accent-color);
+            background: transparent;
+
+            &:hover {
+                color: $primary-hover-color;
+                background: $accent-color;
+            }
+
+            &:active {
+                color: $primary-color;
+                background: $primary-held-color;
+            }
+        }
+    }
+
+    @include modifier(pill) {
+        font-size: 1.2rem;
+        min-height: 2.4rem;
+        display: inline-flex;
+        padding: $default-vertical-pill-padding $default-horizontal-pill-padding;
+        border-radius: 2.5rem;
+        box-shadow: shadow-border('all', $tertiary-color, 0.12rem); //0.12rem to fix on IE browser
+        background: $accent-color;
+        color: $tertiary-active-color;
+        vertical-align: middle;
+        text-decoration: none; /* Quick fix - Remove this when Boostrap is forever gone */
+
+        &:hover {
+            color: $accent-color;
+            background: $tertiary-color;
+        }
+
+        &:active {
+            color: $accent-color;
+            background: $tertiary-active-color;
+            box-shadow: shadow-border('all', $tertiary-active-color);
+        }
+
+        &:disabled {
+            color: $grey-mystic;
+            box-shadow: shadow-border('all', $disabled-color);
+            &:hover {
+                color: $grey-mystic;
+                background-color: inherit;
+            }
+        }
+
+        @include modifier(pushed) {
+            color: $accent-color;
+            background: $pushed-color;
+            box-shadow: none;
+
+            &:hover  {
+                background: $pushed-hover-color;
+            }
+
+            &:active {
+                background: $pushed-active-color;
+            }
+        }
+
+        @include modifier(primary) {
+            color: $accent-color;
+            background-color: $primary-color;
+            box-shadow: none;
+
+            &:hover  {
+                background: $primary-hover-color;
+            }
+        }
+    }
+
+    @include modifier(call-to-action-input) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        margin-left: -1px; /* Negative margin to overlap the input's border and it looks better */
+        flex-shrink: 0;
+
+        @include to-phablet {
+            width: 100%;
+            border-radius: $default-radius;
+            text-align: center;
+        }
+    }
+
+    @include modifier(prefix) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    @include modifier(fortuneo) {
+        background-color: $BANK_FORTUNEO_MAIN_COLOR;
+
+        &:hover {
+            background-color: lighten($BANK_FORTUNEO_MAIN_COLOR, 20%);
+        }
+
+        &:active {
+            background-color: darken($BANK_FORTUNEO_MAIN_COLOR, 20%);
+        }
+    }
+
+    @include child(icon) {
+        height: auto;
+        width: auto;
+        font-size: 1em;
+        line-height: 1.5em;
+        display: inline;
+        padding-right: $default-icon-right-padding;
+        vertical-align: baseline;
+    }
+}

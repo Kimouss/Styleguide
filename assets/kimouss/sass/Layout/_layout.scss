@@ -1,0 +1,77 @@
+@include component(layout) {
+    /* Width & size variables */
+    $default-header-height: 4.2rem;
+    $big-header-height: $header-height;
+    $default-padding: spacing(normal);
+
+    /* Other various variables */
+    $default-transition: $base-transition;
+
+    min-height: 100vh;
+    overflow: hidden;
+
+    @include child(sidebar) {
+        width: calc(100% - 200px);
+    }
+
+    @include child(header) {
+        flex: $default-header-height 0 0;
+
+        @include modifier(big-header) {
+            flex: $big-header-height 0 0;
+            min-height: $big-header-height;
+        }
+    }
+
+    @include child(wrapper) {
+        flex: 0 0 auto;
+    }
+
+    @include child(content) {
+        display: flex;
+        flex-direction: column;
+
+        height: calc( 100vh - #{$default-header-height} );
+        overflow-y: auto;
+        transition: height .4s ease-in-out;
+        -webkit-overflow-scrolling: touch;
+
+        @include modifier(compressed) {
+
+            @include to-tablet {
+                height: calc( 100vh - #{$default-header-height * 2} );
+            }
+        }
+
+        @include modifier(big-header) {
+            height: calc( 100vh - #{$big-header-height} );
+
+            @include modifier(compressed) {
+
+                @include to-tablet {
+                    height:  100vh ;
+                }
+            }
+        }
+
+        @include child(back-to-top) {
+            position: absolute;
+            z-index: 100;
+            bottom: $default-padding;
+            right: $default-padding;
+            opacity: 0;
+            overflow: hidden;
+            max-height: 0;
+            transition: $default-transition;
+
+            @include modifier(shown) {
+                opacity: 1;
+                max-height: 100%;
+            }
+        }
+    }
+
+    @include child(footer) {
+        margin-top: auto;
+    }
+}

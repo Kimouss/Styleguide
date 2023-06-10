@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        {% include '1_-_Basics/Grid/1_-_Main/doc.html.twig' %}
+        {% include '1_-_Basics/Grid/1_-_Main/usage.html.twig' %}
+
+        <h1 class="km-text --peta --bold">Example for 1_-_Grid</h1>
+        <style>
+                .demo_col {
+                        background-color: #e0f4ff;
+                        border: 1px solid #1897ec;
+                        padding: 10px;
+                        position: relative;
+                        top: 0;
+                        bottom: 0;
+                }
+        </style>
+
+        <span class="km-text --bold">
+            Grid example #1
+        </span>
+        <br>
+
+        <div class="km-grid">
+                <div class="km-grid_col --one-quarter@on-desktop">
+                        <div class="demo_col">km-grid_col --one-quarter@on-desktop</div>
+                </div>
+                <div class="km-grid_col --three-quarters@on-desktop">
+                        <div class="demo_col">km-grid_col --three-quarters@on-desktop</div>
+                </div>
+        </div>
+
+        <br>
+        <span class="km-text --bold">
+            Grid example #2
+        </span>
+        <br>
+
+        <div class="km-grid">
+                <div class="km-grid_col --two-thirds@from-tablet">
+                        <div class="demo_col">km-grid_col --two-thirds@from-tablet</div>
+                </div>
+                <div class="km-grid_col --one-third@from-tablet">
+                        <div class="demo_col">km-grid_col --one-third@from-tablet</div>
+                </div>
+        </div>
+{% endblock %}

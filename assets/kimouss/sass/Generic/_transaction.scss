@@ -1,0 +1,83 @@
+@include component(transaction) {
+    /* Colour variables */
+    $default-background: $white-snow;
+    $bottom-background: $blue-alice;
+    $bottom-pushed-background: $red-chablis;
+    $logo-background: $blue-downriver;
+
+    $element-spacing: spacing(pico);
+
+    background: $default-background;
+    display: block;
+    border-radius: $base-radius;
+
+    @include from-phablet {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    @include child(logo-container) {
+        background: $logo-background;
+        padding: 1.5rem;
+        border-radius: $base-radius 0 0 0;
+
+        @include on-phone {
+            border-radius: $base-radius $base-radius 0 0;
+        }
+    }
+
+    @include child(logo) {
+        background: center no-repeat;
+        background-size: contain;
+        width: 5rem;
+        height: 5rem;
+        margin: auto;
+    }
+
+    @include child(aside) {
+
+        @include on-phone {
+            display: block;
+            width: 100%;
+        }
+    }
+
+    @include child(section) {
+        flex: 1;
+        padding: spacing(micro) spacing(normal);
+    }
+
+    @include child(grid) {
+        padding: 0 spacing(micro);
+        flex: 100%;
+
+        @include from-desktop {
+            flex: 0 0 50%;
+        }
+    }
+
+    @include child(header) {
+        flex: 100%;
+        padding: spacing(micro) spacing(micro) 0;
+    }
+
+    @include child(bottom) {
+        flex: 1 100%;
+        display: flex;
+        background: $bottom-background;
+        padding: spacing(micro) spacing(micro);
+        border-radius: 0 0 $base-radius $base-radius;
+
+        @include from-desktop {
+            padding: spacing(micro) spacing(normal);
+        }
+
+        @include modifier(pushed) {
+            background: $bottom-pushed-background;
+        }
+    }
+
+    @include child(message-title) {
+        margin-bottom: $element-spacing;
+    }
+}

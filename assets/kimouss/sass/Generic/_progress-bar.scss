@@ -1,0 +1,181 @@
+@include component(progress-bar) {
+    /* Colour variables */
+    $background-color: $grey-alabaster;
+    $border-color: $grey-mystic;
+    $valid-color: $green-shamrock;
+    $highlight-color: $white-snow;
+    $default-transition: $base-transition;
+    $error-color: $grey-slate;
+    $default-text-color: $grey-submarine;
+    $bold-font-weight: $base-medium-font-weight;
+
+    /* Width & size variables */
+    $default-progress-bar-height: 0.2rem;
+
+    background: $background-color;
+    box-shadow: shadow-border('bottom', $border-color);
+    padding: spacing(micro) spacing(normal);
+    font-size: 1.4rem;
+    position: relative;
+    line-height: 1.5;
+
+    @include child(line) {
+        background: $border-color;
+        height: $default-progress-bar-height;
+
+        @include child(progress) {
+            background: $valid-color;
+            height: $default-progress-bar-height;
+        }
+
+        @include to-phablet {
+            display: none;
+        }
+    }
+
+    @include child(steps) {
+        display: flex;
+        justify-content: space-between;
+        overflow-x: hidden;
+        /* We add this transform so it doesn't blink on Safari */
+        transform: translateZ(0);
+
+        @include to-phablet {
+            display: none;
+        }
+    }
+
+    @include child(step) {
+        text-align: center;
+        padding-right: spacing(micro);
+        font-size: 1.2rem;
+        padding-top: 0.2rem;
+        color: $default-text-color;
+        transition: $default-transition;
+
+        @include modifier(first) {
+            text-align: left;
+        }
+
+        @include modifier(last) {
+            text-align: right;
+            padding-right: 0;
+        }
+
+        @include modifier(success) {
+
+            &:hover {
+                color: $valid-color;
+
+                .km-progress-bar_checkpoint:not(.\--current) {
+                    transform: translateY(-0.3rem);
+                }
+            }
+
+            @include modifier(current) {
+                color: $valid-color;
+                font-weight: $bold-font-weight;
+            }
+        }
+
+        @include modifier(error) {
+
+            &:hover {
+                color: $error-color;
+
+                .km-progress-bar_checkpoint:not(.\--current) {
+                    transform: translateY(-0.3rem);
+                }
+            }
+
+            @include modifier(current) {
+                color: $error-color;
+                font-weight: $bold-font-weight;
+            }
+        }
+    }
+
+    @include child(checkpoint) {
+        height: 1.4rem;
+        width: 1.4rem;
+        border-radius: 50%;
+        display: inline-flex;
+        justify-content: center;
+        position: relative;
+        transition: $default-transition;
+        color: $highlight-color;
+        z-index: 1;
+        align-items: center;
+
+        @include modifier(current) {
+            background: $highlight-color;
+            box-shadow: 0 0 0 0.2rem $valid-color,
+                        inset 0 0 0 0.3rem $valid-color;
+            z-index: 0;
+            align-items: flex-end;
+
+            &:after, &:before {
+                content: '';
+                position: absolute;
+                height: 0.2rem;
+                top: 50%;
+                width: 100vw;
+                pointer-events: none;
+            }
+
+            &:after {
+                background: $border-color;
+                left: 1.6rem;
+            }
+
+            &:before {
+                background: $valid-color;
+                right: 1.6rem;
+            }
+
+            @include modifier(error) {
+                box-shadow: 0 0 0 2px $error-color,
+                            inset 0 0 0 3px $error-color;
+
+                &:before {
+                    background: $error-color;
+                }
+            }
+
+            @include modifier(first) {
+                margin-left: 0.2rem;
+            }
+
+            @include modifier(last) {
+                margin-right: 0.2rem;
+            }
+        }
+
+        @include modifier(success) {
+            background: $valid-color;
+        }
+
+        @include modifier(error) {
+            background: $error-color;
+        }
+
+        @include modifier(future) {
+            background: $border-color;
+        }
+    }
+
+    @include child(responsive-progress-status) {
+
+        @include from-tablet {
+            display: none;
+        }
+    }
+
+    @include child(check-icon) {
+        font-size: 1rem;
+    }
+
+    @include child(close-icon) {
+        font-size: 1.4rem;
+    }
+}

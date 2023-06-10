@@ -1,0 +1,212 @@
+@include component(header-connected) {
+    /* Colour variables */
+    $default-background-color: $white-snow;
+    $default-border-color: $grey-mystic;
+    $highlight-color: $blue-electric;
+    $default-text-color: $blue-congress;
+
+    /* Width & size variables */
+    $header-height: 4.2rem;
+    $default-padding: spacing(micro);
+
+    /* Other various variables */
+    $default-text-weight: $base-regular-font-weight;
+    $default-font-family: $base-default-font-family;
+
+    background: $default-background-color;
+    height: initial;
+
+    @include from-tablet {
+        display: flex;
+        justify-content: space-between;
+        padding-left: $default-padding;
+        box-shadow: shadow-border('bottom', $default-border-color);
+    }
+
+    @include child(logo-side) {
+        display: flex;
+        align-items: center;
+        height: $header-height;
+        justify-content: space-between;
+        position: relative;
+        z-index: 2;
+        box-shadow: shadow-border('bottom', $default-border-color);
+        background: $default-background-color;
+
+
+        @include from-tablet {
+            width: calc(23rem - #{$default-padding});
+            box-shadow: shadow-border('bottom', $default-border-color),
+                        shadow-border(right, $default-border-color);
+        }
+
+        @include modifier(no-sidebar) {
+            box-shadow: shadow-border('bottom', $default-border-color);
+
+            @include to-phablet {
+                padding-left: $default-padding;
+            }
+        }
+    }
+
+    @include child(logo) {
+        &:hover {
+          opacity: .7;
+        }
+
+        @include to-phablet {
+            text-align: center;
+        }
+    }
+
+    @include child(notifications-side) {
+        display: flex;
+        height: $header-height;
+        opacity: 1;
+        margin-top: 0;
+        transition: .3s all ease-in-out;
+        position: relative;
+        z-index: 1;
+
+        @include modifier(closed) {
+
+            @include to-phablet {
+                margin-top: #{-$header-height};
+                overflow: hidden;
+                opacity: 0;
+            }
+        }
+    }
+
+    @include child(button) {
+        border: 0;
+        background: $default-background-color;
+        position: relative;
+        color: $default-text-color;
+        font-size: 1.2rem;
+        padding-left: spacing(milli);
+        padding-right: spacing(milli);
+        margin: 0;
+        margin-right: -0.1rem;
+        box-shadow: shadow-border(right, $default-border-color),
+                    shadow-border(bottom, $default-border-color),
+                    shadow-border(left, $default-border-color);
+        transition: .1s all ease-in-out;
+        font-weight: $default-text-weight;
+        flex-grow: 1;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover, &:active {
+            background: $highlight-color;
+            cursor: pointer;
+            box-shadow: shadow-border(right, $highlight-color),
+                        shadow-border(bottom, $highlight-color),
+                        shadow-border(left, $highlight-color);
+            color: $default-background-color;
+        }
+
+        @include modifier(square) {
+            padding-right: spacing(nano);
+            padding-left: spacing(nano);
+        }
+
+        @include child(text) {
+            position: relative;
+
+            @include to-phablet {
+                display: none;
+            }
+        }
+    }
+
+    @include child(button-arrow) {
+        border-radius: 0.2rem;
+        box-shadow: shadow-border('all', $default-text-color);
+        display: flex;
+        padding: 0.2rem 0.2rem 0.1rem;
+        position: relative;
+    }
+
+    @include child(phablet-control) {
+        background: $default-background-color;
+        color: $default-text-color;
+        border: 0;
+        height: 100%;
+        font-size: 1rem;
+        padding-right: $default-padding;
+        padding-left: $default-padding;
+        margin: 0;
+        transition: .1s all ease-in-out;
+        box-shadow: shadow-border(bottom, $default-border-color);
+
+        @include from-tablet {
+            display: none;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover, &:active {
+            cursor: pointer;
+            color: $highlight-color;
+        }
+    }
+
+    @include child(notification) {
+        font-family: $default-font-family;
+        font-weight: $default-text-weight;
+        display: flex;
+        position: absolute;
+        font-size: 1rem;
+        top: -0.55em;
+        right: -0.8em;
+        line-height: 1.5;
+        border-radius: 2.5rem;
+        min-width: 1.5em;
+        padding: 0 0.4rem;
+        align-items: center;
+        justify-content: center;
+        background: $red-cabaret;
+        color: $default-background-color;
+        -webkit-font-smoothing: auto;
+        -moz-osx-font-smoothing: auto;
+
+        @include modifier(text) {
+            right: -#{$default-padding};
+        }
+
+        @include modifier(counter) {
+            background: $default-background-color;
+            color: $highlight-color;
+            box-shadow: shadow-border('all', $highlight-color);
+        }
+
+        @include modifier(dot) {
+            height: 0.8em;
+            width: 0.8em;
+            min-width: 0;
+            top: -0.3em;
+            right: -0.3em;
+        }
+    }
+
+    @include child(icon) {
+        font-size: 1.6rem;
+        transition: .2s transform ease-in-out;
+        position: relative;
+        max-width: 1.6rem;
+        vertical-align: middle;
+
+        @include modifier(closed) {
+            transform: translateY(-1px) rotate(180deg);
+        }
+
+        @include modifier(hide, from-tablet) {
+            display: none;
+        }
+    }
+}

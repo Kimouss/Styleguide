@@ -1,0 +1,253 @@
+@include component(company-card) {
+    /* Colour variables */
+    $default-background-color: $white-snow;
+    $default-border-color: $grey-mystic;
+    $success-color: $green-shamrock;
+    $highlight-color: $blue-electric;
+
+    $default-overlay-shadow-background: $grey-fiord;
+    $default-flea-color: $grey-mystic;
+
+    /* Width & size variables */
+    $default-padding: spacing(micro);
+    $default-half-padding: $default-padding / 2;
+
+    $large-vertical-padding: spacing(milli);
+    $large-responsive-vertical-padding: spacing(nano);
+
+    $default-bar-top-spacing: spacing(nano); /* todo add component */
+    $default-bar-bottom-spacing: spacing(pico);
+    
+    $ribbon-shadow-size: 0.8rem;
+    $flea-size: 1rem;
+
+    $logo-width: 15rem;
+    $logo-height: 10rem;
+
+    $footer-height: 6rem;
+
+    /* Other various variables */
+    $default-transition: $base-transition;
+    $default-box-shadow: $base-box-shadow;
+    $trapped-box-shadow: $base-trapped-box-shadow;
+
+    $default-radius: $base-radius;
+
+    position: relative;
+    max-width: 100%;
+    cursor: pointer;
+    transition: $default-transition;
+    box-shadow: 0 0 0 0 $grey-mystic;
+    transform: translateZ(0);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &:hover {
+        box-shadow: $default-box-shadow;
+        text-decoration: none;
+    }
+
+    @include modifier(trapped) {
+        &:hover {
+            box-shadow: $trapped-box-shadow;
+        }
+    }
+    
+    @include child(funded) {
+        display: flex;
+        justify-content: space-between;
+        padding-top: spacing(micro);
+    }
+
+    @include child(logo) {
+        max-width: 100%;
+        margin: 0 auto;
+        display: block;
+        margin-bottom: spacing(nano);
+
+        @include to-tablet {
+            width: 25rem;
+        }
+    }
+
+    @include child(ribbon-flag) {
+        position: absolute;
+        pointer-events: none;
+        top: -$ribbon-shadow-size;
+        left: $ribbon-shadow-size * 1.5;
+        z-index: 30;
+    }
+
+    @include child(cover) {
+        display: table; /* Hack to fix the fact that Firefox and Edge don't support % padding with flex parents the same way as other browsers */
+        width: 100%;
+        max-width: 100%;
+        height: 0;
+        padding-bottom: 60%;
+        background-size: cover;
+        background-position: center;
+        border-top-right-radius: $default-radius;
+        border-top-left-radius: $default-radius;
+        position: relative;
+        overflow: hidden;
+
+        &:hover .km-company-card_cover_overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @include modifier(large) {
+            height: auto;
+            padding-top: 13rem;
+            padding-bottom: 13rem;
+        }
+
+        @include child(content) {
+            width: 50rem;
+            max-width: 100%;
+            padding: $default-padding;
+        }
+
+        @include child(overlay) {
+            pointer-events: none;
+            position: absolute;
+            z-index: 10;
+            border-top-right-radius: $default-radius;
+            border-top-left-radius: $default-radius;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background: rgba($highlight-color, 0.8);
+            opacity: 0;
+            transition: $default-transition;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(3px);
+        }
+
+        @include child(overlay-shadow) {
+             position: absolute;
+             z-index: 20;
+             top: 0;
+             bottom: 0;
+             right: 0;
+             left: 0;
+             background: rgba($default-overlay-shadow-background, 0.3);
+             display: flex;
+             align-items: center;
+             justify-content: center;
+        }
+
+        @include child(logo) {
+            height: $logo-height;
+            width: $logo-width;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        @include child(action) {
+            padding-top: spacing(normal);
+        }
+    }
+
+    @include child(gauge-small) {
+        padding-top: $default-bar-top-spacing;
+        padding-bottom: $default-bar-bottom-spacing;
+    }
+
+    @include child(icon-title-container) {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    @include child(title) {
+        flex: calc(100% - 3.7rem) 0 0;
+        max-width: calc(100% - 3.7rem);
+    }
+
+    @include child(icon) {
+        padding-left: 1.2rem;
+        align-self: center;
+    }
+
+    @include child(content) {
+        position: relative;
+        border-top: 0;
+        box-shadow: shadow-border('right', $default-border-color),
+                    shadow-border('left', $default-border-color),
+                    shadow-border('bottom', $default-border-color);
+        padding: $default-padding;
+        background: $default-background-color;
+        flex-grow: 1;
+    }
+
+    @include child(flea) {
+        height: $flea-size;
+        width: $flea-size;
+        background: $success-color;
+        margin-right: 0.3rem;
+        display: inline-block;
+        border-radius: 50%;
+
+        @include modifier(no-progress) {
+            background: $default-flea-color;
+        }
+    }
+
+    @include child(footer) {
+        box-shadow: shadow-border('left', $default-border-color),
+                    shadow-border('right', $default-border-color),
+                    shadow-border('bottom', $default-border-color);
+        display: flex;
+        border-bottom-right-radius: $default-radius;
+        border-bottom-left-radius: $default-radius;
+        background: $default-background-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: $footer-height;
+        padding-left: $default-half-padding;
+        padding-right: $default-half-padding;
+
+        @include modifier(funded) {
+            height: 8rem;
+            flex-direction: column;
+            box-shadow: none;
+            background: $success-color;
+        }
+
+        @include modifier(large) {
+            height: auto;
+            padding-top: $large-vertical-padding;
+            padding-bottom: $large-vertical-padding;
+
+            @include to-phablet {
+                flex-wrap: wrap;
+                padding-top: $large-responsive-vertical-padding;
+                padding-bottom: $large-responsive-vertical-padding;
+                height: 15rem;
+            }
+        }
+
+        @include child(cell) {
+            flex-grow: 1;
+            flex-basis: 0;
+            padding-left: $default-half-padding;
+            padding-right: $default-half-padding;
+
+
+            @include modifier(large) {
+
+                @include to-phablet {
+                    flex-basis: 50%;
+                    max-width: 50;
+                }
+            }
+
+        }
+    }
+}

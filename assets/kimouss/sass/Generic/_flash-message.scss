@@ -1,0 +1,47 @@
+@include component(flash-message) {
+    /* Colour variables */
+    $error-color: $red-bittersweet;
+    $success-color: $green-shamrock;
+    $text-color: $white-snow;
+
+    /* Width & size variables */
+    $default-vertical-padding: spacing(nano);
+    $default-horizontal-padding: spacing(normal);
+    $to-phablet-horizontal-padding: spacing(micro);
+    $default-closable-right-padding: spacing(mega);
+
+    line-height: 1.5;
+    position: relative;
+    padding: $default-vertical-padding $default-horizontal-padding;
+    font-size: 1.4rem;
+    color: $text-color;
+
+    @include to-phablet {
+        padding: $default-vertical-padding $to-phablet-horizontal-padding;
+    }
+
+    @include modifier(closable) {
+        padding-right: $default-closable-right-padding;
+    }
+
+    @include modifier(error) {
+        background: $error-color;
+    }
+
+    @include modifier(success) {
+        background: $success-color;
+    }
+
+    @include child(close) {
+        font-size: 2rem;
+        line-height: 0;
+        position: absolute;
+        right: $default-horizontal-padding;
+        top: 50%;
+        transform: translateY(-50%);
+
+        @include to-phablet {
+            right: $to-phablet-horizontal-padding;
+        }
+    }
+}

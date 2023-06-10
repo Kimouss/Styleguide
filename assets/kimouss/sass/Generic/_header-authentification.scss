@@ -1,0 +1,138 @@
+@include component(header-authentification) {
+    /* Colour variables */
+    $default-border-color: $grey-mystic;
+    $link-text-color: $blue-congress;
+    $blue-default: $blue-electric;
+    $link-color: $white-snow;
+
+    /* Width & size variables */
+    $header-height: $default-header-height;
+
+    $default-transition: $base-transition;
+    $default-font-weight: $base-regular-font-weight;
+    $default-radius: $base-radius;
+
+    box-shadow: shadow-border('bottom', $default-border-color);
+
+    @include from-tablet {
+        display: flex;
+        justify-content: space-between;
+        min-height: 4.2rem;
+    }
+
+    @include child(logo-side) {
+        display: flex;
+        align-items: center;
+        padding: 0 spacing(micro);
+        height: $header-height;
+        justify-content: space-between;
+
+        @include to-phablet {
+            box-shadow: shadow-border('bottom', $default-border-color);
+            position: relative;
+            z-index: 1;
+        }
+    }
+
+    @include child(phablet-control) {
+        @include from-tablet {
+            display: none;
+        }
+    }
+
+    @include child(action) {
+        border-radius: $default-radius;
+        box-shadow: shadow-border('all', $blue-default);
+        display: block;
+        cursor: pointer;
+        position: relative;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        line-height: 27px;
+    }
+
+    @include child(arrow) {
+        font-size: 1.75rem;
+        transition: transform .2s ease-in-out;
+
+        @include modifier(closed) {
+            transform: translateY(-1px) rotate(180deg);
+        }
+    }
+
+    @include child(navigation-side) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @include on-phablet {
+            display: flex;
+            height: $header-height;
+            opacity: 1;
+            margin-top: 0;
+            transition: all .3s ease-in-out;
+        }
+
+        @include modifier(closed) {
+            @include to-phablet {
+                margin-top: -$header-height;
+                overflow: hidden;
+                opacity: 0;
+            }
+        }
+
+        @include from-tablet {
+            width: 19rem;
+            padding-right: spacing(micro);
+            box-sizing: content-box;
+        }
+    }
+
+    @include child(notification) {
+        flex-grow: 1;
+
+        @include to-phablet {
+            margin-right: -0.1rem;
+            box-shadow: shadow-border(right, $default-border-color),
+            shadow-border(left, $default-border-color);
+        }
+    }
+
+    @include child(notification-icon) {
+        font-size: 1.7rem;
+        margin-right: .6rem;
+    }
+
+    @include child(notification-text) {
+        font-weight: $default-font-weight;
+        color: $link-text-color;
+        display: none;
+        @include from-tablet {
+            display: block;
+        }
+    }
+
+    @include child(notification-link) {
+        color: $blue-default;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        transition: $default-transition;
+        cursor: pointer;
+        justify-content: center;
+        height:$header-height;
+
+        &:hover, &:active {
+            opacity: .7;
+
+            @include to-phablet {
+                background: $blue-default;
+                box-shadow: shadow-border(right, $blue-default),
+                shadow-border(bottom, $blue-default),
+                shadow-border(left, $blue-default);
+                color: $link-color;
+            }
+        }
+    }
+}

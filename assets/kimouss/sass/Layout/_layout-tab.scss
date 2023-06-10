@@ -1,0 +1,15 @@
+@include component(layout-tab) {
+    $category-spacing: spacing(zetta);
+    $element-spacing: spacing(micro);
+
+    padding-bottom: $category-spacing;
+
+    @include child(category) {
+        padding-top: $category-spacing;
+    }
+
+    @include child(element) {
+        padding-top: $element-spacing;
+        padding-bottom: spacing(nano);
+    }
+}

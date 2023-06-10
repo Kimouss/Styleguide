@@ -1,0 +1,73 @@
+@include component(layout-error) {
+    /* Colour variables */
+    $gradient-top-color: $blue-malibu;
+    $gradient-bottom-color: $blue-electric;
+
+    /* Width & size variables */
+    $default-padding: spacing(normal);
+    $to-phablet-padding: spacing(micro);
+    $call-to-action-spacing: spacing(nano);
+    $call-to-action-margin: spacing(micro);
+
+    background: $gradient-top-color;
+    background-image: url(#{ $BASE_IMAGE_PATH + 'pattern-pictos.svg' }),
+      linear-gradient(
+        $gradient-top-color, $gradient-bottom-color
+      );
+    background-size: 1000px, 100%;
+    padding-top: spacing(zetta);
+    padding-bottom: spacing(zetta);
+    display: flex;
+    align-items: center;
+    flex: 1 0 0;
+    flex-direction: column;
+
+    @include from-tablet {
+        min-height: 60rem;
+    }
+
+    @include child(container) {
+        font-size: 1.4rem;
+        padding-left: $default-padding;
+        padding-right: $default-padding;
+        margin: auto;
+        max-width: 80rem;
+        line-height: 1.5;
+        text-align: center;
+
+        @include to-phablet {
+            padding-left: $to-phablet-padding;
+            padding-right: $to-phablet-padding;
+        }
+    }
+
+    @include child(title) {
+        margin-bottom: $default-padding;
+    }
+
+    @include child(subtitle) {
+        margin-bottom: $default-padding;
+    }
+
+    @include child(infos) {
+        margin-bottom: $default-padding;
+    }
+
+    @include child(call-to-action-bar) {
+        margin-top: spacing(mega);
+        display: flex;
+        margin-left: -$call-to-action-spacing;
+        margin-right: -$call-to-action-spacing;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    @include child(call-to-action) {
+        padding-left: $call-to-action-margin;
+        padding-top: $call-to-action-spacing;
+    }
+
+    @include child(footer) {
+        margin-top: auto;
+    }
+}

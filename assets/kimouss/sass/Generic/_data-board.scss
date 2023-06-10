@@ -1,0 +1,105 @@
+@include component(data-board) {
+
+    /* Color variables */
+    $highlight-background-color: $grey-alabaster;
+    $border-color: $grey-mystic;
+    $border-color-opened: $blue-sail;
+    $color-hover: $blue-pattens;
+    $background-row: $white-snow;
+    /* Other various variables */
+    $default-spacing: spacing(micro);
+    $big-spacing: spacing(kilo);
+    $default-transition: .3s all ease-in-out;
+    $default-radius: $base-radius;
+
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-radius: $default-radius;
+
+    @include child(container) {
+        width: 100%;
+        display: table;
+    }
+
+    @include child(row) {
+        display: flex;
+        border-left: 1px solid $border-color;
+        border-right: 1px solid $border-color;
+        background: $background-row;
+        align-items: center;
+
+        &:nth-child(n + 1){
+            box-shadow: inset 0 -1px 0 $border-color;
+        }
+
+        @include modifier(hoverable) {
+            position: relative;
+
+            &:hover {
+                background: $color-hover;
+            }
+        }
+
+        @include modifier(details) {
+            border-top: 0;
+            height: 0;
+            overflow: hidden;
+            transition: $default-transition;
+            background: $highlight-background-color;
+        }
+
+        @include modifier(opened) {
+            position: relative;
+
+            &:before {
+                content: '';
+                width: 0.6rem;
+                background-color: $border-color-opened;
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+            }
+        }
+
+        @include modifier(header) {
+            border-top: 1px solid $border-color;
+            background: $highlight-background-color;
+            min-height: 6rem;
+        }
+
+        @include modifier(footer) {
+            border-right: 0 none;
+            border-left: 0 none;
+            box-shadow: none;
+            border-top: 1px solid $border-color;
+            background: transparent;
+        }
+    }
+
+    @include child(cell) {
+        padding: 0.9rem $default-spacing;
+
+        @include modifier(clickable) {
+            cursor: pointer;
+        }
+
+        @include modifier(total) {
+            padding-right: $big-spacing;
+        }
+    }
+
+    @include child(arrow) {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateX(-50%) translateY(-50%);
+        transition: $default-transition;
+
+        @include modifier(open) {
+            transform: translateX(-50%) translateY(-50%) rotate(180deg);
+        }
+    }
+}
+

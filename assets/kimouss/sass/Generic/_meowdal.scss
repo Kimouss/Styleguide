@@ -1,0 +1,133 @@
+@include component(meowdal) {
+    /* Colour variables */
+    $default-error-color: $red-cabaret;
+    $default-color: $blue-electric;
+    $default-header-color: $blue-midnight;
+    $default-trapped-text-color: $white-snow;
+    $default-background-color: $grey-alabaster;
+
+    /* Width & size variables */
+    $default-meowdal-width: 60rem;
+
+    $default-header-spacing: spacing(micro);
+    $to-phablet-content-spacing: spacing(micro);
+    $default-content-spacing: spacing(normal);
+
+    /* Other various variables */
+    $default-radius: $base-radius;
+    $title-font-weight: $base-medium-font-weight;
+
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+    transition: opacity .3s;
+ 
+    @include child(container) {
+        display: block;
+        width: 100%;
+        border-radius: $default-radius;
+        overflow: hidden;
+    }
+ 
+    @include child(header) {
+        background-color: $default-header-color;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        color: $default-trapped-text-color;
+        padding: $default-header-spacing;
+ 
+        @include child(title) {
+            font-weight: $title-font-weight;
+            font-size: 1.6rem;
+            line-height: 1.3;
+            flex: 1px 1 1;
+            padding: 0 0 0 $default-header-spacing;
+        }
+    }
+ 
+    @include child(content) {
+        padding: $default-content-spacing $default-content-spacing 0;
+        background-color: $default-background-color;
+        overflow: auto;
+        /* Max height so the meowdal never overflows the user's window */
+        max-height: calc(100vh - 12rem);
+
+        &:after {
+            content:'';
+            display: block;
+            height: $default-content-spacing;
+        }
+
+        @include to-phablet {
+            padding: $to-phablet-content-spacing $to-phablet-content-spacing 0;
+            max-height: calc(100vh - 13rem);
+
+            &:after {
+                height: $to-phablet-content-spacing;
+            }
+        }
+    }
+
+    @include child(element) {
+        padding: $default-content-spacing 0;
+    }
+ 
+    // Dependency -.- ... This js shit DOES NOT WORK without animation
+ 
+    @keyframes ngdialog-fadeout {
+        0% {
+            opacity: 1;
+        }
+ 
+        100% {
+            opacity: 0;
+        }
+    }
+ 
+    &.ngdialog-closing {
+        animation: ngdialog-fadeout 0.5s;
+ 
+        .ngdialog-overlay {
+            animation: ngdialog-fadeout 0.5s;
+        }
+ 
+        .ngdialog-content {
+            animation: ngdialog-fadeout 0.5s;
+        }
+    }
+ 
+ 
+    .ngdialog-content {
+        background-color: transparent !important;
+        position: relative;
+        display: flex;
+        width: calc(100% - #{$to-phablet-content-spacing} * 2);
+        margin: $default-content-spacing auto;
+        max-width: $default-meowdal-width;
+        z-index: 2;
+
+        @include to-phablet {
+            margin: $to-phablet-content-spacing auto;
+        }
+    }
+ 
+    .ngdialog-overlay {
+        background-color: rgba($blue-vogue, .80);
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        cursor: zoom-out;
+        flex: 100vw 0 0;
+        width: 100vw;
+        height: 100vh;
+    }
+}

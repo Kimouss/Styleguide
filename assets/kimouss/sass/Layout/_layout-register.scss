@@ -1,0 +1,82 @@
+@include component(layout-register) {
+    /* Colour variables */
+    $border-color: $white-snow;
+    $default-color: $blue-downriver;
+
+    $spacing-content-zetta: spacing(mega);
+    $spacing-content-aside: spacing(mega);
+
+    $default-header-height: $default-header-height;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-height: calc( 100vh - #{$default-header-height} );
+    justify-content: space-around;
+
+    @include on-desktop {
+        flex-wrap: nowrap;
+    }
+
+    @include child(content) {
+        width: 100%;
+        display: flex;
+        position: relative;
+        flex-direction: column;
+
+        @include on-desktop {
+            width: 50%;
+            order: 2;
+            min-height: calc( 100vh - #{$default-header-height} ); //fix IE 10
+        }
+    }
+
+    @include child(form) {
+        padding: 0 spacing(normal);
+        @include on-desktop {
+            padding: 0 8.4rem;
+        }
+    }
+
+    @include child(aside) {
+        width: 100%;
+        padding:11rem $spacing-content-zetta 0;
+        background-color: $default-color;
+
+
+        @include on-desktop {
+            width: 50%;
+            order: 1;
+        }
+    }
+
+    @include child(title) {
+        padding: $spacing-content-zetta 0;
+    }
+
+    @include child(footer) {
+        margin-top: auto;
+        padding-top: $spacing-content-zetta;
+        margin-bottom: spacing(micro);
+    }
+
+    @include child(aside-header) {
+        border-bottom: 1px solid $border-color;
+        padding-bottom: spacing(micro);
+        margin-bottom: $spacing-content-aside;
+    }
+
+    @include child(aside-logo) {
+        display: block;
+        max-width: 100%;
+        margin: auto;
+
+        @include on-desktop {
+            margin: 0;
+        }
+    }
+
+    @include child(aside-content) {
+        padding-bottom: $spacing-content-aside;
+    }
+}

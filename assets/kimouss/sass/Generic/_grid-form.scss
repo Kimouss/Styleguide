@@ -1,0 +1,61 @@
+@include component(grid-form) {
+    display: flex;
+    font-size: 1.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.2em;
+    margin-left: -2em;
+    margin-top: -2em;
+
+    @include to-phablet {
+        margin-left: -1.2em;
+        margin-top: -1.2em;
+    }
+
+    @include modifier(no-margin) {
+        margin: 0;
+    }
+
+    @include child(col) {
+        width: 100%;
+        padding-left: 2em;
+        margin-top: 2em;
+
+        @include to-phablet {
+            padding-left: 1.2em;
+            margin-top: 1.2em;
+        }
+
+        @include modifier(centered) {
+            align-self: center;
+        }
+
+        @include modifier(full, to-phone to-phablet to-tablet from-phablet from-tablet from-desktop) {
+            width: 100%;
+        }
+
+        @include modifier(half, to-phablet to-tablet from-phablet from-tablet from-desktop on-tablet) {
+            width: 50%;
+        }
+
+        @include modifier(one-third, to-tablet from-tablet from-desktop) {
+            width: 33.3333%;
+        }
+
+        @include modifier(two-thirds, to-tablet from-tablet from-desktop) {
+            width: 66.6666%;
+        }
+
+        @include modifier(one-quarter, on-tablet from-tablet from-desktop) {
+            width: 25%;
+        }
+
+        @include modifier(three-quarters, on-tablet from-tablet from-desktop) {
+            width: 75%;
+        }
+
+        @include modifier(no-margin) {
+            margin: 0;
+            padding: 0;
+        }
+    }
+}

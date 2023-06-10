@@ -1,0 +1,23 @@
+@include component(selectable) {
+    $default-radius: $base-radius;
+    $default-spacing: 1.2rem;
+
+    align-items: center;
+    border-radius: $default-radius;
+    border: 0.1rem solid $grey-mystic;
+    display: flex;
+    margin-top: $default-spacing;
+    padding: $default-spacing;
+
+    @include modifier(checked) {
+        border-color: $blue-malibu;
+    }
+
+    @include child(label) {
+        flex-grow: 1;
+    }
+
+    @include child(answer) {
+        margin-left: $default-spacing;
+    }
+}

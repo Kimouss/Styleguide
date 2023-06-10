@@ -1,0 +1,8 @@
+@include component(sub-header) {
+    /* Colour variables */
+    $default-background-color: $blue-downriver;
+
+    padding: spacing(mega) 0;
+    text-align: center;
+    background: $default-background-color;
+}

@@ -1,0 +1,19 @@
+@include component(question) {
+    display: flex;
+    flex-wrap: wrap;
+    $default-spacing : 4.5rem;
+
+    @include child(label) {
+        flex-grow: 1;
+        max-width: 100%;
+        display: flex;
+    }
+
+    @include child(index) {
+        min-width: $default-spacing;
+    }
+
+    @include child(answer) {
+        margin-left: $default-spacing;
+    }
+}

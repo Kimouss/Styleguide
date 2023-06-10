@@ -1,0 +1,47 @@
+@include component(history) {
+    $default-line-color: $blue-sail;
+    $default-dot-outside-color: $blue-electric;
+    $default-dot-inside-color: $white-snow;
+    $default-dot-size: 1.4rem;
+    $default-line-width: .2rem;
+
+    @include child(item) {
+        display: flex;
+        align-items: baseline;
+        padding-bottom: spacing(micro);
+        position: relative;
+        z-index: 0;
+
+        &:before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            left: $default-dot-size/2 - $default-line-width/2;
+            top: $default-dot-size/2;
+            height: 100%;
+            border-left: dashed $default-line-width $default-line-color;
+        }
+
+        @include modifier(last) {
+            padding-bottom: 0;
+
+            &:before {
+                content: none;
+            }
+        }
+    }
+
+    @include child(dot) {
+        width: $default-dot-size;
+        height: $default-dot-size;
+        flex: $default-dot-size 0 0;
+        max-width: $default-dot-size;
+        border-radius: 50%;
+        background-color: $default-dot-inside-color;
+        border: 4px solid $default-dot-outside-color;
+    }
+
+    @include child(text) {
+        padding-left:$default-dot-size/2 - $default-line-width/2;
+    }
+}

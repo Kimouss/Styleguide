@@ -1,0 +1,154 @@
+@include component(panel-table) {
+
+    /* Colour variables */
+    $even-row-color: $white-snow;
+    $odd-row-color: $grey-alabaster;
+    $border-color: $grey-mystic;
+    $border-color-opened: $blue-sail;
+    $color-hover: $blue-pattens;
+    /* Other various variables */
+    $default-radius: $base-radius;
+    $default-transition: $base-transition;
+    $default-spacing: spacing(micro);
+    $small-spacing: spacing(pico);
+
+    overflow: auto;
+    width: 100%;
+
+    @include child(container) {
+        width: 100%;
+        border-radius: $default-radius;
+        display: table;
+
+        @include modifier(responsive) {
+            display: block;
+        }
+    }
+
+    @include child(row) {
+        display: flex;
+        border-top: 1px solid $border-color;
+        border-left: 1px solid $border-color;
+        border-right: 1px solid $border-color;
+
+        background: $odd-row-color;
+
+        @include modifier(inverse) {
+            background: $even-row-color;
+        }
+
+        @include modifier(hoverable) {
+            &:hover {
+                background: $color-hover;
+                cursor: pointer;
+            }
+        }
+
+        @include modifier(details) {
+            border-top: 0;
+            border-left: 1px solid $border-color;
+            border-right: 1px solid $border-color;
+            display: flex;
+            height: 0;
+            overflow: hidden;
+            transition: .3s;
+        }
+
+        @include modifier(opened) {
+            display: flex;
+        }
+
+        @include modifier(last) {
+            border-bottom: 1px solid $border-color;
+        }
+
+        @include modifier(header) {
+            border-top: 1px solid $border-color;
+            border-right: 1px solid $border-color;
+            border-left: 1px solid $border-color;
+            background: $even-row-color;
+        }
+
+        @include modifier(footer) {
+            border-right: 1px solid $border-color;
+            border-bottom: 1px solid $border-color;
+            border-left: 1px solid $border-color;
+            background: $even-row-color;
+        }
+    }
+
+    @include child(cell) {
+        display: block;
+        flex: auto 1 0;
+        position: relative;
+        padding: $default-spacing;
+
+        @include modifier(arrow) {
+            min-width: 6rem;
+
+            @include to-phablet {
+                display: none;
+            }
+        }
+        
+        @include modifier(none, on-phone to-phablet from-tablet on-desktop) {
+            display: none;
+        }
+
+        @include modifier(clickable) {
+            cursor: pointer;
+        }
+
+        @include modifier(compressed) {
+            padding: $small-spacing $default-spacing;
+        }
+
+        @include modifier(right) {
+            text-align: right;
+        }
+
+        @include modifier(details) {
+            box-shadow: 0 -20px 0 -19px $border-color;
+
+            &:before {
+                content: '';
+                width: 0.6rem;
+                background-color: $border-color-opened;
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+            }
+        }
+
+        @include modifier(details-bar) {
+
+            &:before {
+                content: '';
+                width: 0.6rem;
+                background-color: $border-color-opened;
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+            }
+        }
+
+        @include modifier(responsive) {
+            flex: 100% 0 0;
+        }
+    }
+
+    @include child(arrow) {
+        position: absolute;
+        top: 2.8rem;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        transition: $default-transition;
+
+        @include modifier(open) {
+            transform: translateX(-50%) translateY(-50%) rotate(180deg);
+        }
+    }
+}
+

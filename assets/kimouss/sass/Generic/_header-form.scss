@@ -1,0 +1,71 @@
+@include component(header-form) {
+    /* Colour variables */
+    $default-border-color: $grey-mystic;
+    $default-transition: $base-transition;
+    $default-font-weight: $base-regular-font-weight;
+    $default-text-color: $blue-congress;
+    $default-hover-color: $blue-electric;
+    $default-background-color: $white-snow;
+    
+    /* Width & size variables */
+    $header-height: $default-header-height;
+    $default-padding: spacing(normal);
+    $to-phablet-padding: spacing(micro);
+
+    height: $header-height;
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+    justify-content: space-between;
+    box-shadow: shadow-border('bottom', $default-border-color);
+    background: $default-background-color;
+    padding-left: $default-padding;
+    padding-right: $default-padding;
+
+    @include to-phablet {
+        padding-left: $to-phablet-padding;
+        padding-right: $to-phablet-padding;
+    }
+
+    @include child(logo-link) {
+
+        &:hover {
+          opacity: .7;
+        }
+        @include to-phablet {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    @include child(link) {
+        font-weight: $default-font-weight;
+        color: $default-text-color;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        transition: $default-transition;
+        cursor: pointer;
+
+        &:hover, &:active {
+            color: $default-hover-color;
+        }
+    }
+
+    @include child(icon) {
+        color: $default-hover-color;
+        font-size: 1.7rem;
+        margin-right: spacing(pico);
+    }
+
+    @include child(infos-side) {
+        width: 19rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @include to-phablet {
+            display: none;
+        }
+    }
+}

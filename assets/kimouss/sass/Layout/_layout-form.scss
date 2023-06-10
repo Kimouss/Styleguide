@@ -1,0 +1,126 @@
+@include component(layout-form) {
+    /* Colour variables */
+    $sidebar-color: $grey-wild-sand;
+    $default-background: $white-snow;
+    $default-back-link-color: $grey-submarine;
+    $hover-back-link-color: $blue-electric;
+    $default-border-color: $grey-mystic;
+
+    /* Width & size variables */
+    $default-content-vertical-padding: spacing(mega);
+    $to-phablet-vertical-padding: spacing(normal);
+
+    $default-control-top-padding: spacing(micro);
+
+    $default-padding: spacing(normal);
+    $to-phablet-horizontal-padding: spacing(micro);
+
+    $default-sidebar-width: 34rem;
+    $default-sidebar-vertical-padding: spacing(mega);
+
+    /* Other various variables */
+    $default-transition: $base-transition;
+    $bold-font-weight: $base-medium-font-weight;
+
+    display: flex;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    position: relative;
+    overflow: hidden;
+
+    @include to-tablet {
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    @include child(main) {
+        flex-grow: 1;
+    }
+
+    @include child(control) {
+        display: inline-block;
+        padding-left: $default-padding;
+        padding-right: $default-padding;
+        padding-top: $default-control-top-padding;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        font-weight: $bold-font-weight;
+        color: $default-back-link-color;
+        transition: $default-transition;
+
+        &:hover {
+            color: $hover-back-link-color;
+        }
+
+        @include to-phablet {
+            padding-left: $to-phablet-horizontal-padding;
+            padding-right: $to-phablet-horizontal-padding;
+        }
+
+        @include child(arrow) {
+            margin-right: spacing(pico);
+            vertical-align: text-bottom;
+        }
+    }
+
+    @include child(section) {
+        background: $default-background;
+        padding: $default-content-vertical-padding 0;
+
+        @include to-phablet {
+            padding: $to-phablet-vertical-padding 0;
+        }
+
+        @include modifier(bordered-top) {
+            border-top: 1px solid $default-border-color;
+        }
+    }
+
+    @include child(sidebar) {
+        width: $default-sidebar-width;
+        background: $sidebar-color;
+        padding: $default-sidebar-vertical-padding $default-padding;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        flex-wrap: wrap;
+
+        @include on-desktop {
+            flex-shrink: 0;
+            max-width: $default-sidebar-width;
+        }
+
+        @include to-tablet {
+            width: 100%;
+        }
+
+        @include on-tablet {
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        @include to-phablet {
+            padding: $to-phablet-vertical-padding $to-phablet-horizontal-padding;
+        }
+
+        @include child(section) {
+            padding-bottom: $default-sidebar-vertical-padding;
+
+            @include on-tablet {
+                flex: 50% 0 0;
+                flex-shrink: 0;
+                max-width: 50%;
+                padding-left: calc(#{$default-padding} / 2);
+                padding-right: calc(#{$default-padding} / 2);
+            }
+
+            @include to-phablet {
+                padding-bottom: $to-phablet-vertical-padding;
+            }
+
+            @include modifier(last) {
+                padding-bottom: 0;
+            }
+        }
+    }
+}

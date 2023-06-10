@@ -1,0 +1,75 @@
+@include component(feature-push) {
+    /* Colour variables */
+    $default-background-color: $grey-mystic;
+
+    /* Width & size variables */
+    $default-padding: spacing(normal);
+    $default-horizontal-spacing: spacing(milli);
+
+    $default-list-spacing: spacing(pico);
+    $to-phablet-padding: spacing(micro);
+
+    background: $default-background-color;
+    padding: $default-padding;
+    position: relative;
+
+    @include to-phablet {
+        padding-left: $to-phablet-padding;
+        padding-right: $to-phablet-padding;
+    }
+
+    @include from-tablet {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    @include child(block) {
+        text-align: center;
+        flex-shrink: 0;
+
+        @include to-phablet {
+            margin-bottom: $to-phablet-padding;
+        }
+    }
+
+    @include child(content) {
+        margin-left: $default-horizontal-spacing;
+        flex-grow: 1;
+
+        @include to-phablet {
+            margin-left: 0;
+        }
+    }
+
+    @include child(list) {
+        margin-top: $to-phablet-padding;
+
+        @include from-desktop {
+            display: flex;
+            align-items: center;
+            justify-content: initial;
+        }
+    }
+
+    @include child(item) {
+        margin-right: $default-horizontal-spacing;
+
+        @include to-tablet {
+            margin-bottom: $default-list-spacing;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    @include child(close) {
+        align-self: center;
+
+        @include to-phablet {
+            position: absolute;
+            top: $to-phablet-padding;
+            right: $to-phablet-padding;
+        }
+    }
+}

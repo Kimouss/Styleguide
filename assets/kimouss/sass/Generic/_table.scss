@@ -1,0 +1,79 @@
+@include component(table) {
+    /* Colour variables */
+    $even-row-color: $grey-alabaster;
+    $odd-row-color: $grey-wild-sand;
+    $default-color-border: $grey-mystic;
+    $light-color-border: $grey-wild-sand;
+
+    /* Other various variables */
+    $default-radius: $base-radius;
+
+    width: 100%;
+    margin: 0 0 1em;
+
+    @include modifier(no-spacing) {
+        margin: 0;
+    }
+
+    @include child(container) {
+        width: 100%;
+        border-radius: $default-radius;
+    }
+
+    @include child(row) {
+        background: $even-row-color;
+
+        &:nth-child(odd) {
+            background: $odd-row-color;
+        }
+
+        @include modifier(light) {
+           background: transparent;
+        }
+
+        @include modifier(clickable) {
+            cursor: pointer;
+        }
+
+        @include modifier(bordered) {
+            border-bottom: 1px solid $default-color-border;
+        }
+
+        @include modifier(bordered-light) {
+            border-bottom: 1px solid $light-color-border;
+        }
+    }
+
+    @include child(cell) {
+        position: relative;
+        padding: spacing(micro);
+        max-width: 18rem;
+
+        @include modifier(head) {
+            padding: 0 0 spacing(micro);
+        }
+
+        @include modifier(long-text) {
+            min-width: 20rem;
+        }
+
+        @include modifier(arrow) {
+            min-width: 6rem;
+        }
+
+        @include modifier(light) {
+            padding: spacing(pico) 0;
+        }
+    }
+
+    @include child(arrow) {
+        position: absolute;
+        top: 2.8rem;
+        right: 0;
+        transform: translateX(-50%) translateY(-50%);
+
+        @include modifier(open) {
+            transform: translateX(-50%) translateY(-50%) rotate(180deg);
+        }
+    }
+}

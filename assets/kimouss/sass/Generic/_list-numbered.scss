@@ -1,0 +1,43 @@
+@include component(list-numbered) {
+    /* Colour variables */
+    $trapped-font-color: $white-snow;
+    $background-number-color: $blue-downriver;
+
+    counter-reset: km-list-numbered;
+
+    @include child(element) {
+        margin-bottom: spacing(micro);
+        display: flex;
+
+        @include to-phablet {
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        &:before {
+            counter-increment: km-list-numbered;
+            content: counter(km-list-numbered);
+            font-size: 1.5rem;
+            color: $trapped-font-color;
+            background: $background-number-color;
+            width: 1.3em;
+            height: 1.3em;
+            font-weight: bold;
+            border-radius: 50%;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: spacing(pico);
+            flex-shrink: 0;
+            padding: .2em;
+
+            @include to-phablet {
+                margin-right: 0;
+            }
+        }
+    }
+}

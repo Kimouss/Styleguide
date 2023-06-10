@@ -1,0 +1,92 @@
+@include component(slidedown) {
+    /* Colour variables */
+    $default-text-color: $grey-fiord;
+    $default-border-color: $grey-mystic;
+    $default-background-color: $white-snow;
+    $default-arrow-color: $grey-mystic;
+
+    $hover-border-color: $blue-sail;
+
+    $unrolled-border-color: $blue-sail;
+    $unrolled-background-color: $blue-pattens;
+    $unrolled-arrow-color: $blue-electric;
+
+    $disabled-arrow-color: $grey-mystic;
+    $disabled-text-color: $grey-mystic;
+
+    /* Width & size variables */
+    $default-vertical-padding: spacing(milli);
+
+    /* Various other variables */
+    $material-font-family: $base-material-font-family;
+    $bold-font-weight: $base-medium-font-weight;
+    $default-transition: $base-transition;
+    $default-radius: $base-radius;
+    
+    color: $default-text-color;
+    background: $default-background-color;
+    position: relative;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    box-shadow: shadow-border('all', $default-border-color);
+    padding: spacing(nano) $default-vertical-padding;
+    border-radius: $default-radius;
+    cursor: pointer;
+    transition: $default-transition;
+
+    &:hover {
+        box-shadow: shadow-border('all', $hover-border-color);
+    }
+
+    &:before, &:after {
+        font-family: $material-font-family;
+        position: absolute;
+        top: 0.8rem;
+        font-size: 2rem;
+        font-feature-settings: "liga" 1;
+    }
+
+    &:before {
+        content: 'keyboard_arrow_down';
+        color: $default-arrow-color;
+        left: $default-vertical-padding;
+        transition: $default-transition;
+    }
+
+    @include modifier(unrolled) {
+        box-shadow: shadow-border('all', $unrolled-border-color);
+        background: $unrolled-background-color;
+
+        &:before {
+            color: $unrolled-arrow-color;
+            transform: rotate(180deg);
+        }
+
+        .km-slidedown_text {
+            max-height: initial;
+            opacity: 1;
+        }
+    }
+
+    @include modifier(disabled) {
+        color: $disabled-text-color;
+        cursor: not-allowed;
+
+        &:hover {
+            box-shadow: shadow-border('all', $default-border-color);
+        }
+    }
+
+    @include child(title) {
+        font-weight: $bold-font-weight;
+        padding-left: spacing(kilo);
+        padding-right: spacing(kilo);
+    }
+
+    @include child(text) {
+        padding-left: spacing(kilo);
+        transition: $default-transition;
+        max-height: 0;
+        opacity: 0;
+    }
+}

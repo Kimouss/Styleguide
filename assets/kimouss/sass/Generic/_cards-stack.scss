@@ -1,0 +1,127 @@
+@include component(cards-stack) {
+    /* Colour variables */
+    $default-background: $white-snow;
+    $bottom-background: $blue-alice;
+    $bottom-pushed-background: $red-chablis;
+    $border-color : $blue-sail;
+    $logo-background: $blue-downriver;
+    $default-border-color: $grey-mystic;
+    $card-hidden-height: 1.5rem;
+
+    position: relative;
+    background-color: $default-background;
+    border-radius: $base-radius;
+    box-shadow: $base-box-shadow;
+
+    @include modifier(has-card-hidden) {
+        margin-bottom: $card-hidden-height;
+    }
+
+    @include modifier(has-many-cards-hidden) {
+        margin-bottom: 3rem;
+    }
+
+    @include on-phone {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    @include child(main) {
+        @include from-phablet {
+            display: flex;
+        }
+    }
+
+    @include child(section) {
+        flex: 1;
+        padding: 1.8rem 3rem;
+    }
+
+    @include child(aside) {
+        @include from-phablet {
+            margin-bottom: 2rem;
+        }
+        @include on-phone {
+            display: block;
+            width: 100%;
+        }
+    }
+
+    @include child(logo-container) {
+        background: $logo-background;
+        padding: 1.5rem;
+        border-radius: $base-radius 0 0 0;
+
+        @include on-phone {
+            border-radius: $base-radius $base-radius 0 0;
+        }
+    }
+
+    @include child(logo) {
+        background: center no-repeat;
+        background-size: contain;
+        width: 5rem;
+        height: 5rem;
+        margin: auto;
+    }
+
+    @include child(bottom) {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        background: $bottom-background;
+        padding: spacing(micro) spacing(micro);
+        margin: 0 0.01rem;
+        border-radius: 0 0 $base-radius $base-radius;
+
+        @include from-desktop {
+            padding: spacing(micro) spacing(normal);
+        }
+
+        @include modifier(bordered) {
+            border-top: .1rem solid $border-color;
+        }
+
+        @include modifier(pushed) {
+            background: $bottom-pushed-background;
+        }
+    }
+
+    @include child(cards-hidden) {
+        position: absolute;
+        left: 1rem;
+        right: 1rem;
+        bottom: -$card-hidden-height;
+        height: $card-hidden-height;
+        margin: auto;
+        background-color: $bottom-background;
+        box-shadow: $base-box-shadow;
+        border-radius: 0 0 $base-radius $base-radius;
+
+        @include modifier(has-many) {
+            &::after  {
+                content: '';
+                display: block;
+                width: 98%;
+                height: $card-hidden-height;
+                margin: $card-hidden-height auto auto;
+                background-color: $bottom-background;
+                box-shadow: $base-box-shadow;
+                border-radius: 0 0 $base-radius $base-radius;
+            }
+        }
+    }
+
+    @include child(loading) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, .8);
+    }
+
+    @include child(loader) {
+        padding-top: 13%;
+    }
+}

@@ -1,0 +1,55 @@
+@include component(spacing) {
+    /* Width & size variables */
+    $default-size: spacing(normal);
+    $micro-size: spacing(micro);
+    $nano-size: spacing(nano);
+    $pico-size: spacing(pico);
+
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -$default-size;
+    margin-top: -$default-size;
+
+    @include modifier(vertical) {
+        display: block;
+    }
+
+    @include modifier(align-center) {
+        justify-content: center;
+    }
+
+    @include modifier(micro) {
+        margin-left: -$micro-size;
+        margin-top:  -$micro-size;
+    }
+
+    @include modifier(nano) {
+        margin-left: -$nano-size;
+        margin-top:  -$nano-size;
+    }
+
+    @include modifier(pico) {
+        margin-left: -$pico-size;
+        margin-top:  -$pico-size;
+    }
+
+    @include child(item) {
+        padding-left: $default-size;
+        margin-top: $default-size;
+
+        @include modifier(micro) {
+            padding-left: $micro-size;
+            margin-top: $micro-size;
+        }
+
+        @include modifier(nano) {
+            padding-left: $nano-size;
+            margin-top: $nano-size;
+        }
+
+        @include modifier(pico) {
+            padding-left: $pico-size;
+            margin-top: $pico-size;
+        }
+    }
+}

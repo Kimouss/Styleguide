@@ -1,0 +1,18 @@
+@include component(progress-circle) {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    
+    /* We set a maximum width to the automatically generated SVG so it never overflows its parent */
+    .round-progress {
+        max-width: 100%;
+    }
+
+    @include child(content) {
+        position: absolute;
+        top: 50%; 
+        bottom: auto; 
+        left: 50%; 
+        transform: translateY(-50%) translateX(-50%);
+    }
+}

@@ -1,0 +1,50 @@
+@include component(container) {
+    /* Width & size variables */
+    $default-padding: spacing(normal);
+    $to-phablet-padding: spacing(micro);
+
+    $default-size: 120rem;
+    $small-size: 80rem;
+    
+    position: relative;
+    z-index: 10; /* We set the z-index so that it passes over the overlay if there is one */
+    font-size: 1.4rem;
+    padding-left: $default-padding;
+    padding-right: $default-padding;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $default-size;
+    width: 100%;
+    line-height: 1.5;
+
+    @include to-phablet {
+        padding-left: $to-phablet-padding;
+        padding-right: $to-phablet-padding;
+    }
+
+    /* We use `.--small` containers on many places. ex: text content pages, inscription pages, etc. */
+    @include modifier(small, on-desktop) {
+        max-width: $small-size;
+    }
+
+    @include modifier(centered) {
+        text-align: center;
+    }
+
+    /**
+     * @TODO .--reset-padding and .--padded-top and see how to remove then (along with on the 
+     * Kimouss website
+     */
+    
+    @include modifier(reset-padding) {
+        padding: 0;
+    }
+
+    @include modifier(padded-top) {
+        padding-top: $default-padding;
+
+        @include to-phablet {
+            padding-top: $to-phablet-padding;
+        }
+    }
+}

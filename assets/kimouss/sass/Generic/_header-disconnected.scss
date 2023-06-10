@@ -1,0 +1,199 @@
+@include component(header-disconnected) {
+    /* Colour variables */
+    $default-border-color: $grey-mystic;
+    $default-transition: $base-transition;
+    $default-font-weight: $base-light-font-weight;
+    $bold-font-weight: $base-medium-font-weight;
+    $default-text-color: $blue-electric;
+    $default-hover-color: $blue-malibu;
+    $default-active-color: $blue-matisse;
+    $default-background-color: $white-snow;
+
+    /* Width & size variables */
+    $header-height: 5.4rem;
+    $logo-width: 16.5rem;
+
+    height: initial;
+    align-items: center;
+    font-size: 1.4rem;
+    justify-content: space-between;
+    box-shadow: shadow-border('bottom', $default-border-color);
+    background: $default-background-color;
+
+    @include from-tablet {
+        display: flex;
+        padding-right: spacing(normal);
+        padding-left: spacing(normal);
+    }
+
+    @include child(logo) {
+        max-width: $logo-width;
+
+        &:hover {
+          opacity: .7;
+        }
+    }
+
+    @include child(logo-side) {
+
+        @include from-tablet {
+            max-width: $logo-width;
+        }
+
+        @include to-phablet {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding-left: spacing(micro);
+            box-shadow: shadow-border('bottom', $default-border-color);
+        }
+    }
+
+    @include child(logo-link) {
+
+        @include on-tablet {
+            width: 3.4rem;
+            overflow: hidden;
+            display: block;
+        }
+
+        @include to-phablet {
+            text-align: center;
+            margin: 0 auto;
+        }
+    }
+
+    @include child(navigation-side) {
+        opacity: 1;
+        max-height: calc( 100vh - #{$header-height} );
+        overflow-y: auto;
+        transition: .3s all ease-in-out;
+
+        @include modifier(closed) {
+
+            @include to-phablet {
+                opacity: 0;
+                overflow: hidden;
+                max-height: 0;
+                padding: 0;
+            }
+        }
+
+        @include from-tablet {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            padding-left: spacing(milli);
+            justify-content: space-between;
+        }
+
+        @include to-phablet {
+            padding-top: spacing(micro);
+            padding-bottom: spacing(normal);
+            box-shadow: shadow-border('bottom', $default-border-color);
+        }
+
+        @include child(list-element) {
+
+            @include from-tablet {
+                display: inline-flex;
+            }
+
+            @include to-phablet {
+                text-align: right;
+            }
+        }
+
+        @include child(link) {
+            transition: $default-transition;
+            font-size: 1.4rem;
+            font-weight: $default-font-weight;
+            color: $default-text-color;
+            padding: spacing(micro) spacing(nano);
+            line-height: 1.5em;
+
+            &:hover {
+                color: $default-hover-color;
+            }
+
+            &:active {
+                color: $default-active-color;
+            }
+
+            @include from-tablet {
+                height: $header-height;
+            }
+
+            @include to-phablet {
+                display: block;
+                padding: spacing(nano) spacing(micro);
+            }
+
+            @include modifier(navigation) {
+                text-transform: uppercase;
+                font-weight: $bold-font-weight;
+
+                @include on-tablet {
+                    padding: spacing(nano);
+                }
+            }
+        }
+
+        @include child(call-to-actions) {
+            text-align: right;
+
+            @include from-tablet {
+                display: flex;
+                align-items: center;
+                width: 21rem;
+                justify-content: space-between;
+                margin-left: spacing(nano);
+            }
+        }
+    }
+
+    @include child(text) {
+        display: inline-block;
+
+        @include modifier(break, on-tablet) {
+            display: block;
+        }
+    }
+
+    @include child(phablet-control) {
+        border: 0;
+        background: $default-background-color;
+        color: $default-active-color;
+        font-size: 1.4rem;
+        margin: 0;
+        box-shadow: shadow-border('bottom', $default-border-color);
+        height: $header-height;
+        transition: .1s all ease-in-out;
+        cursor: pointer;
+        padding: 0 spacing(nano);
+
+        &:hover, &:active {
+            color: $default-text-color;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        @include from-tablet {
+            display: none;
+        }
+    }
+
+    @include child(icon) {
+        font-size: 1.6rem;
+    }
+
+    @include child(button) {
+
+        @include to-phablet {
+            margin-right: spacing(nano);
+            margin-top: spacing(nano);
+        }
+    }
+}

@@ -1,0 +1,164 @@
+@include component(timeline) {
+    /* Bullet */
+    $bullet-active-background-color: $blue-electric;
+    $bullet-disabled-background-color: $grey-fiord;
+    $bullet-color: $white-snow;
+    $default-bullet-size: 2.5rem;
+
+    /* Card */
+    $card-background-color: $white-snow;
+    $default-radius: $base-radius;
+    $color-shadow: $grey-bunker;
+
+    @include child(time) {
+        display: none;
+        @include from-tablet {
+            display: block;
+            margin: .9rem 10.3rem;
+        }
+    }
+
+    @include child(item-date) {
+        width: 8.5rem;
+
+        @include from-tablet {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: flex-end;
+        }
+    }
+
+    @include child(year) {
+        @include from-tablet {
+            display: none;
+        }
+    }
+
+    @include child(item) {
+        margin-top: 1rem;
+        position: relative;
+
+        &:after {
+            content: '';
+            display: block;
+            width: 0;
+            margin: auto;
+            position: absolute;
+            border-left: 3px solid $card-background-color;
+            height: 2.4rem;
+            left: 50%;
+            bottom: -.9rem;
+
+            @include from-tablet {
+                height: auto;
+                top: -1.2rem;
+                left: 12.2rem;
+                z-index: -1;
+                bottom: 0;
+            }
+        }
+
+        @include modifier(first) {
+
+            &:after {
+                @include from-tablet {
+                    top: 0;
+                }
+            }
+        }
+
+        @include modifier(last) {
+            margin-bottom: 6rem;
+
+            &:after {
+                height: 7.4rem;
+                bottom: -5.9rem;
+            }
+
+            @include from-tablet {
+                margin-bottom: 0;
+                &:after {
+                    height: auto;
+                    bottom: 0;
+                }
+            }
+
+        }
+
+        @include modifier(origin) {
+            &:after {
+                display: none;
+
+                @include from-tablet {
+                    display: block;
+                    bottom: 3rem;
+                }
+            }
+        }
+
+        @include from-tablet {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    @include child(bullet) {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: $default-bullet-size;
+        height: $default-bullet-size;
+        box-sizing: content-box;
+        margin: auto;
+        position: relative;
+        z-index: 100;
+        background-color: $bullet-disabled-background-color;
+        border-radius: 50%;
+        border: 3px solid $bullet-color;
+        color: $bullet-color;
+
+        @include modifier(active) {
+            background-color: $bullet-active-background-color;
+        }
+
+        @include from-tablet {
+            margin: auto spacing(normal) auto spacing(milli);
+        }
+    }
+
+    @include child(panel) {
+        display: block;
+        position: relative;
+        top: -1.5rem;
+        padding: spacing(micro);
+        background-color: $card-background-color;
+        border-radius: $default-radius;
+
+        &:before{
+            content: '';
+            display: block;
+            height: 0;
+            width: 0;
+            border: 6px solid $card-background-color;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: -0.65rem;
+            bottom: 0;
+            transform: rotate(45deg);
+        }
+
+        @include from-tablet {
+            top: 0;
+            flex: 1 1 auto;
+        }
+
+        @include modifier(hoverable) {
+            &:hover {
+                box-shadow: 0 .4rem 1rem rgba($color-shadow,0.2);
+                cursor: pointer;
+            }
+        }
+    }
+}

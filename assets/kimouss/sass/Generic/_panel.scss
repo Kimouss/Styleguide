@@ -1,0 +1,82 @@
+@include component(panel) {
+    $default-background-color : $white-snow;
+    $deep-blue-background-color: $blue-congress;
+    $grey-background-color: $grey-wild-sand;
+    $header-background-color: $blue-downriver;
+    $action-background-color : $blue-alice;
+    $grey-background-color-business: $grey-limed-spruce;
+
+    $default-text-color : $grey-slate;
+    $default-border-color : $grey-mystic;
+    $default-radius: $base-radius;
+    $color-shadow: $grey-bunker;
+
+    $default-spacing-panel: spacing(micro);
+    $action-spacing-panel: spacing(pico);
+
+    background-color: $default-background-color;
+    border-radius: $default-radius;
+    min-width: calc(100% - #{$default-spacing-panel} );
+    padding: $default-spacing-panel;
+
+    @include modifier(max-height) {
+        min-height: 100%;
+    }
+
+    @include modifier(hoverable) {
+        &:hover {
+            box-shadow: 0 .4rem 1rem rgba($color-shadow,0.2);
+            cursor: pointer;
+        }
+    }
+
+    @include modifier(bordered) {
+        border: 0.1rem solid $default-border-color;
+    }
+
+    @include modifier(deep-blue) {
+        background-color: $deep-blue-background-color;
+    }
+
+    @include modifier(grey) {
+        background-color: $grey-background-color;
+    }
+
+    @include modifier(grey-limed) {
+        background: $grey-background-color-business;
+    }
+
+    @include modifier(transparent) {
+        background: transparent;
+    }
+
+    @include modifier(with-ribbon) {
+        position: relative;
+        padding-top: spacing(normal);
+    }
+
+    @include child(action) {
+        background-color: $action-background-color;
+        padding: $action-spacing-panel $default-spacing-panel;
+        margin: $default-spacing-panel #{-$default-spacing-panel} #{-$default-spacing-panel} ;
+        border-bottom-left-radius: .5rem;
+        border-bottom-right-radius: .5rem;
+        display: flex;
+        align-items: center;
+    }
+
+    @include child(header) {
+        background-color: $deep-blue-background-color;
+        padding: $action-spacing-panel $default-spacing-panel;
+        margin: #{-$default-spacing-panel} #{-$default-spacing-panel} $default-spacing-panel ;
+        border-top-left-radius: .5rem;
+        border-top-right-radius: .5rem;
+        align-items: center;
+    }
+
+    @include child(ribbon) {
+        position: absolute;
+        top: -0.8rem;
+        left: 0.8rem;
+    }
+}

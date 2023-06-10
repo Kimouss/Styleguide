@@ -1,0 +1,38 @@
+@include component(featured-message) {
+    /* Colour variables */
+    $default-text-color: $white-snow;
+    $success-background-color: $green-shamrock;
+    $neutral-background-color: $grey-jungle-mist;
+
+    $light-background-color: $grey-alabaster;
+    $light-border-color: $grey-jungle-mist;
+    $light-text-color: $grey-fiord;
+
+    /* Other various variables */
+    $default-radius: $base-radius;
+
+    position: relative;
+    padding: spacing(nano) spacing(micro);
+    color: $default-text-color;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    border-radius: $default-radius;
+
+    @include modifier(large) {
+        padding: spacing(normal);
+    }
+    
+    @include modifier(success) {
+        background: $success-background-color;
+    }
+
+    @include modifier(neutral) {
+        background: $neutral-background-color;
+    }
+
+    @include modifier(light) {
+        background: $light-background-color;
+        box-shadow: shadow-border('all', $light-border-color);
+        color: $light-text-color;
+    }
+}

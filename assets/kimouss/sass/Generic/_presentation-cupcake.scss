@@ -1,0 +1,32 @@
+@include component(presentation-cupcake) {
+    /* Width & size variables */
+    $default-spacing: spacing(nano);
+
+    text-align: center;
+    max-width: 100%;
+    padding: $default-spacing;
+    max-width: 100%;
+
+    @include modifier(no-padding) {
+        padding: 0;
+    }
+
+    @include child(icon) {
+        margin-bottom: $default-spacing;
+        min-width: 4em;
+        margin-left: auto;
+        margin-right: auto;
+
+        @include modifier(small) {
+            width: 4em;
+        }
+    }
+
+    @include child(title) {
+        margin: $default-spacing 0;
+    }
+
+    @include child(text) {
+        margin-top: $default-spacing;
+    }
+}

@@ -1,0 +1,37 @@
+@include component(gauge) {
+    /* Colour variables */
+    $default-background-color: $grey-mystic;
+    $success-color: $green-shamrock;
+
+    /* Width & size variables */
+    $default-height: 0.6rem;
+    $large-height: 1.2rem;
+
+    /* Other various variables */
+    $default-radius: 3rem;
+
+    height: $default-height;
+    background: $default-background-color;
+    border-radius: $default-radius;
+
+    @include modifier(large) {
+        height: $large-height;
+    }
+
+    @include child(progress) {
+        height: $default-height;
+        background: $success-color;
+        max-width: 100%;
+        border-radius: $default-radius;
+        
+        @include modifier(striped) {
+            background: $default-background-color;
+            background-image: linear-gradient(-45deg, $success-color 25%, transparent 25%, transparent 50%, $success-color 50%, $success-color 75%, transparent 75%, transparent);
+            background-size: 0.6rem 0.6rem;
+        }
+
+        @include modifier(large) {
+            height: $large-height;
+        }
+    }
+}

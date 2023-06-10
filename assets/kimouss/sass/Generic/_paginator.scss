@@ -1,0 +1,16 @@
+@include component(paginator) {
+
+    $default-spacing: spacing(nano);
+
+    display: inline-flex;
+    align-items: center;
+    margin-top: -$default-spacing;
+    margin-left: -$default-spacing;
+
+    @include child(item) {
+        padding-top: $default-spacing;
+        padding-left: $default-spacing;
+        display: flex;
+        align-items: center;
+    }
+}

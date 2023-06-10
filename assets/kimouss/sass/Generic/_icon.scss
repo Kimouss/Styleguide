@@ -1,0 +1,129 @@
+@include component(icon) {
+    /* Colour variables */
+    $emphasis-color: $blue-electric;
+    $submarine-grey-color: $grey-submarine;
+    $trapped-color: $white-snow;
+    $trapped-border-color: $blue-malibu;
+    $tertiary-color: $grey-submarine;
+    $validation-color: $green-shamrock;
+    $pending-color: $neon-carrot;
+
+    /* Width & size variables */
+    $default-circle-size: 3rem;
+    $default-square-size: 2.2rem;
+    $icon-nano-size: spacing(nano);
+
+    /* Other various variables */
+    $default-radius: $base-radius;
+
+    vertical-align: middle;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    font-feature-settings: "liga"; // display material icon on IE Browser
+
+    @include modifier(block) {
+        display: flex;
+    }
+
+    @include modifier(material) {
+        font-family: $BASE_MATERIAL_ICONS_FONT_FAMILY;
+    }
+
+    @include modifier(inherit) {
+        color: inherit;
+        font-size: inherit;
+    }
+
+    @include modifier(circle) {
+        box-shadow: shadow-border('all', $emphasis-color);
+        border-radius: 50%;
+        width: $default-circle-size;
+        height: $default-circle-size;
+        color: $emphasis-color;
+        font-size: 1.4rem;
+
+        @include modifier(success) {
+            box-shadow: shadow-border('all', $validation-color);
+            color: $validation-color;
+        }
+
+        @include modifier(trapped) {
+            box-shadow: shadow-border('all', $trapped-border-color);
+        }
+    }
+
+    @include modifier(validation) {
+        font-size: $icon-nano-size;
+        color: $submarine-grey-color;
+
+        @include modifier(success) {
+            color: $validation-color;
+        }
+
+        @include modifier(pending) {
+            color: $pending-color;
+        }
+    }
+
+    @include modifier(square) {
+        border-radius: $default-radius;
+        width: $default-square-size;
+        height: $default-square-size;
+        color: $emphasis-color;
+        font-size: 1.4rem;
+        box-shadow: shadow-border('all', $emphasis-color);
+
+        @include modifier(filled) {
+            background: $emphasis-color;
+            color: $trapped-color;
+        }
+    }
+
+    @include modifier(trapped) {
+        color: $trapped-color;
+    }
+
+    @include modifier(tertiary) {
+        color: $tertiary-color;
+    }
+
+    @include modifier(nano) {
+        font-size: 1rem;
+    }
+
+    @include modifier(micro) {
+        font-size: 1.2rem;
+    }
+
+    @include modifier(normal) {
+        font-size: 1.4rem;
+    }
+
+    @include modifier(kilo) {
+        font-size: 1.6rem;
+    }
+
+    @include modifier(mega) {
+        font-size: 1.8rem;
+    }
+
+    @include modifier(giga) {
+        font-size: 2.4rem;
+    }
+
+    @include modifier(tera) {
+        font-size: 3rem;
+    }
+
+    @include modifier(peta) {
+        font-size: 3.6rem;
+    }
+
+    @include modifier(small-avatar) {
+        font-size: 5rem;
+    }
+}

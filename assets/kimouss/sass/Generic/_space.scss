@@ -1,0 +1,31 @@
+@include component(space) {
+    $sizes: (
+        pico: spacing(pico),
+        nano: spacing(nano),
+        micro: spacing(micro),
+        milli: spacing(milli),
+        normal: spacing(normal),
+        kilo: spacing(kilo),
+        mega: spacing(mega),
+        zetta: spacing(zetta)
+    );
+
+
+    @each $label, $size in $sizes {
+        @include modifier($label, map_keys($base-media-queries)) {
+            padding: $size;
+        }
+        @include modifier("#{$label}-top", map_keys($base-media-queries)) {
+            padding-top: $size;
+        }
+        @include modifier("#{$label}-right", map_keys($base-media-queries)) {
+            padding-right: $size;
+        }
+        @include modifier("#{$label}-bottom", map_keys($base-media-queries)) {
+            padding-bottom: $size;
+        }
+        @include modifier("#{$label}-left", map_keys($base-media-queries)) {
+            padding-left: $size;
+        }
+    }
+}

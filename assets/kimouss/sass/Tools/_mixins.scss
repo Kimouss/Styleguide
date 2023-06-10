@@ -1,0 +1,114 @@
+/// Triangle helper mixin
+/// @param {Direction} $direction - Triangle direction, either `top`, `right`, `bottom` or `left`
+/// @param {Color} $color [currentcolor] - Triangle color
+/// @param {Length} $size [1em] - Triangle size
+@mixin triangle($direction, $color: currentcolor, $size: 1em) {
+  @if not index(top right bottom left, $direction) {
+    @error "Direction must be either `top`, `right`, `bottom` or `left`.";
+  }
+
+  width: 0;
+  height: 0;
+  content: '';
+  z-index: 2;
+  border-#{opposite-direction($direction)}: ($size * 1.5) solid $color;
+
+  $perpendicular-borders: $size solid transparent;
+
+  @if $direction == top or $direction == bottom {
+    border-left:   $perpendicular-borders;
+    border-right:  $perpendicular-borders;
+  } @else if $direction == right or $direction == left {
+    border-bottom: $perpendicular-borders;
+    border-top:    $perpendicular-borders;
+  }
+}
+
+// Phone
+
+@mixin on-phone {
+    @include to-phone {
+        @content;
+    }
+}
+
+@mixin to-phone {
+    @media #{map-get($base-media-queries, to-phone)} {
+        @content;
+    }
+}
+
+// Phablet
+
+@mixin from-phablet {
+    @media #{map_get($base-media-queries, from-phablet)} {
+        @content;
+    }
+}
+
+@mixin on-phablet {
+    @media #{map_get($base-media-queries, on-phablet)} {
+        @content;
+    }
+}
+
+@mixin to-phablet {
+    @media #{map_get($base-media-queries, to-phablet)} {
+        @content;
+    }
+}
+
+// Tablet
+
+@mixin from-tablet {
+    @media #{map_get($base-media-queries, from-tablet)} {
+        @content;
+    }
+}
+
+@mixin on-tablet {
+    @media #{map_get($base-media-queries, on-tablet)} {
+        @content;
+    }
+}
+
+@mixin to-tablet {
+    @media #{map_get($base-media-queries, to-tablet)} {
+        @content;
+    }
+}
+
+// Desktop
+
+@mixin from-desktop {
+    @media #{map_get($base-media-queries, from-desktop)} {
+        @content;
+    }
+}
+
+@mixin on-desktop {
+    @media #{map_get($base-media-queries, on-desktop)} {
+        @content;
+    }
+}
+
+@mixin to-desktop {
+    @media #{map_get($base-media-queries, to-desktop)} {
+        @content;
+    }
+}
+
+// Cinema
+
+@mixin from-cinema {
+    @media #{map_get($base-media-queries, from-cinema)} {
+        @content;
+    }
+}
+
+@mixin on-cinema {
+    @include from-cinema {
+        @content;
+    }
+}
+

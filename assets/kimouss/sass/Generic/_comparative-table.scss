@@ -1,0 +1,58 @@
+@include component(comparative-table) {
+    /* Colour variables */
+    $background-main-color-10: $blue-malibu;
+    $background-main-color-20: $blue-electric;
+    $background-main-color-30: $blue-matisse;
+    $background-main-color-40: $blue-congress;
+    $background-main-color-50: $blue-downriver;
+    $background-main-color-60: $blue-midnight;
+
+    $border-color-default: $grey-mystic;
+
+    $white: $white-snow;
+
+    @include child(row) {
+        @include from-phablet {
+            display: table;
+            width: 100%;
+        }
+    }
+
+    @include child(cell) {
+        padding: spacing(micro) spacing(normal);
+        display: block;
+
+        @include from-phablet {
+            display: table-cell;
+            width: 50%;
+        }
+
+        @include modifier(bordered) {
+            box-shadow:inset 0px 0px 0px 1px $border-color-default;
+        }
+
+        @include modifier(main-color-10) {
+            background-color: $background-main-color-10;
+        }
+
+        @include modifier(main-color-20) {
+            background-color: $background-main-color-20;
+        }
+
+        @include modifier(main-color-30) {
+            background-color: $background-main-color-30;
+        }
+
+        @include modifier(main-color-40) {
+            background-color: $background-main-color-40;
+        }
+
+        @include modifier(main-color-50) {
+            background-color: $background-main-color-50;
+        }
+
+        @include modifier(main-color-60) {
+            background-color: $background-main-color-60;
+        }
+    }
+}

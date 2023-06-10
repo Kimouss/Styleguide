@@ -1,0 +1,53 @@
+@include component(investment-info) {
+    /* Colour variables */
+    $default-border-color: $grey-mystic;
+    $default-background-color: $white-snow;
+
+    /* Width & size variables */
+    $default-small-padding: spacing(pico);
+
+    /* Other various variables */
+    $default-radius: $base-radius;
+
+    background-color: $default-background-color;
+    box-shadow: shadow-border(top, $default-border-color),
+                shadow-border(left, $default-border-color),
+                shadow-border(right, $default-border-color);
+    border-radius: $default-radius;
+    overflow: hidden;
+
+    @include child(cell) {
+        flex: auto 1 0;
+        padding: spacing(nano);
+        flex-basis: 0;
+
+        @include modifier(header) {
+            flex-shrink: 1;
+            text-align: center;
+        }
+
+        @include modifier(bordered-left) {
+            box-shadow: shadow-border(left, $default-border-color);
+        }
+
+        @include modifier(small-left) {
+            padding-right: $default-small-padding;
+        }
+
+        @include modifier(small-right) {
+            padding-left: $default-small-padding;
+        }
+    }
+
+    @include child(head-call-to-action) {
+        display: inline-block;
+        margin-left: $default-small-padding;
+        margin-top: $default-small-padding;
+    }
+
+    @include child(row) {
+        box-shadow: shadow-border(bottom, $default-border-color);
+        display: flex;
+        justify-content: space-around;
+    }
+}

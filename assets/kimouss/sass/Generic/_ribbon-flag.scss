@@ -1,0 +1,81 @@
+@include component(ribbon-flag) {
+    /* Colour variables */
+    $default-last-days-background: $red-bittersweet;
+    $shadow-last-days-background: $red-cabaret;
+
+    $default-new-background: $blue-electric;
+    $shadow-new-background: $blue-congress;
+
+    $default-new-trapped-background: $blue-pattens;
+    $shadow-new-trapped-background: $blue-malibu;
+
+    $default-company-pushed-background: $green-shamrock;
+    $shadow-company-pushed-background: $green-jungle;
+
+    $default-text-color: $white-snow;
+    $trapped-text-color: $blue-electric;
+
+    /* Width & size variables */
+    $shadow-size: 0.8rem;
+
+    /* Other various variables */
+    $default-radius: $base-radius;
+    $base-font-weight: $base-medium-font-weight;
+
+    position: relative;
+    padding: 1rem spacing(nano);
+    display: inline-block;
+    border-radius: $default-radius;
+    color: $default-text-color;
+    border-top-left-radius: 0;
+    font-size: 1.2rem;
+    font-weight: $base-font-weight;
+    margin-left: $shadow-size;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; /* Because the font is on a dark background, we use this to avoid to make it look fat */
+    
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -$shadow-size;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0 $shadow-size $shadow-size;
+    }
+
+    @include modifier(last-days) {
+        background: $default-last-days-background;
+
+        &:after {
+            border-color: transparent transparent $shadow-last-days-background transparent;
+        }
+    }
+
+    @include modifier(new) {
+        background: $default-new-background;
+
+        &:after {
+            border-color: transparent transparent $shadow-new-background transparent;
+        }
+
+        @include modifier(trapped) {
+            background: $default-new-trapped-background;
+            color: $trapped-text-color;
+
+            &:after {
+                border-color: transparent transparent $shadow-new-trapped-background transparent;
+            }
+        }
+    }
+
+    @include modifier(company-pushed) {
+        background: $default-company-pushed-background;
+
+        &:after {
+            border-color: transparent transparent $shadow-company-pushed-background transparent;
+        }
+    }
+}

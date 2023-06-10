@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        {% include '1_-_Basics/Grid/3_-_Pull-left_and_Pull-right/doc.html.twig' %}
+        {%  include '1_-_Basics/Grid/3_-_Pull-left_and_Pull-right/usage.html.twig' | escape %}
+        <h1 class="km-text --peta --bold">Example for 1_-_Grid</h1>
+        <style>
+                .demo_col {
+                        background-color: #e0f4ff;
+                        border: 1px solid #1897ec;
+                        padding: 10px;
+                        position: relative;
+                        top: 0;
+                        bottom: 0;
+                }
+        </style>
+
+        <p class="km-text --bold">
+                Example #1
+        </p>
+        <div class="km-grid">
+                <div class="km-grid_col  --one-third@from-tablet --pull-left">
+                        <div class="demo_col">
+                                <p class="km-text --bold --mega --align-center">pull-left</p>
+                        </div>
+                </div>
+        </div>
+        <p class="km-text --bold">
+                Example #2
+        </p>
+        <div class="km-grid">
+                <div class="km-grid_col  --one-third@from-tablet">
+                        <div class="demo_col">
+                                <p class="km-text --bold --mega --align-center">no modifier</p>
+                        </div>
+                </div>
+        </div>
+        <p class="km-text --bold">
+                Example #3
+        </p>
+        <div class="km-grid">
+                <div class="km-grid_col  --one-third@from-tablet --pull-right">
+                        <div class="demo_col">
+                                <p class="km-text --bold --mega --align-center">pull-right</p>
+                        </div>
+                </div>
+        </div>
+        <p class="km-text --bold">
+                Example #4
+        </p>
+        <div class="km-grid">
+                <div class="km-grid_col  --one-third@from-tablet --pull-left">
+                        <div class="demo_col">
+                                <p class="km-text --bold --mega --align-center">pull-left</p>
+                        </div>
+                </div>
+                <div class="km-grid_col  --one-third@from-tablet --pull-right">
+                        <div class="demo_col">
+                                <p class="km-text --bold --mega --align-center">pull-right</p>
+                        </div>
+                </div>
+        </div>
+        <p class="km-text --bold">
+                Example #5
+        </p>
+        <div class="km-grid">
+                <div class="km-grid_col  --one-quarter@on-desktop">
+                        <div class="demo_col">
+                                <p class="km-text --bold --mega --align-center">no modifier</p>
+                        </div>
+                </div>
+                <div class="km-grid_col  --one-quarter@on-desktop --pull-left">
+                        <div class="demo_col">
+                                <p class="km-text --bold --mega --align-center">pull-left</p>
+                        </div>
+                </div>
+                <div class="km-grid_col  --one-quarter@on-desktop --pull-right">
+                        <div class="demo_col">
+                                <p class="km-text --bold --mega --align-center">pull-right</p>
+                        </div>
+                </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,76 @@
+@include component(tabs) {
+    /* Colour variables */
+    $default-notification-color: $blue-electric;
+    $default-border-color: $grey-submarine;
+    $default-link-color: $grey-submarine;
+    
+    $hover-link-color: $blue-electric;
+
+    $active-border-color: $blue-electric;
+    $active-link-color: $grey-fiord;
+
+    /* Other various variables */
+    $default-font-weight: $base-medium-font-weight;
+
+    $default-transition: $base-transition;
+    $spacing-tabs: spacing(normal);
+
+    position: relative;
+    box-shadow: shadow-border('bottom', $default-border-color);
+    overflow: auto;
+    margin-bottom: $spacing-tabs;
+
+    @include child(container) {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+
+        @include modifier(align-left) {
+            justify-content: flex-start;
+        }
+    }
+
+    @include child(link) {
+        position: relative;
+        margin-right: spacing(normal);
+        color: $default-link-color;
+        font-weight: $default-font-weight;
+        padding-top: spacing(nano);
+        padding-bottom: spacing(nano);
+        transition: $default-transition;
+        flex: auto 0 0;
+
+        &:hover {
+            color: $hover-link-color;
+        }
+
+        @include modifier(active) {
+            color: $active-link-color;
+
+            &:after {
+                content: '';
+                background: $active-border-color;
+                width: 120%;
+                height: 0.3rem;
+                bottom: 0;
+                display: block;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        @include modifier(last) {
+            margin-right: 0;
+
+            @include to-phablet {
+                padding-right: spacing(micro); /* Padding-right to fix an overflow + padding bug.
+                                                    More here: http://stackoverflow.com/questions/10054870/when-a-child-element-overflows-horizontally-why-is-the-right-padding-of-the-par */
+            }
+        }
+
+        @include child(notification) {
+            color: $default-notification-color;
+        }
+    }
+}

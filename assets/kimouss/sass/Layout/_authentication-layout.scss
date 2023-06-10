@@ -1,0 +1,24 @@
+@include component(authentication-layout) {
+    $default-mobile-spacing: spacing(mega);
+    $default-layout-spacing: spacing(zetta);
+
+    padding-top: $default-mobile-spacing;
+    padding-bottom: $default-mobile-spacing;
+
+    @include from-tablet {
+        padding-top: $default-layout-spacing;
+        padding-bottom: $default-layout-spacing;
+    }
+
+    @include child(title) {
+        padding-bottom: spacing(micro);
+    }
+
+    @include child(separator) {
+        padding-bottom: spacing(micro);
+    }
+
+    @include child(block) {
+        padding-bottom: spacing(normal);
+    }
+}

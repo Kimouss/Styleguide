@@ -1,0 +1,140 @@
+$base-default-font-family: Roboto, Arial, sans-serif;
+$base-monospaced-font-family: 'Consolas', monospace;
+$base-material-font-family: 'Material Icons';
+
+// Colors
+
+$white-snow:          #FFF;
+
+$grey-alabaster:      #FBFBFB;
+$grey-wild-sand:      #F5F5F5;
+$grey-mystic:         #D8E4E7;
+$grey-jungle-mist:    #B7D2D7; // To delete (not in Styleguide Sketch anymore)
+$grey-submarine:      #BFCACC;
+$grey-slate:          #72888E;
+$grey-fiord:          #3F5461;
+
+//multisite color
+$grey-limed-spruce:   #2f3e47;
+$grey-nevada:         #57696D;
+$grey-outer-space:    #262E33;
+$grey-bunker:         #171F23;
+
+$blue-alice:          #F2FBFF;
+$blue-pattens:        #E0F4FF;
+$blue-sail:           #9FDBFA;
+$blue-malibu:         #5AC7FF;
+$blue-electric:       #1897EC;
+$blue-matisse:        #216AB1;
+$blue-congress:       #004C87;
+$blue-downriver:      #152F53;
+$blue-dianne:         #1F394C;  // To delete (not in Styleguide Sketch anymore)
+$blue-vogue:          #02294A;  // To delete (not in Styleguide Sketch anymore)
+$blue-midnight:       #00233C;
+$blue-black-pearl:    #06192E;
+
+$kournikova:          #FFEC6D;
+$golden-tainoi:       #FFCE5B;
+$neon-carrot:         #FF923E;
+
+$red-chablis:         #FFF6F6;
+$red-vivid-tangerine: #FF9988;
+$red-bittersweet:     #FF6E6E;
+$red-cabaret:         #CF415C;
+
+$green-clear-day:     #EEFFF9;
+$green-riptide:       #75E7CD;
+$green-shamrock:      #4AD7A3;
+$green-jungle:        #2CB19F;
+
+// Constants
+
+$SOCIAL_LINKEDIN_COLOR:       #0282BD ;
+$SOCIAL_LINKEDIN_LIGHT_COLOR: lighten($SOCIAL_LINKEDIN_COLOR, 10%);
+$SOCIAL_LINKEDIN_DARK_COLOR:  darken($SOCIAL_LINKEDIN_COLOR, 10%);
+
+$BANK_FORTUNEO_MAIN_COLOR: #a0e442;
+$FINANCIAL_SERVICE_ALLIANZ_MAIN_COLOR: #003781;
+$BANK_ALLIANZ_COLOR: #5085E8;
+
+$BASE_IMAGE_PATH: '../../images/' !default;
+
+$BASE_MATERIAL_ICONS_FONT_FAMILY: 'Material Icons';
+
+$breakpoint-from-phablet: 480px;
+$breakpoint-from-tablet: 768px;
+$breakpoint-from-desktop: 1024px;
+$breakpoint-from-cinema: 1280px;
+
+$breakpoint-to-phone: ($breakpoint-from-phablet - 1);
+$breakpoint-to-phablet: ($breakpoint-from-tablet - 1);
+$breakpoint-to-tablet: ($breakpoint-from-desktop - 1);
+$breakpoint-to-desktop: ($breakpoint-from-cinema - 1);
+
+$base-media-queries: (
+    to-phone: '(max-width: #{$breakpoint-to-phone})',
+    from-phablet: '(min-width: #{$breakpoint-from-phablet})',
+    on-phablet: '(min-width: #{$breakpoint-from-phablet}) and (max-width: #{$breakpoint-to-phablet})',
+    to-phablet: '(max-width: #{$breakpoint-to-phablet})',
+    from-tablet: '(min-width: #{$breakpoint-from-tablet})',
+    on-tablet: '(min-width: #{$breakpoint-from-tablet}) and (max-width: #{$breakpoint-to-tablet})',
+    to-tablet: '(max-width: #{$breakpoint-to-tablet})',
+    from-desktop: '(min-width: #{$breakpoint-from-desktop})',
+    on-desktop: '(min-width: #{$breakpoint-from-desktop}) and (max-width: #{$breakpoint-to-desktop})',
+    to-desktop: '(max-width: #{$breakpoint-to-desktop})',
+    from-cinema: '(min-width: #{$breakpoint-from-cinema})'
+);
+
+$base-media-queries: map_merge($base-media-queries, (
+    phone: map_get($base-media-queries, to-phone),
+    on-phone: map_get($base-media-queries, to-phone),
+    phablet: map_get($base-media-queries, on-phablet),
+    tablet: map_get($base-media-queries, on-tablet),
+    desktop: map_get($base-media-queries, from-desktop),
+    on-desktop: map_get($base-media-queries, from-desktop),
+    cinema: map_get($base-media-queries, from-cinema),
+    on-cinema: map_get($base-media-queries, from-cinema)
+));
+
+$base-spacing: (
+    pico: 0.6rem,
+    nano: 1.2rem,
+    micro: 1.8rem,
+    milli: 2.4rem,
+    normal: 3rem,
+    kilo: 3.6rem,
+    mega: 4.2rem,
+    zetta: 7.2rem
+);
+
+// Global colors
+
+$base-title-color: $grey-fiord;
+$base-text-color:  $grey-fiord;
+
+$base-primary-color: $blue-electric;
+$base-border-color: $grey-mystic;
+$base-shadow-color: $grey-mystic;
+$base-trapped-shadow-color: $blue-downriver;
+
+// Padding
+
+$base-default-vertical-button-padding: 0.5em;
+$base-large-vertical-button-padding: 0.8em;
+
+// Font weights
+
+$base-light-font-weight:   300;
+$base-regular-font-weight: 400;
+$base-medium-font-weight:  500;
+
+// Other
+
+$base-radius:      3px;
+$base-transition: .15s all ease-in-out;
+$base-slow-transition: .2s all ease-in-out;
+$base-box-shadow: 0 2px 6px 0 $base-shadow-color;
+$base-trapped-box-shadow: 0 1px 10px 0 $base-trapped-shadow-color;
+
+$header-height: 5.4rem;
+$default-header-height: 4.2rem;

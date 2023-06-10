@@ -1,0 +1,11 @@
+@include component(content-layout) {
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+
+    @include child(footer) {
+        display: flex;
+        align-items: flex-end;
+    }
+}

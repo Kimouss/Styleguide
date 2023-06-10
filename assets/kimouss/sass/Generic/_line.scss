@@ -1,0 +1,21 @@
+@include component(line) {
+    /* Colour variables */
+    $default-margin-nano: spacing(nano);
+    $dashboard-border-color: $grey-mystic;
+    $border-color-light: $grey-wild-sand;
+
+
+    display: block;
+    border: 0;
+    margin: $default-margin-nano 0;
+    flex-grow: 1;
+    border-bottom: 1px solid $dashboard-border-color;
+
+    @include modifier(light) {
+        border-color: $border-color-light;
+    }
+
+    @include modifier(no-margin) {
+        margin: 0;
+    }
+}

@@ -1,0 +1,23 @@
+{% macro render_menu(categories) %}
+    {% for category in categories | custom_sort('label') %}
+        {% if category.subcategories is defined %}
+            <div>
+                <button class="dropdown-btn {% if category.active %}active{% endif %}">{{ category.label }} &#9660;</button>
+                <div class="dropdown-container" {% if category.active %}style="display: block;"{% endif %}>
+                    {{ _self.render_menu(category.subcategories) }}
+                </div>
+            </div>
+        {% else %}
+            <div class="km-sidebar_item {% if category.active %}active{% endif %}">
+                <a class="km-text --bold --trapped --one-liner" href="{{ category.url }}">{{ category.label }}</a>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endmacro %}
+
+<nav class="km-sidebar sidenav">
+    <div class="km-sidebar_item">
+        <a class="km-text --bold --trapped --one-liner" href="{{ path('app_styleguide') }}">Styleguide</a>
+    </div>
+    {{ _self.render_menu(sidebarData) }}
+</nav>

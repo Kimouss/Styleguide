@@ -1,0 +1,48 @@
+@include component(buttons-group) {
+    /* Colour variables */
+    $highlight-color: $white-snow;
+    $hover-color: $blue-electric;
+    $default-text-color: $grey-slate;
+    $weak-color: $grey-submarine;
+    $default-border-color: $base-border-color;
+    $light-background: $grey-alabaster;
+    $border-radius: 1rem;
+
+    /* Other various variables */
+    $default-transition: $base-transition;
+
+    display: inline-flex;
+
+    @include child(button) {
+        color: $default-text-color;
+        cursor: pointer;
+        background: $highlight-color;
+        box-shadow: shadow-border('all', $default-border-color);
+        padding: 0.8rem 1.2rem ;
+        transition: $default-transition;
+        margin-right: -0.1rem;
+
+        &:nth-child(1){
+            border-radius: $border-radius 0 0 $border-radius
+        }
+
+        &:nth-last-child(1){
+            border-radius: 0 $border-radius $border-radius 0;
+        }
+
+        &:hover:not(.\--disabled) {
+            color: $hover-color;
+        }
+
+        @include modifier(disabled) {
+            background: $light-background;
+            cursor: not-allowed;
+            color: $weak-color;
+        }
+    }
+
+    @include child(icon) {
+        font-size: 1.5rem;
+    }
+
+}

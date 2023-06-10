@@ -1,0 +1,135 @@
+@include component(slideshow) {
+    /* Colour variables */
+    $default-flea-color: $grey-jungle-mist;
+    $active-flea-color: $grey-slate;
+    $hover-flea-color: $grey-mystic;
+
+    $trapped-default-flea-color: $grey-slate;
+    $trapped-active-flea-color: $grey-alabaster;
+    $trapped-hover-flea-color: $grey-mystic;
+
+    $default-arrow-color: $grey-slate;
+    $hover-arrow-color: $grey-jungle-mist;
+
+    $trapped-arrow-color: $grey-jungle-mist;
+    $trapped-hover-arrow-color: $grey-alabaster;
+    
+    /* Width & size variables */
+    $default-padding-slide: spacing(nano);
+    $default-padding-arrows: spacing(mega);
+    $flea-size: 0.8rem;
+
+    /* Other various variables */
+    $default-transition: $base-transition;
+
+    @include child(hider) {
+        overflow: hidden;
+    }
+    
+    @include child(view) {
+        margin: 0 #{-$default-padding-slide};
+
+        @include modifier(arrows-side) {
+            position: relative; 
+            padding-left: $default-padding-arrows;
+            padding-right: $default-padding-arrows;
+        }
+    }
+
+    @include child(container) {
+        margin-left: 0%;
+        transition: margin-left .3s;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+    }
+
+    @include child(slide) {
+        padding: #{$default-padding-slide};
+        flex: 100% 0 0;
+        max-width: 100%;
+    }
+
+    @include child(controls) {
+        margin-top: spacing(micro);
+        display: flex;
+        justify-content: center;
+        position: relative;
+
+        @include child(flea-container) {
+            display: inline-block;
+            margin: 0.1em;
+            padding: spacing(nano);
+            cursor: pointer;
+            border: 0;
+            background: none;
+
+            &:hover .km-slideshow_controls_flea {
+                background: $hover-flea-color;
+
+                @include modifier(trapped) {
+                    background: $trapped-hover-flea-color;
+                }
+            }
+
+            &:focus {
+                outline: none;
+            }
+
+            @include to-phablet {
+                opacity: 0;
+            }
+        }
+
+        @include child(flea) {
+            background: $default-flea-color;
+            height: $flea-size;
+            width: $flea-size;
+            border-radius: 50%;
+            display: block;
+            transition: $default-transition;
+
+            @include modifier(active) {
+                background: $active-flea-color;
+            }
+
+            @include modifier(trapped) {
+                background: $trapped-default-flea-color;
+                
+                @include modifier(active) {
+                    background: $trapped-active-flea-color;
+                }
+            }
+        }
+    }
+
+    @include child(controller) {
+        position: absolute;
+        font-size: 4rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $default-arrow-color;
+        transition: $default-transition;
+        cursor: pointer;
+
+        &:hover {
+            color: $hover-arrow-color;
+        }
+
+        @include modifier(trapped) {
+            color: $trapped-arrow-color;
+
+            &:hover {
+                color: $trapped-hover-arrow-color;
+            }
+        }
+
+        @include modifier(right) {
+            right: 0;
+        }
+
+        @include modifier(left) {
+            left: 0;
+        }
+    }
+}

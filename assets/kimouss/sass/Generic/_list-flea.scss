@@ -1,0 +1,19 @@
+@include component(list-flea) {
+    /* Colour variables */
+    $flea-color: $blue-electric;
+
+    @include child(element) {
+        margin-bottom: spacing(pico);
+
+        &:before {
+            content:'•';
+            font-size: 1.5rem;
+            margin-right: spacing(pico);
+            color: $flea-color;
+        }
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}

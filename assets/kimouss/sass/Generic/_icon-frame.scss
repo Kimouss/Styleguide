@@ -1,0 +1,37 @@
+@include component(icon-frame) {
+    $default-text-color: $white-snow;
+    $icon-pending: $neon-carrot;
+    $icon-success: $blue-malibu;
+
+    display: inline-block;
+    position: relative;
+
+    @include child(icon) {
+        content: '';
+        display: flex;
+        position: absolute;
+        bottom: -2px;
+        right: -2px;
+        background-color: white;
+        margin: 2px;
+        border-radius: 5rem;
+        font-size: 2.2rem;
+        z-index: 50;
+
+        @include  modifier(success) {
+            color: $icon-success;
+        }
+
+        @include modifier(pending) {
+            color: $icon-pending;
+        }
+
+        @include modifier(small) {
+            font-size: 1.4rem;
+        }
+
+        @include modifier(tiny) {
+            font-size: 1rem;
+        }
+    }
+}

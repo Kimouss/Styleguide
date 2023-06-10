@@ -1,0 +1,44 @@
+@include component(profile-card) {
+    $default-horizontal-spacing: spacing(micro);
+    $default-padding: spacing(pico);
+    $default-border-color: $grey-mystic;
+
+    @include child(item) {
+        display: flex;
+        padding: $default-padding 0;
+        position: relative;
+        align-items: center;
+
+        @include child(stick) {
+            position: relative;
+            width: 100%;
+
+            @include from-desktop {
+                margin-top: 5.2rem;
+            }
+
+            @include to-tablet{
+                margin-left: $default-horizontal-spacing;
+            }
+        }
+
+        @include modifier(bordered-bottom) {
+            padding: $default-horizontal-spacing 0;
+            box-shadow: shadow-border('bottom', $default-border-color, 2px);
+        }
+
+        @include modifier(centered) {
+            justify-content: center;
+        }
+    }
+
+    @include child(image) {
+        min-width: 8rem;
+
+        @include from-desktop {
+            position: absolute;
+            left: calc(50% - 3.6rem);
+            bottom: calc(80% - 1.6rem);
+        }
+    }
+}

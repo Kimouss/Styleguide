@@ -1,0 +1,289 @@
+/**
+ * As seen on the Digital team Styleguide
+ *
+ * Typography should not vary across devices (Except for `.--peta`, see its own DocBlock)
+ *
+ * All "headings" should have `.--align-center@to-phablet` if they don't already have `.--align-center`
+ *      headings: (`.--mega`, `.--giga`, `.--tera`, `.--peta`)
+ *
+ * The default size can also have `.--align-center@to-phablet` when used as a heading
+ */
+@include component(text) {
+    /* Colour variables */
+    $default-text-color: $grey-fiord;
+    $success-icon-color: $green-shamrock;
+    $error-icon-color: $red-bittersweet;
+    $secondary-icon-color: $grey-mystic;
+    $emphasis-text-color: $blue-electric;
+    $emphasis-light-text-color: $blue-malibu;
+    $emphasis-dark-text-color: $blue-matisse;
+    $emphasis-darker-text-color: $blue-downriver;
+    $secondary-text-color: $grey-slate;
+    $tertiary-text-color: $grey-submarine;
+
+    $pending-default-color: $neon-carrot;
+    $success-text-color: $green-shamrock;
+    $error-text-color: $red-bittersweet;
+
+    $trapped-text-color: $white-snow;
+
+    $default-placeholder-color: $grey-submarine;
+    $emphasis-placeholder-color: $grey-slate;
+
+    /* Width & size variables */
+    $small-action-spacing: spacing(pico);
+    $default-action-spacing: spacing(nano);
+
+    /* Other various variables */
+    $default-font-weight: $base-light-font-weight;
+    $bold-font-weight: $base-medium-font-weight;
+
+    font-size: 1.4rem;
+    font-weight: $default-font-weight;
+    color: $default-text-color;
+    line-height: 1.5em;
+    max-width: 100%;
+    margin: 0;
+
+    @include modifier(icon-title) {     /*THIS IS DEPRECATED*/
+        display: flex;
+        align-items: center;
+    }
+
+    @include modifier(center-icon) {     /*THIS IS DEPRECATED*/
+        align-items: center;
+        display: flex;
+    }
+
+    @include modifier(align-middle) {
+        display: flex;
+        align-items: center;
+    }
+
+    /**
+     * @to-phablet only
+     *
+     * "A text should always be centered on phablet if centered on phone"
+     */
+    @include modifier(align-center, to-phablet to-tablet from-tablet from-desktop on-desktop) {
+        text-align: center;
+        justify-content: center;
+    }
+
+    @include modifier(align-right) {
+        text-align: right;
+    }
+
+    @include modifier(inline) {
+        display: inline;
+    }
+
+    @include modifier(inline-icon-title) {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    /* If the text has to be 2 lines or more, the overflown text is hidden.
+        Also, we add "..." at the end of the line. */
+    @include modifier(one-liner) {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* --- Hierarchy --- */
+
+    @include modifier(bold) {
+        font-weight: $bold-font-weight;
+    }
+
+    @include modifier(italic) {
+        font-style: italic;
+    }
+
+    @include modifier(uppercase) {
+        text-transform: uppercase;
+    }
+
+    /**
+     * @from-tablet only on peta
+     *
+     * Never use `.--tera` and `.--peta` one the same page
+     */
+    @include modifier(peta, from-tablet) {
+        font-size: 3.6rem;
+        line-height: 1.3em;
+    }
+
+    /**
+     * Never use `.--tera` and `.--peta` one the same page
+     */
+    @include modifier(tera) {
+        font-size: 3.0rem;
+        line-height: 1.3em;
+    }
+
+    @include modifier(giga) {
+        font-size: 2.4rem;
+        line-height: 1.3em;
+    }
+
+    @include modifier(mega) {
+        font-size: 1.8rem;
+        line-height: 1.5em;
+    }
+
+    @include modifier(kilo) {
+        font-size: 1.6rem;
+        line-height: 1.5em;
+    }
+
+    @include modifier(micro) {
+        font-size: 1.2rem;
+        line-height: 1.5em;
+    }
+
+    @include modifier(nano) {
+        font-size: 1rem;
+        line-height: 1.5em;
+    }
+
+    /* --- Colors ------ */
+    @include modifier(emphasis-darker) {
+        color: $emphasis-darker-text-color;
+    }
+
+    @include modifier(emphasis-dark) {
+        color: $emphasis-dark-text-color;
+    }
+
+    @include modifier(emphasis) {
+        color: $emphasis-text-color;
+    }
+
+    @include modifier(emphasis-light) {
+        color: $emphasis-light-text-color;
+    }
+
+    @include modifier(secondary) {
+        color: $secondary-text-color;
+    }
+
+    @include modifier(tertiary) {
+        color: $tertiary-text-color;
+    }
+
+    @include modifier(success) {
+        color: $success-text-color;
+    }
+
+    @include modifier(pending) {
+        color: $pending-default-color;
+    }
+
+
+    @include modifier(error) {
+        color: $error-text-color;
+    }
+
+    @include modifier(trapped) {
+        color: $trapped-text-color;
+    }
+
+    @include modifier(allianz) {
+        color: $FINANCIAL_SERVICE_ALLIANZ_MAIN_COLOR;
+    }
+
+    @include modifier(parent-color) {
+        color: inherit;
+    }
+
+    @include modifier(placeholder) {
+        width: 50%;
+        text-indent: -999rem;
+        height: 0.8rem;
+        background: $default-placeholder-color;
+        margin-bottom: spacing(nano);
+        border-radius: 2.5rem;
+
+        @include modifier(emphasis) {
+            background: $emphasis-placeholder-color;
+        }
+
+        @include modifier(small) {
+            width: 35%;
+        }
+
+        @include modifier(large) {
+            width: 70%;
+        }
+
+        @include modifier(last) {
+            margin-bottom: 0;
+        }
+    }
+
+    @include child(action) {
+        display: inline-flex;
+        vertical-align: middle;
+
+        @include to-phablet {
+            display: block;
+            padding-top: $default-action-spacing;
+        }
+
+        @include from-tablet {
+            padding-left: $default-action-spacing;
+        }
+    }
+
+    @include child(icon) {
+        margin-right: .2em; /* We have em here so it's relative to its parent size (`.km-text`) */
+        font-size: 1em;
+        align-self: flex-start;
+        line-height: inherit;
+        flex: auto 0 0;
+
+        @include modifier(right) {
+            margin-right: 0;
+            margin-left: .2em;
+        }
+
+        @include modifier(alone) {
+            margin-right: 0;
+            margin-left: 0;
+        }
+
+        @include modifier(secondary) {
+            color: $secondary-icon-color
+        }
+
+        @include modifier(success) {
+            color: $success-icon-color;
+        }
+
+        @include modifier(pending) {
+            color: $pending-default-color;
+        }
+
+        @include modifier(error) {
+            color: $error-icon-color;
+        }
+
+        @include modifier(large) {
+            font-size: 2em;
+        }
+
+        @include modifier(big) {
+            font-size: 1.4em;
+        }
+    }
+
+    @include modifier(line-spaced-kilo) {
+        line-height: spacing(kilo);
+    }
+
+    @include modifier(has-tooltip-aside) {
+        display: inline-block;
+    }
+}

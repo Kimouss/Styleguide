@@ -1,0 +1,133 @@
+@include component(footer) {
+    /* Colour variables */
+    $default-text-color: $grey-submarine;
+    $default-background-color: $blue-congress;
+    $default-title-text-color: $white-snow;
+    $default-icon-color: $white-snow;
+
+    $sub-background-color: $blue-downriver;
+    $light-background-color: $grey-wild-sand;
+
+    $hover-link-color: $white-snow;
+    $hover-icon-color: $blue-electric;
+
+    /* Width & size variables */
+    $default-spacing: spacing(normal);
+
+    /* Other various variables */
+    $default-transition: $base-transition;
+
+    background-color: $default-background-color;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    width: 100%;
+    padding-bottom: $default-spacing;
+
+    @include modifier(sub) {
+        background-color: $sub-background-color;
+    }
+
+    @include modifier(full-width) {
+        width: 100%;
+    }
+
+    @include modifier(light) {
+        background-color: $light-background-color;
+    }
+
+    @include child(title) {
+        margin-bottom: spacing(pico);
+    }
+
+    @include child(macaron) {
+        margin: 0 auto spacing(milli);
+        display: block;
+        flex: auto 0 0;
+        align-self: center;
+
+        @include from-tablet {
+            margin: spacing(pico) spacing(milli) 0 0;
+        }
+
+        @include modifier(small) {
+            width: 8rem;
+        }
+    }
+
+    @include child(disclaimer) {
+        padding-top: $default-spacing;
+
+        @include from-tablet {
+            display: flex;
+            align-items: center;
+        }
+
+        @include modifier(second-paragraph) {
+            padding-top: spacing(milli);
+        }
+    }
+
+    @include child(grid) {
+        margin: 0 -#{$default-spacing};
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    @include child(column) {
+        padding: $default-spacing $default-spacing 0;
+        flex: 100% 0 1;
+
+        @include on-phablet {
+            flex: 50% 0 1;
+            max-width: 50%;
+        }
+
+        @include from-tablet {
+            flex: 25% 0 1;
+            max-width: 25%;
+        }
+    }
+
+    @include child(icon-bar) {
+        @include to-phablet {
+            text-align: center;
+        }
+    }
+
+    @include child(icon) {
+        color: $default-icon-color;
+        font-size: 1.6rem;
+        transition: $default-transition;
+
+        &:hover {
+            color: $hover-icon-color;
+        }
+    }
+
+    @include child(icon-link) {
+        display: inline-block;
+        margin-top: $default-spacing;
+        width: 1.6rem;
+        text-align: center;
+        margin-right: .5em;
+    }
+
+    @include child(link) {
+        font-size: 1.2rem;
+        line-height: 1.5em;
+        font-weight: 300;
+        color: $default-text-color;
+        display: block;
+        transition: $default-transition;
+
+        @include to-phablet {
+            text-align: center;
+        }
+
+        &:hover {
+            color: $hover-link-color;
+        }
+    }
+}

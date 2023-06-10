@@ -1,0 +1,149 @@
+@include component(data-block) {
+    /* Colour variables */
+    $default-background-color: $blue-electric;
+    $untrapped-color: $blue-electric;
+    $green-background-color: $green-shamrock;
+    $red-background-color: $red-bittersweet;
+    $grey-background-color: $grey-jungle-mist;
+    $dark-blue-background-color: $blue-midnight;
+    $blue-downriver-background-color: $blue-downriver;
+
+    $bordered-border-color: $blue-malibu;
+    $dark-blue-border-color: $white-snow;
+    $default-text-color: $white-snow;
+    $trapped-color: $white-snow;
+    $trapped-active-color: $blue-pattens;
+    $trapped-active-data-color: $blue-matisse;
+    $trapped-hover-data-color: $blue-electric;
+
+    /* Width & size variables */
+    $default-size: 8rem;
+    $default-data-size: 5.5rem;
+    $default-text-size: 2.4rem;
+
+    $small-size: 5rem;
+    $small-data-size: ($small-size * $default-data-size / $default-size);
+    $small-text-size: ($small-size * $default-text-size / $default-size);
+
+    $tiny-size: 3rem;
+    $tiny-data-size: 2rem;
+
+    /* Other various variables */
+    $default-transition: $base-transition;
+    $default-font-weight: $base-medium-font-weight;
+
+    width: $default-size;
+    height: $default-size;
+    vertical-align: middle;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $default-background-color;
+    border-radius: .3rem;
+    transition: $default-transition;
+
+    @include modifier(green) {
+        background-color: $green-background-color;
+    }
+
+    @include modifier(red) {
+        background-color: $red-background-color;
+    }
+
+    @include modifier(grey) {
+        background-color: $grey-background-color;
+    }
+
+    @include modifier(fortuneo) {
+        background-color: $BANK_FORTUNEO_MAIN_COLOR;
+    }
+
+    @include modifier(dark-blue) {
+        background-color: $dark-blue-background-color;
+        box-shadow: shadow-border('all', $dark-blue-border-color);
+    }
+
+    @include modifier(downriver-blue) {
+        background-color: $blue-downriver-background-color;
+        box-shadow: shadow-border('all', $blue-downriver-background-color);
+    }
+
+    @include modifier(bordered) {
+        background-color: transparent;
+        box-shadow: shadow-border('all', $bordered-border-color);
+
+        @include modifier(clickable) {
+
+            &:hover {
+                box-shadow: none;
+                background-color: $trapped-color;
+
+                .km-data-block_data {
+                    color: $trapped-hover-data-color;
+                }
+            }
+
+            &:active {
+                box-shadow: none;
+                background-color: $trapped-active-color;
+
+                .km-data-block_data {
+                    color: $trapped-active-data-color;
+                }
+            }
+        }
+    }
+
+    @include modifier(background-image) {
+        background-position: center;
+        background-size: cover;
+    }
+
+    @include modifier(tiny) {
+        width: $tiny-size;
+        height: $tiny-size;
+    }
+
+    @include modifier(small) {
+        width: $small-size;
+        height: $small-size;
+    }
+
+    @include child(data) {
+        overflow: hidden;
+        text-align: center;
+        white-space: nowrap;
+        color: $default-text-color;
+        font-size: $default-data-size;
+
+        @include modifier(text) {
+            font-size: $default-text-size;
+            font-weight: $default-font-weight;
+        }
+
+        @include modifier(logo) {
+            width: $default-data-size;
+            height: $default-data-size;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        @include modifier(tiny) {
+            font-size: $tiny-data-size;
+        }
+
+        @include modifier(small) {
+            font-size: $small-data-size;
+
+            @include modifier(logo) {
+                width: $small-data-size;
+                height: $small-data-size;
+            }
+
+            @include modifier(text) {
+                font-size: $small-text-size;
+            }
+        }
+    }
+}

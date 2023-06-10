@@ -1,0 +1,40 @@
+@include component(button-showcase) {
+    /* Colour variables */
+    $default-color: $grey-wild-sand;
+    $default-hover-color: $grey-mystic;
+
+    /* Width & size variables */
+    $default-spacing: spacing(micro);
+
+    /* Other various variables */
+    $default-radius: $base-radius;
+    $default-transition: $base-transition;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: $default-radius;
+    height: 26rem;
+    width: 100%;
+    max-width: 100%;
+    background: $default-color;
+    transition: $default-transition;
+
+    &:hover {
+        background: $default-hover-color;
+    }
+
+    &:active {
+        background: $grey-submarine;
+    }
+
+    @include child(image) {
+        padding: 0 $default-spacing;
+    }
+
+    @include child(title) {
+        margin-top: spacing(milli);
+        padding: 0 $default-spacing;
+    }
+}

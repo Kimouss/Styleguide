@@ -1,0 +1,146 @@
+@include component(tooltip) {
+    /* Colour variables */
+    $default-text-color: $blue-alice;
+    $default-background-color: $blue-midnight;
+
+    $light-background-color: $white-snow;
+    $light-border-color: $grey-mystic;
+    $trapped-text-color: $default-background-color;
+
+    /* Other various variables */
+    $default-radius: $base-radius;
+
+    display: inline-block;
+    position: relative;
+    font-size: 1.2rem;
+    background: $default-background-color;
+    padding: spacing(pico) spacing(nano);
+    color: $default-text-color;
+    border-radius: $default-radius;
+    line-height: 1.5;
+    text-align: center;
+    max-width: 17.2rem;
+    z-index: 1000;
+    
+    &:before, &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0.4rem;
+        border-color: transparent;
+    }
+
+    @include modifier(full) {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    @include modifier(light) {
+        box-shadow: shadow-border('all', $light-border-color);
+        background: $light-background-color;
+        color: $trapped-text-color;
+
+        @include modifier(arrow-bottom-left) {
+
+            &:after {
+                z-index: 1;
+                bottom: 0;
+                left: 2rem;
+                transform: translate( -50%, 100%);
+                border-bottom-width: 0;
+                border-top-color: $light-border-color;  
+            }
+
+            &:before {
+                z-index: 10;
+                left: 2rem;
+                bottom: 1px;
+                transform: translate( -50%, 100%);
+                border-bottom-width: 0;
+                border-top-color: $light-background-color;  
+            }
+        }
+
+        @include modifier(arrow-bottom-right) {
+
+            &:after {
+                z-index: 1;
+                bottom: 0;
+                right: 2rem;
+                transform: translate( -50%, 100%);
+                border-bottom-width: 0;
+                border-top-color: $light-border-color;  
+            }
+
+            &:before {
+                z-index: 10;
+                right: 2rem;
+                bottom: 1px;
+                transform: translate( -50%, 100%);
+                border-bottom-width: 0;
+                border-top-color: $light-background-color;  
+            }
+        }
+
+        @include modifier(arrow-bottom) {
+
+            &:after {
+                z-index: 1;
+                bottom: 0;
+                left: 50%;
+                transform: translate( -50%, 100%);
+                border-bottom-width: 0;
+                border-top-color: $light-border-color;  
+            }
+
+            &:before {
+                z-index: 10;
+                bottom: 1px;
+                border-top-color: $light-background-color;  
+            }
+        }
+    }
+
+    @include modifier(arrow-top) {
+        &:before {
+            top: 0;
+            left: 50%;
+            transform: translate( -50%, -100%);
+            border-top-width: 0;
+            border-bottom-color: $default-background-color;
+        }
+    }
+
+    @include modifier(arrow-bottom) {
+        &:before {
+            bottom: 0;
+            left: 50%;
+            transform: translate( -50%, 100%);
+            border-bottom-width: 0;
+            border-top-color: $default-background-color;  
+        }
+    }
+
+    @include modifier(arrow-left) {
+        &:before {
+            top: 50%;
+            left: 0;
+            transform: translate(-100%, -50%);
+            border-left-width: 0;
+            border-right-color: $default-background-color;
+        }
+    }
+
+    @include modifier(arrow-right) {
+        &:before {
+            top: 50%;
+            right: 0;
+            transform: translate(100%, -50%);
+            border-right-width: 0;
+            border-left-color: $default-background-color;
+        }
+    }
+}

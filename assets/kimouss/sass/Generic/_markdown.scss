@@ -1,0 +1,36 @@
+@include component(markdown) {
+    /* Other various variables */
+    $bold-font-weight: $base-medium-font-weight;
+
+    font-size: 1.4rem;
+    line-height: 1.5;
+
+    p {
+        margin-bottom: spacing(micro);
+    }
+
+    strong {
+        font-weight: $bold-font-weight;
+    }
+
+    em {
+        font-style: italic;
+    }
+
+    ul, ol {
+
+        li {
+            margin-bottom: spacing(pico);
+            padding-left: spacing(milli);
+
+            &:before {
+                content: '•';
+                padding-right: spacing(pico);
+            }
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,78 @@
+@include component(document) {
+    $default-line-color: $grey-wild-sand;
+    $default-image-size: spacing(normal);
+
+    @include child(list) {
+        display: flex;
+        padding: 1rem;
+        max-width: 100%;
+
+        @include modifier(row) {
+            border-top: solid 1px $default-line-color;
+        }
+    }
+
+    @include child(name) {
+        width: 60%;
+        display: flex;
+        text-align: center;
+
+        @include on-phone {
+            width: 50%;
+        }
+
+        @include modifier(large) {
+            @include on-phone {
+                width: 80%;
+            }
+        }
+
+        @include modifier(full-width) {
+            width: 100%;
+        }
+    }
+
+    @include child(title) {
+        padding-left: 1.4rem;
+        min-width: 0;
+        max-width: 85%;
+        align-self: center;
+    }
+
+    @include child(img) {
+        width: $default-image-size;
+        flex: $default-image-size 0 0;
+    }
+
+    @include child(item) {
+        align-self: center;
+
+        @include from-phablet {
+            width: 20%;
+        }
+
+        @include modifier(lock) {
+            padding: 0 spacing(normal);
+
+            @include on-phone {
+                padding: 0 spacing(micro);
+            }
+        }
+
+        @include modifier(full-width) {
+            width: auto;
+        }
+
+        @include modifier(pull-right) {
+            position: absolute;
+            right: 2rem;
+        }
+    }
+
+    @include child(text) {
+        min-width: 75px;
+        @include on-phone {
+            display: none;
+        }
+    }
+}

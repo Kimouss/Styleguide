@@ -1,0 +1,38 @@
+@include component(loader) {
+    /* Colour variables */
+    $default-color: $blue-malibu;
+
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin: 20px auto;
+    border: 3px solid $default-color;
+    border-radius: 50%;
+    animation: spin 0.75s infinite linear;
+
+    &,
+    &:before {
+        border-color: transparent;
+        border-top-color: $default-color;
+    }
+
+    &:before {
+        animation: spin 1.5s infinite ease;
+    }
+
+    @include modifier(stuck) {
+        position: fixed;
+        top: calc(50% - #{10rem});
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}

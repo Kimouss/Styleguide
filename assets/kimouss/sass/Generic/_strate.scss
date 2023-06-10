@@ -1,0 +1,50 @@
+@include component(strate) {
+    /* Colour variables */
+    $default-background: $grey-wild-sand;
+    $default-border-color: $grey-mystic;
+    $blue-background: $blue-electric;
+    $deep-blue-background: $blue-downriver;
+    $white-background-color: $white-snow;
+    $grey-background-color-business: $grey-limed-spruce;
+
+    /* Width & size variables */
+    $default-padding: spacing(normal);
+    $small-padding: spacing(micro);
+    $large-padding: spacing(mega);
+
+    background: $default-background;
+    box-shadow: shadow-border('top', $default-border-color);
+    font-size: 1.4rem;
+    padding-top: $default-padding;
+    padding-bottom: $default-padding;
+
+    @include modifier(small) {
+        padding-top: $small-padding;
+        padding-bottom: $small-padding;
+    }
+
+    @include modifier(large) {
+        padding-top: $large-padding;
+        padding-bottom: $large-padding;
+    }
+
+    @include modifier(blue) {
+        background: $blue-background;
+        box-shadow: none;
+    }
+
+    @include modifier(grey-limed) {
+        background: $grey-background-color-business;
+        box-shadow: none;
+    }
+
+    @include modifier(deep-blue) {
+        background: $deep-blue-background;
+        box-shadow: none;
+    }
+
+    @include modifier(transparent) {
+        background: transparent;
+        box-shadow: none;
+    }
+}

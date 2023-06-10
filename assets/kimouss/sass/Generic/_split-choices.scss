@@ -1,0 +1,35 @@
+@include component(split-choices) {
+    /* Colour variables */
+    $default-text-color: $grey-mystic;
+    $trapped-text-color: $white-snow;
+
+    display: flex;
+    
+    @include child(choice) {
+        flex: 1;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+
+        @include modifier(centered) {
+            align-items: center;
+
+            @include on-desktop {
+                padding: 0 12rem;
+            }
+        }
+    }
+
+    @include child(split) {
+        display: block;
+        
+        @include from-tablet {
+            display: flex;
+        }
+    }
+
+    @include to-phablet {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,107 @@
+@include component(multiple-emails) {
+  $action-right-margin: spacing(nano);
+  $icon-right-margin: spacing(pico);
+  $icon-left-margin: spacing(pico);
+  $icon-top-margin: spacing(pico);
+  $element-bottom-margin: spacing(micro);
+  $icon-top-normal-margin: spacing(micro);
+  $validation-color: $green-shamrock;
+  $grey-bottom-border: $grey-submarine;
+
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: $icon-top-normal-margin;
+
+  @include modifier(last) {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  @include to-tablet {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  @include from-desktop {
+    margin-top: $icon-top-margin;
+  }
+
+  @include on-phone {
+    padding-bottom: $element-bottom-margin;
+    border-bottom: 1px solid $grey-bottom-border;flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  @include modifier(first) {
+    margin-top: 0;
+  }
+
+  @include child(block) {
+    display: flex;
+    flex-grow: 1;
+
+    @include to-tablet {
+      flex-direction: column;
+      flex: 100% 1 0;
+    }
+  }
+
+  @include child(action-side) {
+    display: flex;
+
+    @include child(delete-icon) {
+      @include from-tablet {
+        display: none;
+      }
+    }
+
+    @include child(delete-text) {
+      @include to-phablet {
+        display: none;
+      }
+    }
+  }
+
+  @include child(action) {
+    margin-right: $action-right-margin;
+
+    @include modifier(last) {
+      margin-right: 0;
+    }
+
+    @include modifier(icon) {
+      @include on-phone {
+        display: flex;
+        order: 2;
+        align-items: flex-end;
+        margin-top: $icon-top-margin;
+      }
+    }
+
+    @include modifier(set-primary) {
+      @include on-phone {
+        order: 1;
+        padding-top: $icon-top-margin;
+      }
+    }
+  }
+
+  @include child(icon-block) {
+    display: flex;
+    padding-top: $icon-left-margin;
+
+    @include from-desktop {
+      margin-left:$icon-left-margin;
+      padding-top: 0;
+    }
+  }
+
+  @include child(icon) {
+    margin-right: $icon-right-margin;
+
+    @include modifier(success) {
+      color: $validation-color;
+    }
+  }
+}

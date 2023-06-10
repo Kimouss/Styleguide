@@ -1,0 +1,63 @@
+%scope-reset {
+    $color: $base-text-color;
+    $font-family: $base-default-font-family;
+
+    display: block;
+    color: $color;
+    direction: ltr;
+    font-family: $font-family;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 300;
+    letter-spacing: 0;
+    flex-grow: 0;
+    flex-shrink: 0;
+    line-height: 1;
+    text-align: left;
+    text-indent: 0;
+    text-transform: none;
+    visibility: visible;
+    white-space: normal;
+    word-spacing: normal;
+}
+
+@mixin component($name) {
+    @if & {
+        @error 'Component should not have a parent';
+    } @else {
+        .km-#{$name} {
+            @extend %scope-reset;
+            @content
+        }
+    }
+}
+
+@mixin child($name) {
+    @if & {
+        &_#{$name} {
+            @content
+        }
+    } @else {
+        @error 'Children should have a parent';
+    }
+}
+
+@mixin modifier($name, $media: ()) {
+    @if & {
+        &.\--#{'' + $name} {
+            @content
+        }
+
+        @each $medium in $media {
+            @media #{map_get($base-media-queries, $medium)} {
+                &.\--#{$name}\@#{$medium} {
+                    @content
+                }
+            }
+        }
+    }
+
+    @else {
+        @error 'Modifiers should have a parent';
+    }
+}

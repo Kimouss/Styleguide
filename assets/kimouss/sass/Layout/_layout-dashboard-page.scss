@@ -1,0 +1,60 @@
+@include component(layout-dashboard-page) {
+    /* Colour variables */
+    $default-background-color: $grey-wild-sand;
+
+    /* Width & size variables */
+    $default-spacing: spacing(normal);
+    $to-phablet-spacing: spacing(micro);
+    $simple-page-background-color: $white-snow;
+
+    background: $default-background-color;
+    padding: $default-spacing;
+    padding-bottom: spacing(micro);
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    @include to-phablet {
+        padding-left: $to-phablet-spacing;
+        padding-right: $to-phablet-spacing;
+    }
+
+    @include modifier(simple-page) {
+        background-color: $simple-page-background-color;
+        padding: 0;
+
+        @include to-phablet {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    @include child(title) {
+        margin-bottom: $default-spacing;
+    }
+
+    @include child(feature-push) {
+        margin-left: -#{$default-spacing};
+        margin-right: -#{$default-spacing};
+        margin-bottom: $default-spacing;
+
+        @include to-phablet {
+            margin-left: -#{$to-phablet-spacing};
+            margin-right: -#{$to-phablet-spacing};
+        }
+
+    }
+
+    @include child(content) {
+        flex-grow: 1;
+
+        @include modifier(centered) {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    @include child(footer) {
+        align-items: flex-end;
+    }
+}

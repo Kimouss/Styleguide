@@ -1,0 +1,31 @@
+@include component(info-block) {
+    /* Width & size variables */
+    $default-horizontal-padding: spacing(micro);
+    $default-vertical-padding: spacing(nano);
+
+    font-size: 1.4rem;
+
+    @include to-tablet {
+        text-align: center
+    }
+
+    @include child(title) {
+        margin-left: $default-horizontal-padding;
+
+        @include to-tablet {
+            display: block;
+            margin-left: 0;
+            margin-top: $default-vertical-padding;
+        }
+    }
+
+    @include child(header) {
+        margin-bottom: $default-vertical-padding;
+        text-align: center;
+
+        @include on-desktop {
+            display: flex;
+            align-items: center;
+        }
+    }
+}

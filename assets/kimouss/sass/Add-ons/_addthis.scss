@@ -1,0 +1,38 @@
+.at-share-btn-elements {
+    margin-top: -0.1rem;
+}
+
+.at-icon-wrapper {
+    /* Colour variables */
+    $default-color: $grey-slate;
+    $hover-color: $blue-electric;
+
+    /* Other various variables */
+    $default-transition: $base-transition;
+
+    height: 1.8rem;
+    width: 1.8rem;
+
+    &:hover, &:focus {
+        transform: none !important;
+        outline-offset: 0 !important;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+
+        svg {
+            fill: $hover-color !important;
+        }
+    }
+
+    svg {
+        height: 1.8rem !important; /* !important to override the inline styling */
+        width: 1.8rem !important;
+        fill: $default-color !important;
+        transition: $default-transition;
+    }
+}

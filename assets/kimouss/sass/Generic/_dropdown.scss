@@ -1,0 +1,56 @@
+@include component(dropdown) {
+    $default-background-color-popin: $white-snow;
+    $default-border-color: $grey-mystic;
+    $default-transition: $base-transition;
+    $hover-color: $blue-pattens;
+
+    display: inline-flex;
+    flex-direction: column;
+    position: relative;
+
+    @include child(item) {
+        text-align: right;
+        padding: spacing(pico) 3rem spacing(pico) spacing(nano);
+        cursor: pointer;
+        box-shadow: shadow-border('top', $default-border-color);
+        position: relative;
+
+        &:hover {
+            background: $hover-color;
+        }
+
+        @include modifier(current) {
+            box-shadow: none;
+
+            &:hover {
+                background-color: transparent;
+                opacity: .8;
+            }
+        }
+    }
+
+    @include child(arrow) {
+        position: absolute;
+        right: spacing(pico);
+        top: .1em;
+    }
+
+    @include child(inner) {
+        position: absolute;
+        z-index: 1000;
+        left: 0;
+
+        @include modifier(align-right) {
+            left: auto;
+            right: 0;
+        }
+    }
+
+    @include child(list) {
+        display: flex;
+        flex-direction: column;
+        background: $default-background-color-popin;
+        box-shadow: shadow-border('all', $default-border-color), 0 3px 6px 3px $default-border-color;
+        white-space: nowrap
+    }
+}

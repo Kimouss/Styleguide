@@ -1,0 +1,37 @@
+@include component(presentation-lollipop) {
+    /* Width & size variables */
+    $responsive-spacing: spacing(micro);
+    $default-horizontal-spacing: spacing(micro);
+    $default-vertical-spacing: spacing(nano);
+
+    display: flex;
+    align-items: flex-start;
+
+    @include modifier(centered) {
+        align-items: center;
+    }
+    
+    @include modifier(rowable, to-phablet) {
+        flex-direction: column;
+    }
+
+    @include child(stick) {
+        margin-left: $default-horizontal-spacing;
+        min-width: 0px;
+
+        @include modifier(rowable, to-phablet) {
+            margin-left: 0;
+            margin-top: $responsive-spacing;
+            width: 100%;
+        }
+
+        @include child(part) {
+            margin-bottom: $default-vertical-spacing;
+
+            @include modifier(last) {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+

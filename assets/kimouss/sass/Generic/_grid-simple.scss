@@ -1,0 +1,59 @@
+@include component(grid-simple) {
+    $default-horizontal-margin-size: 2em;
+    $default-vertical-margin-size: 2em;
+    $small-horizontal-margin-size: 1em;
+    $small-vertical-margin-size: 1em;
+
+    font-size: 1.4rem;
+    margin-left: #{-$default-horizontal-margin-size};
+    display: flex;
+
+    @include to-tablet {
+        margin-left: #{-$small-horizontal-margin-size};
+    }
+
+    @include to-phablet {
+        display: block;
+        margin-top: #{-$default-vertical-margin-size};
+        text-align: center;
+    }
+
+    @include modifier(multi-rows) {
+        margin-bottom: $default-vertical-margin-size;
+    }
+
+    @include modifier(small) {
+        margin-left: #{-$small-horizontal-margin-size};
+
+        @include to-phablet {
+            margin-top: #{-$small-vertical-margin-size};
+        }
+    }
+
+    @include child(col) {
+        padding-left: #{$default-horizontal-margin-size};
+
+        @include to-phablet {
+            margin-top: #{$default-vertical-margin-size};
+        }
+
+        @include modifier(half) {
+            flex: 50%;
+        }
+
+        @include modifier(vertical-center) {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @include modifier(small) {
+            padding-left: #{$small-horizontal-margin-size};
+            flex-grow: initial;
+
+            @include to-phablet {
+                margin-top: #{$small-vertical-margin-size};
+            }
+        }
+    }
+}

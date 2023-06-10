@@ -1,0 +1,24 @@
+@include component(spaced-between) {
+    $default-border-color: $grey-mystic;
+
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    @include child(item) {
+        flex: auto 0 0;
+        
+        @include modifier(pull-right) {
+            @include from-phablet {
+                float: right;
+            }
+        }
+    }
+
+    @include modifier(bordered-bottom) {
+        @include from-tablet {
+            padding: spacing(micro) 0;
+            box-shadow: shadow-border('bottom', $default-border-color, 1px);
+        }
+    }
+}

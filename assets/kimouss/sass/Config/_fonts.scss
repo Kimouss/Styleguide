@@ -1,0 +1,311 @@
+@charset "UTF-8";
+
+$icomoon-font-path: "../../fonts" !default;
+
+@font-face {
+    font-family: 'KimoussIcons';
+    src:
+        url('#{$icomoon-font-path}/KimoussIcons.woff') format('woff2'),
+        url('#{$icomoon-font-path}/KimoussIcons.ttf') format('truetype'),
+        url('#{$icomoon-font-path}/KimoussIcons.woff') format('woff'),
+        url('#{$icomoon-font-path}/KimoussIcons.svg#KimoussIcons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.sai {
+    font-family: 'KimoussIcons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    font-size: 1em;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sai-two-line i {
+    display: block;
+}
+
+.sai-two-line i + i {
+    margin-top: -0.1em;
+}
+
+.sai-1-5x { font-size: 1.5em;   }
+
+.sai-2x   { font-size: 2em;   }
+
+.sai-2-5x { font-size: 2.5em; }
+
+.sai-3x   { font-size: 3em;   }
+
+.sai-3-5x { font-size: 3.5em; }
+
+.sai-4x   { font-size: 4em;   }
+
+.sai-4-5x { font-size: 4.5em; }
+
+.sai-5x   { font-size: 5em;   }
+
+.sai-5-5x { font-size: 5.5em; }
+
+[class^="sai-"]:before,
+[class*=" sai-"]:before {
+    font-family: "KimoussIcons" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+.sai-allianz-circle:before {
+    content: "\e90b";
+}
+.sai-JEI-circle:before {
+    content: "\e90c";
+}
+.sai-JEI:before {
+    content: "\e900";
+}
+.sai-logotype:before {
+    content: "\e600";
+}
+.sai-logo:before {
+    content: "\e601";
+}
+.sai-jdn:before {
+    content: "\e602";
+}
+.sai-radio-classique:before {
+    content: "\e603";
+}
+.sai-frenchweb:before {
+    content: "\e604";
+}
+.sai-challenges:before {
+    content: "\e605";
+}
+.sai-bfm:before {
+    content: "\e606";
+}
+.sai-echos:before {
+    content: "\e607";
+}
+.sai-down:before {
+    content: "\e608";
+}
+.sai-ask-circle:before {
+    content: "\e609";
+}
+.sai-check-circle:before {
+    content: "\e60a";
+}
+.sai-ask:before {
+    content: "\e60b";
+}
+.sai-check:before {
+    content: "\e60c";
+}
+.sai-calendar:before {
+    content: "\e60d";
+}
+.sai-reco-outline:before {
+    content: "\e60e";
+}
+.sai-info-outline:before {
+    content: "\e60f";
+}
+.sai-fin-chart-circle:before {
+    content: "\e610";
+}
+.sai-hourglass-outline:before {
+    content: "\e611";
+}
+.sai-person-outline:before {
+    content: "\e612";
+}
+.sai-marker:before {
+    content: "\e613";
+}
+.sai-tag:before {
+    content: "\e614";
+}
+.sai-clock:before {
+    content: "\e615";
+}
+.sai-allianz:before {
+    content: "\e616";
+}
+.sai-sector-tourism:before {
+    content: "\e617";
+}
+.sai-sector-technology:before {
+    content: "\e618";
+}
+.sai-search-circle:before {
+    content: "\e619";
+}
+.sai-capital-gain-circle:before {
+    content: "\e61a";
+}
+.sai-wallet-circle:before {
+    content: "\e61b";
+}
+.sai-secured-shield-circle:before {
+    content: "\e61c";
+}
+.sai-signature-circle:before {
+    content: "\e61d";
+}
+.sai-sector-individual_service:before {
+    content: "\e61e";
+}
+.sai-sector-company_service:before {
+    content: "\e61f";
+}
+.sai-sector-health:before {
+    content: "\e620";
+}
+.sai-sector-mobility:before {
+    content: "\e621";
+}
+.sai-sector-finance:before {
+    content: "\e622";
+}
+.sai-sector-environment:before {
+    content: "\e623";
+}
+.sai-sector-education:before {
+    content: "\e624";
+}
+.sai-sector-entertainment:before {
+    content: "\e625";
+}
+.sai-startups-circle:before {
+    content: "\e626";
+}
+.sai-arrow-left:before {
+    content: "\e627";
+}
+.sai-arrow-right:before {
+    content: "\e628";
+}
+.sai-comment-bubble:before {
+    content: "\e629";
+}
+.sai-quote-start:before {
+    content: "\e62a";
+}
+.sai-quote-end:before {
+    content: "\e62b";
+}
+.sai-sector-market:before {
+    content: "\e62c";
+}
+.sai-short-arrow-right:before {
+    content: "\e62d";
+}
+.sai-sector-fashion:before {
+    content: "\e62e";
+}
+.sai-sector-food:before {
+    content: "\e62f";
+}
+.sai-info-bubble:before {
+    content: "\e630";
+}
+.sai-secured-lock:before {
+    content: "\e631";
+}
+.sai-short-arrow-left:before {
+    content: "\e632";
+}
+.sai-bell:before {
+    content: "\e633";
+}
+.sai-dashboard:before {
+    content: "\e634";
+}
+.sai-ressources:before {
+    content: "\e635";
+}
+.sai-share:before {
+    content: "\e636";
+}
+.sai-stats:before {
+    content: "\e637";
+}
+.sai-wallet-circle2:before {
+    content: "\e638";
+}
+.sai-cart-circle:before {
+    content: "\e639";
+}
+.sai-money-circle:before {
+    content: "\e63a";
+}
+.sai-euro-outline:before {
+    content: "\e63b";
+}
+.sai-calendar-thin:before {
+    content: "\e63c";
+}
+.sai-secured-lock-outline:before {
+    content: "\e63d";
+}
+.sai-info-outline-small:before {
+    content: "\e63e";
+}
+.sai-cog-o:before {
+    content: "\e800";
+}
+.sai-label-o:before {
+    content: "\e801";
+}
+.sai-wallet:before {
+    content: "\e901";
+}
+.sai-allianz-logo:before {
+    content: "\e902";
+}
+.sai-google-plus:before {
+    content: "\e903";
+}
+.sai-facebook:before {
+    content: "\e904";
+}
+.sai-facebook-square:before {
+    content: "\e905";
+}
+.sai-twitter:before {
+    content: "\e906";
+}
+.sai-youtube:before {
+    content: "\e907";
+}
+.sai-linkedin:before {
+    content: "\e908";
+}
+.sai-fortuneo-icon:before {
+    content: "\e909";
+}
+.sai-fortuneo-logo:before {
+    content: "\e90a";
+}
+
+
+.sai-allianz--big {
+    font-size: 1.7em;
+    vertical-align: middle;
+    padding-left: .3em;
+}

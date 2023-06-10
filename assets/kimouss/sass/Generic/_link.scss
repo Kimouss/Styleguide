@@ -1,0 +1,97 @@
+@include component(link) {
+    /* Colour variables */
+    $default-hover-color: $blue-electric;
+    $default-active-color: $blue-matisse;
+
+    $trapped-hover-color: $white-snow;
+
+    $emphasis-color: $blue-electric;
+    $emphasis-hover-color:  $blue-malibu;
+    $emphasis-active-color: $blue-matisse;
+
+    $tertiary-color: $grey-submarine;
+
+    $slight-pushed-color: $red-vivid-tangerine;
+    $slight-success-color: $green-riptide;
+    
+    /* Other various variables */
+    $bold-font-weight: $base-medium-font-weight;
+    $default-transition: $base-transition;
+
+
+    display: inline;
+    font-size: inherit;
+    transition: $default-transition;
+    cursor: pointer;
+    font-weight: $bold-font-weight;
+
+    &, &:visited {
+        color: inherit;
+    }
+
+    @include modifier(underline) {
+        text-decoration: underline;
+    }
+
+    @include modifier(tertiary) {
+        color: $tertiary-color;
+    }
+
+    @include modifier(slight-pushed) {
+        color: $slight-pushed-color;
+    }
+
+    @include modifier(slight-success) {
+        color: $slight-success-color;
+    }
+
+    &:hover {
+        color: $default-hover-color;
+    }
+
+    &:active {
+        color: $default-active-color;
+    }
+
+    @include modifier(emphasis) {
+
+        &, &:visited {
+            color: $emphasis-color;
+        }
+
+        &:hover {
+            color: $emphasis-hover-color;
+        }
+
+        &:active {
+            color: $emphasis-active-color;
+        }
+    }
+
+    @include modifier(material) {
+        font-family: $BASE_MATERIAL_ICONS_FONT_FAMILY;
+    }
+
+    @include modifier(large) {
+        font-size: 2.4rem;
+    }
+
+    @include modifier(trapped) {
+        &:hover {
+            color: $trapped-hover-color;
+        }
+    }
+
+    @include modifier(icon) {
+        padding: 0;
+        border: 0;
+        background: none;
+        cursor: pointer;
+        text-decoration: inherit;
+        vertical-align: middle;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}

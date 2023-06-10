@@ -1,0 +1,104 @@
+@include component(contextual-menu) {
+    $default-radius: $base-radius;
+
+    $default-color: $white-snow;
+    $default-button-color: $grey-slate;
+    $default-border-color: $grey-mystic;
+    $default-active-color: $blue-congress;
+    $default-hover-color: $blue-malibu;
+
+    $default-transition: $base-transition;
+    $height-button: 1.6rem;
+
+    @include child(button) {
+        position: relative;
+        font-size: $height-button;
+        line-height: $height-button;
+        border: solid transparent 1px;
+        border-radius: $default-radius;
+        background-color: transparent;
+        display: inline-block;
+        color: $default-button-color;
+        padding: 0.3rem;
+        transition: $default-transition;
+        cursor: pointer;
+        text-align: center;
+        -webkit-appearance: none;
+
+        @include modifier(active) {
+            color: $default-active-color;
+            border: solid $default-active-color 1px;
+            border-radius: $default-radius;
+        }
+
+        @include modifier(grouped) {
+            border: 0;
+            padding: 0;
+
+            &:hover {
+                border: 0;
+            }
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            background: $default-color;
+            color: $default-hover-color;
+            border: solid $default-hover-color 1px;
+            border-radius: $default-radius;
+        }
+    }
+
+    @include child(popin) {
+        position: absolute;
+        background: $default-color;
+        border-radius: $default-radius;
+        min-width: 17.2rem;
+        z-index: 1000;
+        top: 3.3rem;
+        right: 0;
+        box-shadow: 0 0 5px 3px $default-border-color;
+        
+        &:before, &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0.4rem;
+            top: -4px;
+            right: 10px;
+            border-color: transparent transparent $default-color $default-color;
+            transform: rotate(135deg);
+            box-shadow: -1px 1px 1px 0 $default-border-color;
+        }
+
+        @include modifier(left) {
+            top: 0;
+            right: 3.3rem;
+
+            &:before, &:after{
+                top: 8px;
+                right: -4px;
+                transform: rotate(230deg);
+            }
+        }
+    }
+
+    @include child(item) {
+        box-shadow: shadow-border('bottom', $default-border-color);
+        padding: spacing(pico) 0;
+
+        @include modifier(last) {
+            box-shadow: none;
+        }
+    }
+
+    @include child(text) {
+        padding: 0 spacing(nano);
+    }
+}

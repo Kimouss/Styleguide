@@ -1,0 +1,50 @@
+@include component(paragraph-icon) {
+    /* Colour variables */
+    $default-border-color: $grey-mystic;
+    $trapped-border-color: $blue-malibu;
+
+    /* Width & size variables */
+    $default-spacing: spacing(normal);
+
+    display: flex;
+    width: 100%;
+    position: relative;
+    align-items: baseline;
+    padding-left: $default-spacing;
+
+    @include to-phablet {
+        padding-left: 0;
+    }
+
+    @include child(image) {
+        margin-left: -#{$default-spacing};
+        margin-right: spacing(nano);
+        display: table;
+
+        @include to-phablet {
+            display: none;
+        }
+
+        @include modifier(top) {
+            align-self: flex-start;
+        }
+
+        @include modifier(outside-content) {
+            margin-left: -#{spacing(zetta)};
+        }
+    }
+
+    @include child(content) {
+        flex-grow: 1;
+
+        @include modifier(bordered-top) {
+            margin-top: spacing(nano);
+            padding-top: spacing(nano);
+            box-shadow: shadow-border('top', $default-border-color);
+        }
+
+        @include modifier(trapped) {
+            box-shadow: shadow-border('top', $trapped-border-color);
+        }
+    }
+}

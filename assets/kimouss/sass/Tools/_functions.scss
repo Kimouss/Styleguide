@@ -1,0 +1,78 @@
+/// Generates an inset shadow on a certain side
+@function shadow-border($position, $color, $thickness: 1px) {
+    @if ('top' == $position) {
+        @return inset 0 #{$thickness} 0 0 $color;
+    }
+    @if ('bottom' == $position) {
+        @return inset 0 #{-$thickness} 0 0 $color;
+    }
+    @if ('left' == $position) {
+        @return inset #{$thickness} 0 0 0 $color;
+    }
+    @if ('right' == $position) {
+        @return inset #{-$thickness} 0 0 0 $color;
+    }
+    @if ('all' == $position) {
+        @return inset 0 0 0 #{$thickness} #{$color};
+    }
+}
+
+@function spacing($which) {
+    @return map_get($base-spacing, $which);
+}
+
+/// Returns the opposite direction of each direction in a list
+/// @author Hugo Giraudel
+/// @param {List} $directions - List of initial directions
+/// @return {List} - List of opposite directions
+@function opposite-direction($directions) {
+    $opposite-directions: ();
+    $direction-map: (
+        'top':    'bottom',
+        'right':  'left',
+        'bottom': 'top',
+        'left':   'right',
+        'center': 'center',
+        'ltr':    'rtl',
+        'rtl':    'ltr'
+    );
+
+    @each $direction in $directions {
+        $direction: to-lower-case($direction);
+
+        @if map-has-key($direction-map, $direction) {
+            $opposite-directions: append($opposite-directions, unquote(map-get($direction-map, $direction)));
+        } @else {
+            @warn "No opposite direction can be found for `#{$direction}`. Direction omitted.";
+        }
+    }
+
+    @return $opposite-directions;
+}
+
+/**
+    Usage:
+
+
+    styleguide.scss
+
+    $theme: (
+        documentation-sidebar-default-background-color: red,
+    );
+
+
+    documentation-sidebar.scss
+
+    $default-background-color: theme('documentation-sidebar-default-background-color', $blue-congress);
+ */
+@function theme($themeVar, $defaultValue) {
+    @if not global_variable_exists(theme) {
+        @return $defaultValue;
+    }
+
+    @if map_has_key($theme, $themeVar) {
+        @return map_get($theme, $themeVar);
+    }
+
+    @return $defaultValue;
+}
