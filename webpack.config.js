@@ -25,12 +25,11 @@ Encore
 
     .copyFiles({
         from: './assets/kimouss/images',
-        // to: 'kimouss/images/[path][name].[ext]',
-        // if versioning is enabled, add the file hash too
         to: '../kimouss/images/[path][name].[hash:8].[ext]',
-
-        // only copy files matching this pattern
-        //pattern: /\.(png|jpg|jpeg)$/
+    })
+    .copyFiles({
+        from: './assets/kimouss/fonts',
+        to: '../kimouss/fonts/[path][name].[hash:8].[ext]',
     })
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
