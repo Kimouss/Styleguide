@@ -1,5 +1,4 @@
 # Kimouss - Styleguide
-test
 This project will make a styleguide doc and generate package to use in other projects
 
 @TODO:
