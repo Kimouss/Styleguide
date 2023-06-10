@@ -1,4 +1,6 @@
 {
+    "name": "kimouss/styleguide",
+    "description": "This is a styleguide",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
