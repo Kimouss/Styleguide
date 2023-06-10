@@ -68,7 +68,7 @@
 ###> symfony/webpack-encore-bundle ###
 /node_modules/
 /public/build/
-!public/kimouss/
+!/public/kimouss/
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###

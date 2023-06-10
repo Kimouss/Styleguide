@@ -21,13 +21,13 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
-    .addEntry('kimouss/styleguide', './assets/kimouss/styleguide.js')
+    .addEntry('../kimouss/styleguide', './assets/kimouss/styleguide.js')
 
     .copyFiles({
         from: './assets/kimouss/images',
         // to: 'kimouss/images/[path][name].[ext]',
         // if versioning is enabled, add the file hash too
-        to: 'kimouss/images/[path][name].[hash:8].[ext]',
+        to: '../kimouss/images/[path][name].[hash:8].[ext]',
 
         // only copy files matching this pattern
         //pattern: /\.(png|jpg|jpeg)$/
