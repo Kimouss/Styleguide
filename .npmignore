@@ -1,7 +1,7 @@
 .idea
 .vscode
 
-.docker/data/
+.docker
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -68,11 +68,24 @@
 ###> symfony/webpack-encore-bundle ###
 /node_modules/
 /public/build/
+!public/kimouss/
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
+.env
+README.md
+docker-compose.yml
+docker-compose.override.yml
+/bin/
+/.github
+Makefile
+composer.json
+composer.lock
 templates
 config
 assets
-
+/src/
+/readme_gif/
+symfony.lock
+webpack.config.js
