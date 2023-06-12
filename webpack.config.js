@@ -21,15 +21,30 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
-    .addEntry('../kimouss/styleguide', './assets/kimouss/styleguide.js')
+    .addEntry('kimouss/styleguide', './assets/kimouss/styleguide.js')
+    .addEntry('../../dist/styleguide', './assets/kimouss/styleguide.js')
 
     .copyFiles({
         from: './assets/kimouss/images',
-        to: '../kimouss/images/[path][name].[hash:8].[ext]',
+        to: 'kimouss/images/[path][name].[hash:8].[ext]',
     })
     .copyFiles({
         from: './assets/kimouss/fonts',
-        to: '../kimouss/fonts/[path][name].[hash:8].[ext]',
+        to: 'kimouss/fonts/[path][name].[hash:8].[ext]',
+    })
+
+    // Copy to dist
+    .copyFiles({
+        from: './assets/kimouss/fonts',
+        to: '../../dist/fonts/[path][name].[hash:8].[ext]',
+    })
+    .copyFiles({
+        from: './assets/kimouss/images',
+        to: '../../dist/images/[path][name].[hash:8].[ext]',
+    })
+    .copyFiles({
+        from: './assets/kimouss/sass',
+        to: '../../dist/sass/[path][name].[hash:8].[ext]',
     })
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
