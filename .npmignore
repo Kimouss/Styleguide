@@ -77,6 +77,10 @@ yarn-error.log
 README.md
 docker-compose.yml
 docker-compose.override.yml
+public/.htaccess
+public/index.php
+webpack.config.js
+
 /bin/
 /.github
 Makefile
