@@ -26,25 +26,25 @@ Encore
 
     .copyFiles({
         from: './assets/kimouss/images',
-        to: 'kimouss/images/[path][name].[hash:8].[ext]',
+        to: './assets/kimouss/images/[path][name].[ext]',
     })
     .copyFiles({
         from: './assets/kimouss/fonts',
-        to: 'kimouss/fonts/[path][name].[hash:8].[ext]',
+        to: './assets/kimouss/images/[path][name].[ext]',
     })
 
     // Copy to dist
     .copyFiles({
         from: './assets/kimouss/fonts',
-        to: '../../dist/fonts/[path][name].[hash:8].[ext]',
+        to: '../../dist/fonts/[path][name].[ext]',
     })
     .copyFiles({
         from: './assets/kimouss/images',
-        to: '../../dist/images/[path][name].[hash:8].[ext]',
+        to: '../../dist/images/[path][name].[ext]',
     })
     .copyFiles({
         from: './assets/kimouss/sass',
-        to: '../../dist/sass/[path][name].[hash:8].[ext]',
+        to: '../../dist/sass/[path][name].[ext]',
     })
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.

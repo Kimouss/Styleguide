@@ -37,7 +37,7 @@
     "dev": "encore dev",
     "watch": "encore dev --watch",
     "build": "encore production --progress",
-    "build:css": "node-sass assets/kimouss/styleguide.scss dist/css/styleguide.css",
+    "build:css": "node-sass assets/kimouss/styleguide.scss dist/css/theme/styleguide.css",
     "build:js": "webpack --mode production",
     "publish": "npm run build:css && npm run build:js"
   },
