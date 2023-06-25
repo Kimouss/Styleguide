@@ -47,6 +47,10 @@
     max-width: 100%;
     margin: 0;
 
+    @include modifier(demo-color) {
+        color: $demo-text-color;
+    }
+
     @include modifier(icon-title) {     /*THIS IS DEPRECATED*/
         display: flex;
         align-items: center;
@@ -194,10 +198,6 @@
 
     @include modifier(parent-color) {
         color: inherit;
-    }
-
-    @include modifier(demo-color) {
-        color: $demo-text-color;
     }
 
     @include modifier(placeholder) {
