@@ -489,17 +489,6 @@
                 padding: spacing(nano) spacing(micro);
             }
 
-            @include modifier(fortuneo) {
-                background: $BANK_FORTUNEO_MAIN_COLOR;
-                box-shadow: shadow-border('all', $BANK_FORTUNEO_MAIN_COLOR);
-                color: $logo-font-color;
-
-                &:hover {
-                    background: lighten($BANK_FORTUNEO_MAIN_COLOR, 15%);
-                    box-shadow: shadow-border('all', lighten($BANK_FORTUNEO_MAIN_COLOR, 15%));
-                }
-            }
-
             @include modifier(large) {
                 padding: #{$large-vertical-button-padding} spacing(micro);
                 font-size: 1.6rem;

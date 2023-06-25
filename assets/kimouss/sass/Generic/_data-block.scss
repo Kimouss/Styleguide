@@ -54,10 +54,6 @@
         background-color: $grey-background-color;
     }
 
-    @include modifier(fortuneo) {
-        background-color: $BANK_FORTUNEO_MAIN_COLOR;
-    }
-
     @include modifier(dark-blue) {
         background-color: $dark-blue-background-color;
         box-shadow: shadow-border('all', $dark-blue-border-color);

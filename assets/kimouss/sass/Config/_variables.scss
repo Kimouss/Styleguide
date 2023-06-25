@@ -9,7 +9,7 @@ $white-snow:          #FFF;
 $grey-alabaster:      #FBFBFB;
 $grey-wild-sand:      #F5F5F5;
 $grey-mystic:         #D8E4E7;
-$grey-jungle-mist:    #B7D2D7; // To delete (not in Styleguide Sketch anymore)
+$grey-jungle-mist:    #B7D2D7;
 $grey-submarine:      #BFCACC;
 $grey-slate:          #72888E;
 $grey-fiord:          #3F5461;
@@ -28,8 +28,8 @@ $blue-electric:       #1897EC;
 $blue-matisse:        #216AB1;
 $blue-congress:       #004C87;
 $blue-downriver:      #152F53;
-$blue-dianne:         #1F394C;  // To delete (not in Styleguide Sketch anymore)
-$blue-vogue:          #02294A;  // To delete (not in Styleguide Sketch anymore)
+$blue-dianne:         #1F394C;
+$blue-vogue:          #02294A;
 $blue-midnight:       #00233C;
 $blue-black-pearl:    #06192E;
 
@@ -47,15 +47,14 @@ $green-riptide:       #75E7CD;
 $green-shamrock:      #4AD7A3;
 $green-jungle:        #2CB19F;
 
+// DEMO
+$demo-color: #0a3569;
+
 // Constants
 
 $SOCIAL_LINKEDIN_COLOR:       #0282BD ;
 $SOCIAL_LINKEDIN_LIGHT_COLOR: lighten($SOCIAL_LINKEDIN_COLOR, 10%);
 $SOCIAL_LINKEDIN_DARK_COLOR:  darken($SOCIAL_LINKEDIN_COLOR, 10%);
-
-$BANK_FORTUNEO_MAIN_COLOR: #a0e442;
-$FINANCIAL_SERVICE_ALLIANZ_MAIN_COLOR: #003781;
-$BANK_ALLIANZ_COLOR: #5085E8;
 
 $BASE_IMAGE_PATH: '../../images/' !default;
 

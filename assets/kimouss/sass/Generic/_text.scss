@@ -30,6 +30,8 @@
     $default-placeholder-color: $grey-submarine;
     $emphasis-placeholder-color: $grey-slate;
 
+    $demo-text-color: $demo-color;
+
     /* Width & size variables */
     $small-action-spacing: spacing(pico);
     $default-action-spacing: spacing(nano);
@@ -190,12 +192,12 @@
         color: $trapped-text-color;
     }
 
-    @include modifier(allianz) {
-        color: $FINANCIAL_SERVICE_ALLIANZ_MAIN_COLOR;
-    }
-
     @include modifier(parent-color) {
         color: inherit;
+    }
+
+    @include modifier(demo-color) {
+        color: $demo-text-color;
     }
 
     @include modifier(placeholder) {

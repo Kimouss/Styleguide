@@ -309,18 +309,6 @@
         border-bottom-left-radius: 0;
     }
 
-    @include modifier(fortuneo) {
-        background-color: $BANK_FORTUNEO_MAIN_COLOR;
-
-        &:hover {
-            background-color: lighten($BANK_FORTUNEO_MAIN_COLOR, 20%);
-        }
-
-        &:active {
-            background-color: darken($BANK_FORTUNEO_MAIN_COLOR, 20%);
-        }
-    }
-
     @include child(icon) {
         height: auto;
         width: auto;
