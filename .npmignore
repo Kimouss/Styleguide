@@ -92,4 +92,3 @@ assets
 /src/
 /readme_gif/
 symfony.lock
-webpack.config.js

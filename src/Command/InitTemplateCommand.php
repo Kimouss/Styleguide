@@ -82,6 +82,7 @@ class InitTemplateCommand extends Command
                 {% include '$templateArg/usage.html.twig' %}
                 <h1 class="km-text --peta --bold">Example for $templateArg</h1>
         {% endblock %}
+
         EOF;
     }
 
@@ -97,6 +98,7 @@ class InitTemplateCommand extends Command
             {{ include('$templateArg/code.html.twig') | escape }}
                 </code>
             </pre>
+
         EOF;
     }
 
@@ -104,6 +106,7 @@ class InitTemplateCommand extends Command
     {
         return <<<EOF
             <h1 class="km-text --peta --bold">Doc of $templateArg</h1>
+
             EOF;
     }
 
@@ -111,6 +114,7 @@ class InitTemplateCommand extends Command
     {
         return <<<EOF
             <h1 class="km-text --peta --bold">$templateArg</h1>
+
             EOF;
     }
 }
