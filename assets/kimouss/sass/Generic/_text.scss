@@ -30,7 +30,7 @@
     $default-placeholder-color: $grey-submarine;
     $emphasis-placeholder-color: $grey-slate;
 
-    $demo-text-color: $demo-color;
+    //$demo-text-color: $demo-color;
 
     /* Width & size variables */
     $small-action-spacing: spacing(pico);
@@ -47,9 +47,9 @@
     max-width: 100%;
     margin: 0;
 
-    @include modifier(demo-color) {
-        color: $demo-text-color;
-    }
+    //@include modifier(demo-color) {
+    //    color: $demo-text-color;
+    //}
 
     @include modifier(icon-title) {     /*THIS IS DEPRECATED*/
         display: flex;
